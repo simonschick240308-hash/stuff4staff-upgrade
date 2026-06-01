@@ -1,0 +1,20 @@
+{
+  "name": "stuff4staff-website",
+  "version": "1.0.0",
+  "description": "Modern single-page website for Stuff4Staff GmbH — a German B2B staffing and HR company",
+  "author": "Stuff4Staff GmbH",
+  "license": "UNLICENSED",
+  "private": true,
+  "keywords": [
+    "staffing",
+    "hr",
+    "personalvermittlung",
+    "zeitarbeit",
+    "germany"
+  ],
+  "homepage": "https://stuff4staff.de",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stuff4staff/website.git"
+  }
+}
