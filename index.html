@@ -1,2770 +1,766 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stuff4Staff GmbH – Ihr Partner für erstklassiges Personal</title>
-  <meta name="description" content="Stuff4Staff GmbH – Ihre Experten für Personalvermittlung, Zeitarbeit und HR-Beratung in Deutschland. Professionell, verlässlich, modern." />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
-  <!-- GSAP + ScrollTrigger CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <style>
-    /* =============================================
-       CSS RESET & BASE
-    ============================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --navy:       #0a0e27;
-      --navy-mid:   #111535;
-      --navy-light: #1a2050;
-      --blue:       #4f8ef7;
-      --blue-light: #7ab4ff;
-      --blue-glow:  #4f8ef766;
-      --white:      #ffffff;
-      --off-white:  #e8edf8;
-      --muted:      #8a96b8;
-      --glass-bg:   rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.12);
-      --gradient-hero: linear-gradient(135deg, #0a0e27 0%, #111535 50%, #0d1a3d 100%);
-      --gradient-blue: linear-gradient(135deg, #4f8ef7, #7ab4ff);
-      --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      --shadow-blue:  0 0 40px rgba(79,142,247,0.25);
-      --shadow-card:  0 8px 40px rgba(0,0,0,0.4);
-      --radius-sm:  8px;
-      --radius-md:  16px;
-      --radius-lg:  24px;
-      --radius-xl:  32px;
-      --transition: 0.3s ease;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    ::selection {
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--navy); }
-    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
-
-    /* =============================================
-       UTILITIES
-    ============================================= */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
-
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--gradient-blue);
-      border-radius: 1px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      line-height: 1.15;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0.1);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .btn:hover::after { opacity: 1; }
-
-    .btn-primary {
-      background: var(--gradient-blue);
-      color: var(--white);
-      box-shadow: 0 4px 24px rgba(79,142,247,0.4);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(79,142,247,0.55);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    .glass-card {
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: var(--radius-lg);
-      transition: all 0.4s ease;
-    }
-
-    .glass-card:hover {
-      border-color: rgba(79,142,247,0.35);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(79,142,247,0.1);
-    }
-
-    /* Gradient text */
-    .text-gradient {
-      background: var(--gradient-blue);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Glow dot */
-    .glow-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 12px var(--blue);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.7; }
-    }
-
-    /* Fade-in base (for GSAP targets) */
-    .fade-in-up   { opacity: 0; transform: translateY(40px); }
-    .fade-in-left { opacity: 0; transform: translateX(-40px); }
-    .fade-in-right{ opacity: 0; transform: translateX(40px); }
-    .fade-in      { opacity: 0; }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    #navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 20px 0;
-      transition: all 0.4s ease;
-    }
-
-    #navbar.scrolled {
-      background: rgba(10, 14, 39, 0.85);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 14px 0;
-      box-shadow: 0 4px 40px rgba(0,0,0,0.4);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--white);
-    }
-
-    .nav-logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient-blue);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .nav-logo-name {
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-logo-tagline {
-      font-size: 0.65rem;
-      color: var(--muted);
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      display: block;
-      padding: 8px 16px;
-      color: var(--off-white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border-radius: 50px;
-      transition: all var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-      background: var(--glass-bg);
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: none;
-      border: none;
-    }
-
-    .nav-burger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 1px;
-      transition: all var(--transition);
-    }
-
-    /* Mobile nav */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 14, 39, 0.97);
-      backdrop-filter: blur(30px);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-    }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1.8rem;
-      font-weight: 700;
-      opacity: 0.85;
-      transition: all var(--transition);
-    }
-
-    .mobile-menu a:hover { opacity: 1; color: var(--blue); }
-
-    .mobile-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 2rem;
-      cursor: pointer;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta .btn-outline { display: none; }
-      .nav-burger { display: flex; }
-    }
-
-    /* =============================================
-       HERO SECTION
-    ============================================= */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    #three-canvas {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Gradient overlay on hero */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(79,142,247,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 30%, rgba(79,142,247,0.05) 0%, transparent 70%),
-        linear-gradient(to bottom, transparent 60%, var(--navy) 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 750px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 18px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--off-white);
-      margin-bottom: 28px;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-headline {
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    #typewriter-text {
-      display: inline-block;
-      min-height: 1.1em;
-    }
-
-    #typewriter-cursor {
-      display: inline-block;
-      width: 3px;
-      height: 0.9em;
-      background: var(--blue);
-      border-radius: 1px;
-      vertical-align: middle;
-      margin-left: 3px;
-      animation: blink 0.8s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 56px;
-    }
-
-    .hero-trust {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .hero-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .hero-trust-icon {
-      width: 20px;
-      height: 20px;
-      background: rgba(79,142,247,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .hero-trust-icon svg {
-      width: 11px;
-      height: 11px;
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 500;
-      animation: fade-bob 2.5s ease-in-out infinite;
-    }
-
-    .scroll-mouse {
-      width: 22px;
-      height: 34px;
-      border: 2px solid rgba(255,255,255,0.25);
-      border-radius: 12px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 5px;
-    }
-
-    .scroll-mouse-dot {
-      width: 3px;
-      height: 6px;
-      background: var(--blue);
-      border-radius: 2px;
-      animation: scroll-dot 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scroll-dot {
-      0%   { transform: translateY(0); opacity: 1; }
-      80%  { transform: translateY(10px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 0; }
-    }
-
-    @keyframes fade-bob {
-      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-      50% { opacity: 0.9; transform: translateX(-50%) translateY(4px); }
-    }
-
-    /* =============================================
-       SERVICES SECTION
-    ============================================= */
-    #services {
-      padding: 120px 0;
-      position: relative;
-    }
-
-    #services::before {
-      content: '';
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(79,142,247,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .services-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-    }
-
-    .service-card {
-      padding: 40px 36px;
-      border-radius: var(--radius-lg);
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: all 0.4s ease;
-      transform-style: preserve-3d;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-blue);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .service-card:hover::before { opacity: 1; }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(79,142,247,0.08) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-
-    .service-card:hover::after { opacity: 1; }
-
-    .service-icon-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-md);
-      background: rgba(79,142,247,0.12);
-      border: 1px solid rgba(79,142,247,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .service-card:hover .service-icon-wrap {
-      background: rgba(79,142,247,0.2);
-      border-color: rgba(79,142,247,0.4);
-      box-shadow: 0 0 30px rgba(79,142,247,0.2);
-      transform: scale(1.05) translateZ(20px);
-    }
-
-    .service-icon-wrap svg {
-      width: 28px;
-      height: 28px;
-      color: var(--blue);
-      transition: all 0.4s ease;
-    }
-
-    .service-card:hover .service-icon-wrap svg {
-      transform: scale(1.1);
-    }
-
-    .service-card-number {
-      position: absolute;
-      top: 32px;
-      right: 32px;
-      font-size: 4rem;
-      font-weight: 900;
-      color: rgba(255,255,255,0.03);
-      line-height: 1;
-      pointer-events: none;
-      transition: all 0.4s ease;
-    }
-
-    .service-card:hover .service-card-number {
-      color: rgba(79,142,247,0.06);
-    }
-
-    .service-card h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-      transition: color 0.3s;
-    }
-
-    .service-card:hover h3 { color: var(--blue-light); }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin-bottom: 28px;
-    }
-
-    .service-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .service-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--off-white);
-    }
-
-    .service-features li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(79,142,247,0.15);
-      border: 1px solid rgba(79,142,247,0.3);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%234f8ef7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2,6 5,9 10,3'/%3E%3C/svg%3E");
-      background-size: 10px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .service-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 28px;
-      color: var(--blue);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: gap 0.3s;
-    }
-
-    .service-link:hover { gap: 10px; }
-
-    .service-link svg {
-      width: 16px;
-      height: 16px;
-      transition: transform 0.3s;
-    }
-
-    .service-link:hover svg { transform: translateX(3px); }
-
-    /* =============================================
-       STATS BAR
-    ============================================= */
-    #stats {
-      padding: 0 0 120px;
-      position: relative;
-    }
-
-    .stats-inner {
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: 60px 48px;
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stats-inner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(79,142,247,0.06), transparent);
-      pointer-events: none;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 16px 8px;
-      border-right: 1px solid var(--glass-border);
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    @media (max-width: 768px) {
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-right: none; border-top: 1px solid var(--glass-border); padding-top: 32px; }
-    }
-
-    .stat-number {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 8px;
-      background: var(--gradient-blue);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-suffix {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 900;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    /* =============================================
-       ABOUT SECTION
-    ============================================= */
-    #about {
-      padding: 0 0 120px;
-      position: relative;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    }
-
-    .about-image-wrap {
-      position: relative;
-    }
-
-    .about-image-main {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: var(--radius-xl);
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* SVG team illustration placeholder */
-    .about-illustration {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(79,142,247,0.06) 0%, rgba(79,142,247,0.02) 100%);
-    }
-
-    .about-float-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--navy-mid);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      padding: 16px 24px;
-      backdrop-filter: blur(20px);
-      z-index: 2;
-      box-shadow: var(--shadow-card);
-    }
-
-    .about-float-badge .stat-number {
-      font-size: 2rem;
-      margin-bottom: 4px;
-    }
-
-    .about-float-badge .stat-label {
-      font-size: 0.8rem;
-    }
-
-    .about-float-badge-2 {
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      background: var(--navy-mid);
-      border: 1px solid rgba(79,142,247,0.3);
-      border-radius: var(--radius-md);
-      padding: 12px 20px;
-      backdrop-filter: blur(20px);
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 30px rgba(79,142,247,0.15);
-    }
-
-    .about-float-badge-2 .badge-text {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--off-white);
-    }
-
-    .about-content {}
-
-    .about-values {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .value-item {
-      padding: 20px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      transition: all 0.3s ease;
-    }
-
-    .value-item:hover {
-      border-color: rgba(79,142,247,0.3);
-      background: rgba(79,142,247,0.05);
-    }
-
-    .value-icon {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .value-item h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .value-item p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* =============================================
-       TESTIMONIALS
-    ============================================= */
-    #testimonials {
-      padding: 0 0 120px;
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .testimonials-header .section-subtitle { margin: 0 auto; }
-
-    .testimonials-track-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonials-track {
-      display: flex;
-      gap: 28px;
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .testimonial-card {
-      flex: 0 0 calc(33.333% - 19px);
-      padding: 36px;
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      backdrop-filter: blur(20px);
-      transition: all 0.4s ease;
-    }
-
-    @media (max-width: 900px) {
-      .testimonial-card { flex: 0 0 calc(50% - 14px); }
-    }
-
-    @media (max-width: 600px) {
-      .testimonial-card { flex: 0 0 calc(100% - 0px); }
-    }
-
-    .testimonial-card:hover {
-      border-color: rgba(79,142,247,0.3);
-      box-shadow: var(--shadow-card);
-      transform: translateY(-4px);
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 20px;
-      color: #fbbf24;
-      font-size: 1rem;
-    }
-
-    .testimonial-quote {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--off-white);
-      margin-bottom: 28px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .testimonial-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--gradient-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .testimonial-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .testimonial-role {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .testimonials-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .carousel-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      color: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-    }
-
-    .carousel-btn:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      box-shadow: 0 0 20px rgba(79,142,247,0.4);
-    }
-
-    .carousel-btn svg { width: 18px; height: 18px; }
-
-    .carousel-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--glass-border);
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .carousel-dot.active {
-      background: var(--blue);
-      width: 24px;
-      border-radius: 4px;
-      box-shadow: 0 0 10px rgba(79,142,247,0.5);
-    }
-
-    /* =============================================
-       CONTACT SECTION
-    ============================================= */
-    #contact {
-      padding: 0 0 120px;
-      position: relative;
-    }
-
-    #contact::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(79,142,247,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-    }
-
-    .contact-info {}
-
-    .contact-tagline {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-detail-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .contact-detail-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      background: rgba(79,142,247,0.1);
-      border: 1px solid rgba(79,142,247,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-detail-icon svg {
-      width: 18px;
-      height: 18px;
-      color: var(--blue);
-    }
-
-    .contact-detail-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .contact-detail-value {
-      font-size: 0.97rem;
-      color: var(--off-white);
-      font-weight: 500;
-    }
-
-    /* Form */
-    .contact-form-wrap {
-      background: var(--gradient-card);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: 48px 44px;
-      backdrop-filter: blur(20px);
-    }
-
-    .form-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .form-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .contact-form-wrap { padding: 32px 24px; }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .form-group.full { grid-column: 1 / -1; }
-
-    .form-label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--off-white);
-      letter-spacing: 0.03em;
-    }
-
-    .form-input, .form-select, .form-textarea {
-      padding: 14px 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-sm);
-      color: var(--white);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      transition: all var(--transition);
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    .form-input::placeholder,
-    .form-textarea::placeholder {
-      color: rgba(255,255,255,0.25);
-    }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      border-color: var(--blue);
-      background: rgba(79,142,247,0.06);
-      box-shadow: 0 0 0 3px rgba(79,142,247,0.12);
-    }
-
-    .form-select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a96b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 18px;
-      padding-right: 44px;
-    }
-
-    .form-select option { background: var(--navy-mid); }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 120px;
-      line-height: 1.6;
-    }
-
-    .form-checkbox-wrap {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .form-checkbox {
-      width: 18px;
-      height: 18px;
-      border: 1.5px solid var(--glass-border);
-      border-radius: 4px;
-      background: transparent;
-      cursor: pointer;
-      flex-shrink: 0;
-      margin-top: 2px;
-      position: relative;
-      -webkit-appearance: none;
-      appearance: none;
-      transition: all var(--transition);
-    }
-
-    .form-checkbox:checked {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .form-checkbox:checked::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 5px;
-      width: 5px;
-      height: 9px;
-      border: 2px solid white;
-      border-top: none;
-      border-left: none;
-      transform: rotate(45deg);
-    }
-
-    .form-checkbox-label {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .form-checkbox-label a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--gradient-blue);
-      border: none;
-      border-radius: var(--radius-sm);
-      color: var(--white);
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 24px rgba(79,142,247,0.35);
-    }
-
-    .form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(79,142,247,0.5);
-    }
-
-    .form-submit:active { transform: translateY(0); }
-
-    .form-submit svg { width: 18px; height: 18px; }
-
-    /* Success state */
-    .form-success {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 40px 0;
-      gap: 16px;
-    }
-
-    .form-success-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(79,142,247,0.15);
-      border: 2px solid var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .form-success-icon svg { width: 36px; height: 36px; color: var(--blue); }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    #footer {
-      background: var(--navy-mid);
-      border-top: 1px solid var(--glass-border);
-      padding: 72px 0 40px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 64px;
-    }
-
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-    }
-
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 16px 0 24px;
-      max-width: 300px;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 10px;
-    }
-
-    .social-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      text-decoration: none;
-      transition: all var(--transition);
-    }
-
-    .social-btn:hover {
-      color: var(--blue);
-      border-color: rgba(79,142,247,0.4);
-      background: rgba(79,142,247,0.08);
-    }
-
-    .social-btn svg { width: 16px; height: 16px; }
-
-    .footer-col h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--off-white);
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-col ul li a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--off-white);
-      gap: 9px;
-    }
-
-    .footer-col ul li a::before {
-      content: '→';
-      font-size: 0.75rem;
-      color: var(--blue);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .footer-col ul li a:hover::before { opacity: 1; }
-
-    .footer-bottom {
-      border-top: 1px solid var(--glass-border);
-      padding-top: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-bottom p {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-bottom-links a {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-
-    .footer-bottom-links a:hover { color: var(--blue); }
-
-    /* =============================================
-       BACK TO TOP
-    ============================================= */
-    #back-to-top {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--gradient-blue);
-      border: none;
-      color: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(79,142,247,0.4);
-      transition: all var(--transition);
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    #back-to-top.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    #back-to-top:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(79,142,247,0.55);
-    }
-
-    #back-to-top svg { width: 18px; height: 18px; }
-
-    /* =============================================
-       RESPONSIVE TWEAKS
-    ============================================= */
-    @media (max-width: 768px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 600px) {
-      .about-float-badge, .about-float-badge-2 { display: none; }
-      .about-image-wrap { margin-bottom: 16px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Stuff4Staff GmbH – Produkte für einen gesunden, angenehmen Arbeitsplatz: ergonomische Bürostühle, Büroschränke, Kaffeevollautomaten, erlesener Kaffee und Entspannungsutensilien." />
+<title>Stuff4Staff GmbH — Weil der Arbeitsplatz mehr sein darf</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --coffee-900: #2b1605;
+    --coffee-800: #451a03;
+    --coffee-700: #5c2708;
+    --coffee-600: #78350f;
+    --coffee-500: #92400e;
+    --coffee-400: #b45309;
+    --gold:       #fbbf24;
+    --gold-soft:  #fcd34d;
+    --cream:      #fef6e4;
+    --cream-2:    #fbecd4;
+    --paper:      #fffaf2;
+    --text:       #3a1a06;
+    --muted:      #8a6a4d;
+    --white:      #ffffff;
+
+    --glass-bg:   rgba(255, 250, 242, 0.55);
+    --glass-brd:  rgba(120, 53, 15, 0.14);
+    --glass-blur: 16px;
+    --radius:     22px;
+    --shadow:     0 24px 60px -20px rgba(69, 26, 3, 0.35);
+    --shadow-sm:  0 8px 24px -10px rgba(69, 26, 3, 0.28);
+    --ease:       cubic-bezier(0.22, 1, 0.36, 1);
+    --maxw:       1180px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Nunito Sans', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--gold); color: var(--coffee-900); }
+  ::-webkit-scrollbar { width: 11px; }
+  ::-webkit-scrollbar-track { background: var(--cream-2); }
+  ::-webkit-scrollbar-thumb { background: var(--coffee-500); border-radius: 10px; border: 3px solid var(--cream-2); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--coffee-600); }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  :focus-visible { outline: 3px solid var(--coffee-600); outline-offset: 3px; border-radius: 6px; }
+
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--coffee-800); }
+
+  .wrap { width: min(var(--maxw), 92vw); margin-inline: auto; }
+  section { position: relative; padding: clamp(72px, 11vh, 130px) 0; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--coffee-600); padding: 8px 16px; border-radius: 100px;
+    background: rgba(251, 191, 36, 0.18); border: 1px solid rgba(146, 64, 14, 0.18);
+  }
+  .eyebrow svg { width: 15px; height: 15px; }
+
+  .sec-title { font-size: clamp(2.1rem, 4.6vw, 3.4rem); margin: 20px 0 16px; }
+  .sec-sub { font-size: 1.1rem; color: var(--muted); max-width: 620px; }
+  .accent { color: var(--coffee-500); font-style: italic; }
+  .text-gold { color: var(--coffee-400); }
+
+  /* ───── Buttons ───── */
+  .btn {
+    position: relative; display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+    padding: 15px 30px; border-radius: 100px; font-family: inherit; font-weight: 700; font-size: 1rem;
+    border: none; overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .3s;
+  }
+  .btn-primary { background: var(--coffee-600); color: var(--cream); box-shadow: 0 12px 28px -10px rgba(69,26,3,0.6); }
+  .btn-primary:hover { transform: translateY(-3px); background: var(--coffee-700); box-shadow: 0 18px 36px -12px rgba(69,26,3,0.7); }
+  .btn-gold { background: var(--gold); color: var(--coffee-900); box-shadow: 0 12px 28px -10px rgba(180,83,9,0.55); }
+  .btn-gold:hover { transform: translateY(-3px); background: var(--gold-soft); }
+  .btn-ghost { background: var(--glass-bg); color: var(--coffee-700); border: 1px solid var(--glass-brd); backdrop-filter: blur(var(--glass-blur)); }
+  .btn-ghost:hover { transform: translateY(-3px); border-color: var(--coffee-500); }
+  .btn svg { width: 19px; height: 19px; }
+  .btn-primary::after, .btn-gold::after {
+    content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: translateX(-130%); transition: transform .6s var(--ease);
+  }
+  .btn-primary:hover::after, .btn-gold:hover::after { transform: translateX(130%); }
+
+  /* ───── Glass card ───── */
+  .glass { background: var(--glass-bg); border: 1px solid var(--glass-brd); border-radius: var(--radius); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); box-shadow: var(--shadow-sm); }
+
+  /* ───── Navigation ───── */
+  nav { position: fixed; top: 14px; left: 0; right: 0; z-index: 50; transition: top .4s var(--ease); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 12px 16px 12px 22px; border-radius: 100px;
+    background: rgba(255, 250, 242, 0.7); border: 1px solid var(--glass-brd);
+    backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
+    transition: box-shadow .4s var(--ease), background .4s var(--ease);
+  }
+  nav.scrolled .nav-inner { box-shadow: var(--shadow); background: rgba(255, 250, 242, 0.92); }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.3rem; color: var(--coffee-800); }
+  .brand-mark { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(140deg, var(--coffee-600), var(--coffee-500)); box-shadow: 0 6px 16px -6px rgba(69,26,3,0.7); }
+  .brand-mark svg { width: 22px; height: 22px; color: var(--gold-soft); }
+  .brand b { color: var(--coffee-500); }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { padding: 9px 16px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; color: var(--coffee-700); transition: background .25s, color .25s; }
+  .nav-links a:hover { background: rgba(146,64,14,0.1); color: var(--coffee-800); }
+  .nav-cta { display: flex; align-items: center; gap: 10px; }
+  .burger { display: none; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--glass-brd); background: rgba(255,250,242,0.7); cursor: pointer; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
+  .burger span { width: 22px; height: 2px; background: var(--coffee-700); border-radius: 2px; transition: .3s var(--ease); }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ───── Hero ───── */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 130px; overflow: hidden; }
+  #hero-canvas { position: absolute; inset: 0; z-index: 0; }
+  .hero-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(60% 50% at 75% 35%, rgba(251,191,36,0.22), transparent 70%),
+                radial-gradient(50% 50% at 10% 80%, rgba(146,64,14,0.12), transparent 70%); }
+  .hero-content { position: relative; z-index: 2; max-width: 720px; }
+  .hero h1 { font-size: clamp(2.6rem, 6.6vw, 5.1rem); margin: 22px 0 0; }
+  .hero h1 .line2 { display: block; font-style: italic; font-weight: 500; color: var(--coffee-500); }
+  .hero p.lead { font-size: clamp(1.08rem, 2vw, 1.28rem); color: var(--coffee-700); max-width: 560px; margin: 26px 0 36px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 15px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 44px; }
+  .hero-meta div { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--coffee-700); font-size: 0.95rem; }
+  .hero-meta svg { width: 22px; height: 22px; color: var(--coffee-500); flex-shrink: 0; }
+  .scroll-cue { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+  .scroll-cue .m { width: 23px; height: 36px; border: 2px solid var(--coffee-500); border-radius: 13px; position: relative; }
+  .scroll-cue .m::before { content: ""; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 4px; height: 7px; border-radius: 3px; background: var(--coffee-500); animation: cue 1.6s var(--ease) infinite; }
+  @keyframes cue { 0% { opacity: 0; top: 6px; } 40% { opacity: 1; } 80% { opacity: 0; top: 16px; } }
+
+  /* ───── Marquee ───── */
+  .marquee { background: var(--coffee-800); color: var(--cream); padding: 20px 0; overflow: hidden; }
+  .marquee-track { display: flex; gap: 56px; white-space: nowrap; width: max-content; animation: scroll-x 28s linear infinite; }
+  .marquee-track span { font-family: 'Fraunces', serif; font-size: 1.35rem; font-style: italic; display: inline-flex; align-items: center; gap: 56px; opacity: 0.92; }
+  .marquee-track span::after { content: "✦"; color: var(--gold); font-style: normal; }
+  @keyframes scroll-x { to { transform: translateX(-50%); } }
+
+  /* ───── Products ───── */
+  .prod-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 50px; }
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
+  .prod-card { padding: 34px 30px; cursor: default; position: relative; overflow: hidden; transition: transform .15s ease, box-shadow .4s, border-color .4s; transform-style: preserve-3d; }
+  .prod-card::before { content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity .4s; pointer-events: none; background: radial-gradient(360px circle at var(--mx,50%) var(--my,0%), rgba(251,191,36,0.22), transparent 60%); }
+  .prod-card:hover::before { opacity: 1; }
+  .prod-card:hover { box-shadow: var(--shadow); border-color: rgba(146,64,14,0.3); }
+  .prod-icon { width: 62px; height: 62px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 22px; background: linear-gradient(140deg, var(--coffee-600), var(--coffee-400)); box-shadow: 0 10px 22px -10px rgba(69,26,3,0.7); transform: translateZ(40px); }
+  .prod-icon svg { width: 30px; height: 30px; color: var(--gold-soft); }
+  .prod-card h3 { font-size: 1.4rem; margin-bottom: 10px; transform: translateZ(26px); }
+  .prod-card p { color: var(--muted); transform: translateZ(16px); }
+  .prod-card .tag { display: inline-block; margin-top: 18px; font-size: 0.8rem; font-weight: 700; color: var(--coffee-500); letter-spacing: 0.04em; transform: translateZ(26px); }
+
+  /* ───── Feature split (coffee highlight) ───── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .split-visual { position: relative; aspect-ratio: 1/1; border-radius: 32px; overflow: hidden; background: radial-gradient(120% 120% at 30% 20%, var(--coffee-500), var(--coffee-800) 70%); box-shadow: var(--shadow); display: grid; place-items: center; }
+  .split-visual .cup { width: 64%; color: var(--gold-soft); filter: drop-shadow(0 18px 30px rgba(0,0,0,0.4)); }
+  .split-visual .ring { position: absolute; border: 1px solid rgba(251,191,36,0.3); border-radius: 50%; }
+  .split-visual .ring.r1 { inset: 8%; }
+  .split-visual .ring.r2 { inset: 20%; border-style: dashed; }
+  .chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; font-weight: 700; font-size: 0.86rem; color: var(--coffee-800); background: var(--paper); border-radius: 14px; box-shadow: var(--shadow-sm); }
+  .chip svg { width: 17px; height: 17px; color: var(--coffee-500); }
+  .chip.c1 { top: 22px; right: -14px; }
+  .chip.c2 { bottom: 30px; left: -16px; }
+  .feat-list { list-style: none; display: grid; gap: 16px; margin-top: 28px; }
+  .feat-list li { display: flex; gap: 14px; align-items: flex-start; }
+  .feat-list .ck { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: var(--coffee-600); margin-top: 2px; }
+  .feat-list .ck svg { width: 15px; height: 15px; color: var(--gold-soft); }
+  .feat-list b { color: var(--coffee-800); }
+
+  /* ───── Stats ───── */
+  .stats { background: linear-gradient(135deg, var(--coffee-700), var(--coffee-900)); color: var(--cream); border-radius: 32px; padding: 56px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  .stats::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .stat { text-align: center; position: relative; }
+  .stat:not(:last-child)::after { content: ""; position: absolute; right: -15px; top: 15%; height: 70%; width: 1px; background: rgba(251,191,36,0.22); }
+  .stat .n { font-family: 'Fraunces', serif; font-size: clamp(2.3rem, 4vw, 3.2rem); font-weight: 600; line-height: 1; color: var(--gold-soft); }
+  .stat .l { color: rgba(254,246,228,0.82); font-size: 0.92rem; margin-top: 10px; font-weight: 600; }
+
+  /* ───── About ───── */
+  .about-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+  .about-text p { color: var(--coffee-700); margin-bottom: 16px; font-size: 1.06rem; }
+  .values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+  .value { padding: 20px; border-radius: 16px; background: var(--paper); border: 1px solid var(--glass-brd); transition: transform .3s var(--ease), box-shadow .3s; }
+  .value:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+  .value svg { width: 26px; height: 26px; color: var(--coffee-500); margin-bottom: 10px; }
+  .value h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .value p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+  .about-visual { aspect-ratio: 4/5; border-radius: 28px; position: relative; overflow: hidden; background: linear-gradient(160deg, var(--coffee-500), var(--coffee-900)); box-shadow: var(--shadow); display: grid; place-items: center; }
+  .about-visual svg.illus { width: 70%; color: rgba(251,191,36,0.55); }
+  .practice-note { display: flex; gap: 14px; align-items: flex-start; margin-top: 28px; padding: 18px 20px; border-radius: 16px; background: rgba(251,191,36,0.16); border: 1px solid rgba(146,64,14,0.22); }
+  .practice-note svg { width: 22px; height: 22px; color: var(--coffee-600); flex-shrink: 0; margin-top: 2px; }
+  .practice-note p { font-size: 0.92rem; color: var(--coffee-700); margin: 0; }
+
+  /* ───── Career CTA ───── */
+  .career { background: linear-gradient(135deg, var(--gold), var(--gold-soft)); border-radius: 32px; padding: clamp(40px, 6vw, 70px); text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+  .career h2 { color: var(--coffee-900); font-size: clamp(1.9rem, 4vw, 3rem); }
+  .career p { color: var(--coffee-800); max-width: 540px; margin: 16px auto 30px; font-weight: 600; }
+
+  /* ───── Contact ───── */
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; }
+  .contact-info h2 { margin-bottom: 16px; }
+  .contact-info > p { color: var(--coffee-700); margin-bottom: 30px; }
+  .ci-list { list-style: none; display: grid; gap: 18px; }
+  .ci-list li { display: flex; align-items: center; gap: 15px; }
+  .ci-ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; flex-shrink: 0; background: var(--coffee-600); }
+  .ci-ic svg { width: 21px; height: 21px; color: var(--gold-soft); }
+  .ci-list .k { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+  .ci-list .v { font-weight: 700; color: var(--coffee-800); }
+  .socials { display: flex; gap: 12px; margin-top: 30px; }
+  .socials a { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--glass-brd); transition: .3s var(--ease); }
+  .socials a:hover { transform: translateY(-4px); background: var(--coffee-600); }
+  .socials a:hover svg { color: var(--gold-soft); }
+  .socials svg { width: 20px; height: 20px; color: var(--coffee-600); transition: color .3s; }
+
+  form.contact { padding: 36px 32px; display: grid; gap: 18px; }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { position: relative; }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: 15px 16px; font: inherit; color: var(--text);
+    background: var(--paper); border: 1px solid var(--glass-brd); border-radius: 13px;
+    transition: border-color .3s, box-shadow .3s; resize: vertical;
+  }
+  .field textarea { min-height: 120px; }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--coffee-500); box-shadow: 0 0 0 4px rgba(146,64,14,0.12); }
+  .field label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--coffee-700); margin-bottom: 7px; }
+  .field label .req { color: var(--coffee-400); }
+  .privacy { display: flex; gap: 12px; align-items: flex-start; font-size: 0.86rem; color: var(--muted); }
+  .privacy input { width: 19px; height: 19px; margin-top: 3px; accent-color: var(--coffee-600); flex-shrink: 0; }
+  .privacy a { color: var(--coffee-500); font-weight: 700; }
+  .form-done { display: none; align-items: center; gap: 12px; padding: 15px 18px; border-radius: 13px; background: rgba(34,197,94,0.12); border: 1px solid rgba(22,101,52,0.3); color: #166534; font-weight: 700; }
+  .form-done.show { display: flex; }
+  .form-done svg { width: 20px; height: 20px; }
+
+  /* ───── Footer ───── */
+  footer { background: var(--coffee-900); color: var(--cream); padding: 70px 0 34px; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 46px; }
+  .foot-brand .brand { color: var(--cream); }
+  .foot-brand .brand b { color: var(--gold); }
+  .foot-brand p { color: rgba(254,246,228,0.72); margin: 16px 0; max-width: 290px; font-size: 0.95rem; }
+  .foot-col h4 { color: var(--cream); font-size: 0.95rem; margin-bottom: 16px; font-family: 'Nunito Sans', sans-serif; font-weight: 800; letter-spacing: 0.04em; }
+  .foot-col ul { list-style: none; display: grid; gap: 10px; }
+  .foot-col a { color: rgba(254,246,228,0.72); font-size: 0.93rem; transition: color .25s; }
+  .foot-col a:hover { color: var(--gold-soft); }
+  .foot-bottom { border-top: 1px solid rgba(251,191,36,0.18); padding-top: 26px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: rgba(254,246,228,0.6); font-size: 0.86rem; }
+
+  /* ───── Reveal base ───── */
+  .reveal { opacity: 0; transform: translateY(42px); }
+  .reveal-l { opacity: 0; transform: translateX(-48px); }
+  .reveal-r { opacity: 0; transform: translateX(48px); }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 920px) {
+    .split, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 36px 20px; }
+    .stat:nth-child(2)::after { display: none; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .nav-links, .nav-cta .btn { display: none; }
+    .burger { display: flex; }
+    .nav-links.open { display: flex; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 4px; padding: 16px; border-radius: 22px; background: rgba(255,250,242,0.97); border: 1px solid var(--glass-brd); backdrop-filter: blur(20px); box-shadow: var(--shadow); }
+    .nav-links.open a { padding: 13px 16px; }
+    .frow { grid-template-columns: 1fr; }
+    .chip { display: none; }
+  }
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr; }
+    .stat::after { display: none !important; }
+    .values, .foot-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
-  <nav id="navbar" aria-label="Hauptnavigation">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="#hero" class="nav-logo" aria-label="Stuff4Staff GmbH – Startseite">
-          <div class="nav-logo-icon">S4S</div>
-          <div class="nav-logo-text">
-            <span class="nav-logo-name">Stuff4Staff</span>
-            <span class="nav-logo-tagline">GmbH · Personalexperten</span>
-          </div>
-        </a>
-
-        <ul class="nav-links">
-          <li><a href="#services">Leistungen</a></li>
-          <li><a href="#about">Über uns</a></li>
-          <li><a href="#testimonials">Referenzen</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-        </ul>
-
-        <div class="nav-cta">
-          <a href="tel:+49000000000" class="btn btn-outline" style="padding:10px 20px;font-size:0.85rem;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-            +49 (0) 000 – 0000
-          </a>
-          <a href="#contact" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Jetzt anfragen</a>
-        </div>
-
-        <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+<!-- ─────────── NAV ─────────── -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#hero" class="brand" aria-label="Stuff4Staff Startseite">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+        </span>
+        Stuff<b>4</b>Staff
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#produkte">Produkte</a></li>
+        <li><a href="#qualitaet">Qualität</a></li>
+        <li><a href="#ueber">Über uns</a></li>
+        <li><a href="#karriere">Karriere</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#kontakt" class="btn btn-primary" style="padding:11px 22px;font-size:.92rem;">Katalog anfragen</a>
+        <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu" aria-modal="true" role="dialog">
-    <button class="mobile-close" id="mobile-close" aria-label="Menü schließen">✕</button>
-    <a href="#services"      onclick="closeMobileMenu()">Leistungen</a>
-    <a href="#about"         onclick="closeMobileMenu()">Über uns</a>
-    <a href="#testimonials"  onclick="closeMobileMenu()">Referenzen</a>
-    <a href="#contact"       onclick="closeMobileMenu()">Kontakt</a>
-    <a href="#contact" onclick="closeMobileMenu()" class="btn btn-primary" style="margin-top:16px;">Jetzt anfragen</a>
   </div>
+</nav>
 
-  <!-- ============================================================
-       HERO SECTION
-  ============================================================ -->
-  <section id="hero">
-    <canvas id="three-canvas" aria-hidden="true"></canvas>
-    <div class="hero-overlay" aria-hidden="true"></div>
+<!-- ─────────── HERO ─────────── -->
+<section id="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg>
+      Wohlfühl-Arbeitsplätze · seit der ersten Tasse
+    </span>
+    <h1>
+      Weil der Arbeitsplatz
+      <span class="line2">mehr sein darf.</span>
+    </h1>
+    <p class="lead">
+      Stuff4Staff stattet Ihr Büro mit allem aus, was Konzentration und Wohlbefinden vereint:
+      ergonomische Bürostühle, durchdachte Schränke, erstklassige Kaffeevollautomaten,
+      erlesener Kaffee und Entspannungsutensilien.
+    </p>
+    <div class="hero-actions">
+      <a href="#produkte" class="btn btn-primary">
+        Produkte entdecken
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#qualitaet" class="btn btn-ghost">Warum Stuff4Staff?</a>
+    </div>
+    <div class="hero-meta">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Ergonomie &amp; Komfort</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Barista-Qualität</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Geprüfte Auswahl</div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="m"></span>Scrollen</div>
+</section>
 
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="glow-dot"></span>
-          Ihr verlässlicher Personalpartner seit 2014
-        </div>
+<!-- ─────────── MARQUEE ─────────── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Ergonomische Bürostühle</span><span>Funktionelle Büroschränke</span><span>Kaffeevollautomaten</span><span>Erlesene Kaffeesorten</span><span>Entspannungsutensilien</span>
+    <span>Ergonomische Bürostühle</span><span>Funktionelle Büroschränke</span><span>Kaffeevollautomaten</span><span>Erlesene Kaffeesorten</span><span>Entspannungsutensilien</span>
+  </div>
+</div>
 
-        <h1 class="hero-headline">
-          <span style="display:block;color:var(--off-white);">Ihr Partner für</span>
-          <span class="text-gradient" id="typewriter-text"></span><span id="typewriter-cursor" aria-hidden="true"></span>
-        </h1>
-
-        <p class="hero-sub">
-          Stuff4Staff GmbH verbindet erstklassige Fachkräfte mit führenden Unternehmen.
-          Schnell, präzise und nachhaltig – für Ihren dauerhaften Erfolg.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">
-            Kostenlos beraten lassen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#services" class="btn btn-outline">
-            Unsere Leistungen
-          </a>
-        </div>
-
-        <div class="hero-trust">
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            500+ aktive Mitarbeiter
-          </div>
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            10+ Jahre Erfahrung
-          </div>
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            98% Kundenzufriedenheit
-          </div>
-        </div>
+<!-- ─────────── PRODUKTE ─────────── -->
+<section id="produkte">
+  <div class="wrap">
+    <div class="prod-head">
+      <div>
+        <span class="eyebrow reveal">Unser Sortiment</span>
+        <h2 class="sec-title reveal">Alles für einen <span class="accent">guten Arbeitstag</span></h2>
+        <p class="sec-sub reveal">Sorgfältig kuratierte Produkte, die Gesundheit, Genuss und Produktivität an einem Ort vereinen.</p>
       </div>
     </div>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
-      <span>Scrollen</span>
+    <div class="prod-grid">
+      <article class="prod-card glass tilt reveal">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19v2M18 19v2M5 13h14l-1 6H6l-1-6z"/><path d="M7 13V8a5 5 0 0 1 10 0v5"/><path d="M9 13l-1-3M15 13l1-3"/></svg></div>
+        <h3>Bürostühle</h3>
+        <p>Gesundheitsfördernde, ergonomische Stühle, die Rücken und Haltung über den ganzen Tag entlasten.</p>
+        <span class="tag">Ergonomie · Komfort</span>
+      </article>
+
+      <article class="prod-card glass tilt reveal">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="10" y1="12" x2="14" y2="12"/></svg></div>
+        <h3>Büroschränke</h3>
+        <p>Funktionelle Schränke mit durchdachter Ordnung – für ein aufgeräumtes, ruhiges Arbeitsumfeld.</p>
+        <span class="tag">Stauraum · Ordnung</span>
+      </article>
+
+      <article class="prod-card glass tilt reveal">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <h3>Kaffeevollautomaten</h3>
+        <p>Hochwertige Maschinen für Barista-Qualität auf Knopfdruck – frisch gemahlen, perfekt extrahiert.</p>
+        <span class="tag">Premium · Genuss</span>
+      </article>
+
+      <article class="prod-card glass tilt reveal">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 2-3 4.5-1.5 7C12 12.5 12 15 9.5 17"/><ellipse cx="12" cy="20" rx="8" ry="2.2"/><path d="M16 5c-1.5 1.2-1.8 2.7-.9 4.2"/></svg></div>
+        <h3>Erlesene Kaffeesorten</h3>
+        <p>Sorgsam ausgewählte Bohnen mit Charakter – von kräftig-würzig bis fein-aromatisch.</p>
+        <span class="tag">Aroma · Auswahl</span>
+      </article>
+
+      <article class="prod-card glass tilt reveal">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <h3>Entspannungsutensilien</h3>
+        <p>Kleine Helfer für die Pause, die nachweislich für mehr Ruhe und neue Energie sorgen.</p>
+        <span class="tag">Wohlbefinden · Pause</span>
+      </article>
+
+      <article class="prod-card glass reveal" style="display:grid;align-content:center;background:linear-gradient(150deg,var(--coffee-600),var(--coffee-800));border:none;color:var(--cream);">
+        <h3 style="color:var(--cream);">Alles aus einer Hand</h3>
+        <p style="color:rgba(254,246,228,0.82);">Stellen Sie Ihr Wohlfühl-Büro zusammen – wir beraten Sie gern persönlich.</p>
+        <a href="#kontakt" class="btn btn-gold" style="margin-top:20px;width:fit-content;">Beratung anfragen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============================================================
-       SERVICES SECTION
-  ============================================================ -->
-  <section id="services" aria-labelledby="services-heading">
-    <div class="container">
-      <div class="services-header">
-        <p class="section-label">Was wir bieten</p>
-        <h2 id="services-heading" class="section-title fade-in-up">Unsere <span class="text-gradient">Leistungen</span></h2>
-        <p class="section-subtitle fade-in-up">
-          Von der gezielten Personalvermittlung bis zur strategischen HR-Beratung –
-          wir bieten maßgeschneiderte Lösungen für jeden Bedarf.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <!-- Card 1 -->
-        <div class="service-card" data-tilt>
-          <span class="service-card-number">01</span>
-          <div class="service-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <h3>Personalvermittlung</h3>
-          <p>Wir finden die ideale Fachkraft für Ihr Unternehmen – dauerhaft und passgenau. Unser Netzwerk von über 10.000 qualifizierten Kandidaten steht bereit.</p>
-          <ul class="service-features">
-            <li>Direktvermittlung & Executive Search</li>
-            <li>Kandidatenscreening & Assessment</li>
-            <li>Branchenspezifische Expertise</li>
-            <li>Schnelle Besetzungszeit &lt; 4 Wochen</li>
-          </ul>
-          <a href="#contact" class="service-link">
-            Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="service-card" data-tilt>
-          <span class="service-card-number">02</span>
-          <div class="service-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
-            </svg>
-          </div>
-          <h3>Zeitarbeit</h3>
-          <p>Flexibel einsetzbare Fachkräfte auf Abruf. Wir reagieren schnell auf Ihren Personalbedarf und stellen qualifizierte Mitarbeiter im Nu bereit.</p>
-          <ul class="service-features">
-            <li>Flexible Arbeitnehmerüberlassung</li>
-            <li>Alle Branchen & Qualifikationsstufen</li>
-            <li>Vollständige Lohnabwicklung</li>
-            <li>24/7 Betreuung & Support</li>
-          </ul>
-          <a href="#contact" class="service-link">
-            Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="service-card" data-tilt>
-          <span class="service-card-number">03</span>
-          <div class="service-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3>HR Beratung</h3>
-          <p>Strategische Unterstützung für Ihr Personalmanagement. Von der Prozessoptimierung bis zur Employer-Branding-Strategie – wir denken mit.</p>
-          <ul class="service-features">
-            <li>HR-Strategie & Prozessoptimierung</li>
-            <li>Employer Branding & Recruiting</li>
-            <li>Onboarding-Systeme</li>
-            <li>Compliance & Arbeitsrecht</li>
-          </ul>
-          <a href="#contact" class="service-link">
-            Mehr erfahren
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
+<!-- ─────────── QUALITÄT (split) ─────────── -->
+<section id="qualitaet">
+  <div class="wrap split">
+    <div class="split-visual reveal-l">
+      <div class="ring r1" aria-hidden="true"></div>
+      <div class="ring r2" aria-hidden="true"></div>
+      <svg class="cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+        <path d="M6 1c-.6.8-.6 1.7 0 2.5M10 1c-.6.8-.6 1.7 0 2.5M14 1c-.6.8-.6 1.7 0 2.5"/>
+      </svg>
+      <span class="chip c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frisch &amp; aromatisch</span>
+      <span class="chip c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Geprüfte Qualität</span>
     </div>
-  </section>
+    <div class="split-text reveal-r">
+      <span class="eyebrow">Warum Stuff4Staff</span>
+      <h2 class="sec-title">Genuss trifft <span class="accent">Gesundheit</span></h2>
+      <p class="sec-sub">Wir glauben: Wer sich am Arbeitsplatz wohlfühlt, arbeitet besser. Darum kombinieren wir Ergonomie, Ordnung und echten Kaffeegenuss zu einem stimmigen Gesamtkonzept.</p>
+      <ul class="feat-list">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Ergonomie, die man spürt.</b> Produkte, die Haltung und Wohlbefinden den ganzen Tag unterstützen.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Kaffee mit Charakter.</b> Vollautomaten und erlesene Bohnen für den perfekten Moment.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Ruhe &amp; Ordnung.</b> Durchdachte Schränke und Entspannungsutensilien für eine klare Umgebung.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- ============================================================
-       STATS BAR
-  ============================================================ -->
-  <section id="stats" aria-label="Kennzahlen">
-    <div class="container">
-      <div class="stats-inner fade-in-up">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="500">0</span><span class="stat-suffix">+</span>
-            </div>
-            <div class="stat-label">Aktive Mitarbeiter</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="10">0</span><span class="stat-suffix">+</span>
-            </div>
-            <div class="stat-label">Jahre Erfahrung</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="200">0</span><span class="stat-suffix">+</span>
-            </div>
-            <div class="stat-label">Zufriedene Kunden</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="98">0</span><span class="stat-suffix">%</span>
-            </div>
-            <div class="stat-label">Kundenzufriedenheit</div>
-          </div>
-        </div>
+<!-- ─────────── STATS ─────────── -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="n" data-target="5" data-suffix="">0</div><div class="l">Produktkategorien</div></div>
+      <div class="stat"><div class="n" data-target="100" data-suffix="%">0</div><div class="l">Fokus auf Wohlbefinden</div></div>
+      <div class="stat"><div class="n" data-target="12" data-suffix="+">0</div><div class="l">Kaffee-Variationen</div></div>
+      <div class="stat"><div class="n" data-target="1" data-suffix="" data-text="A+">0</div><div class="l">Anspruch an Qualität</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ÜBER UNS ─────────── -->
+<section id="ueber">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <span class="eyebrow reveal">Über uns</span>
+      <h2 class="sec-title reveal">Wir handeln mit <span class="accent">Wohlbefinden</span></h2>
+      <p class="reveal">Stuff4Staff GmbH handelt mit Produkten für einen gesunden und angenehmen Arbeitsplatz – von Büromöbeln über Kaffeemaschinen und Heißgetränkeautomaten bis hin zu erlesenem Kaffee und Entspannungsutensilien.</p>
+      <p class="reveal">Unser Anspruch: Ausstattung, die nicht nur funktioniert, sondern guttut. Denn ein Arbeitsplatz darf mehr sein als nur ein Ort zum Arbeiten.</p>
+      <div class="values">
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h4>Qualität</h4><p>Sorgfältig ausgewählte Produkte mit Anspruch.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><h4>Wohlbefinden</h4><p>Gesundheit und Genuss im Mittelpunkt.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><h4>Beratung</h4><p>Persönlich und auf Augenhöhe.</p></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><h4>Verlässlich</h4><p>Klare Prozesse, transparent und fair.</p></div>
+      </div>
+      <div class="practice-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><b>Hinweis:</b> Stuff4Staff ist eine Übungsfirma und kein echtes Unternehmen. Waren- und Zahlungsverkehr erfolgen ausschließlich zu Übungszwecken – es werden keine Produkte real ausgeliefert und keine realen Zahlungen getätigt.</p>
       </div>
     </div>
-  </section>
+    <div class="about-visual reveal-r" aria-hidden="true">
+      <svg class="illus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1c-.6.8-.6 1.7 0 2.5M10 1c-.6.8-.6 1.7 0 2.5M14 1c-.6.8-.6 1.7 0 2.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
-  <!-- ============================================================
-       ABOUT SECTION
-  ============================================================ -->
-  <section id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <div class="about-grid">
-        <!-- Image / Illustration side -->
-        <div class="about-image-wrap fade-in-left">
-          <div class="about-image-main">
-            <div class="about-illustration">
-              <!-- SVG team illustration -->
-              <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;padding:24px;opacity:0.85;">
-                <!-- Background glow -->
-                <defs>
-                  <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#4f8ef7" stop-opacity="0.15"/>
-                    <stop offset="100%" stop-color="#4f8ef7" stop-opacity="0"/>
-                  </radialGradient>
-                  <linearGradient id="personGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#4f8ef7"/>
-                    <stop offset="100%" stop-color="#7ab4ff"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="200" cy="150" rx="180" ry="130" fill="url(#glowGrad)"/>
-                <!-- Connection lines -->
-                <line x1="200" y1="130" x2="100" y2="185" stroke="#4f8ef7" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="4 4"/>
-                <line x1="200" y1="130" x2="300" y2="185" stroke="#4f8ef7" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="4 4"/>
-                <line x1="100" y1="185" x2="300" y2="185" stroke="#4f8ef7" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Central person -->
-                <circle cx="200" cy="90" r="28" fill="url(#personGrad)" opacity="0.9"/>
-                <rect x="175" y="118" width="50" height="50" rx="10" fill="url(#personGrad)" opacity="0.7"/>
-                <!-- Left person -->
-                <circle cx="90" cy="155" r="22" fill="#4f8ef7" opacity="0.6"/>
-                <rect x="68" y="177" width="44" height="42" rx="8" fill="#4f8ef7" opacity="0.45"/>
-                <!-- Right person -->
-                <circle cx="310" cy="155" r="22" fill="#4f8ef7" opacity="0.6"/>
-                <rect x="288" y="177" width="44" height="42" rx="8" fill="#4f8ef7" opacity="0.45"/>
-                <!-- Stars / sparkles -->
-                <circle cx="155" cy="65" r="3" fill="#7ab4ff" opacity="0.6"/>
-                <circle cx="245" cy="55" r="2.5" fill="#7ab4ff" opacity="0.5"/>
-                <circle cx="350" cy="115" r="2" fill="#7ab4ff" opacity="0.4"/>
-                <circle cx="55" cy="120" r="2" fill="#7ab4ff" opacity="0.4"/>
-                <!-- Network nodes -->
-                <circle cx="160" cy="210" r="5" fill="#4f8ef7" opacity="0.5"/>
-                <circle cx="240" cy="210" r="5" fill="#4f8ef7" opacity="0.5"/>
-                <circle cx="200" cy="235" r="5" fill="#4f8ef7" opacity="0.4"/>
-                <line x1="160" y1="210" x2="240" y2="210" stroke="#4f8ef7" stroke-opacity="0.25" stroke-width="1"/>
-                <line x1="160" y1="210" x2="200" y2="235" stroke="#4f8ef7" stroke-opacity="0.2" stroke-width="1"/>
-                <line x1="240" y1="210" x2="200" y2="235" stroke="#4f8ef7" stroke-opacity="0.2" stroke-width="1"/>
-              </svg>
-            </div>
-          </div>
+<!-- ─────────── KARRIERE ─────────── -->
+<section id="karriere">
+  <div class="wrap">
+    <div class="career reveal">
+      <span class="eyebrow" style="background:rgba(69,26,3,0.12);color:var(--coffee-800);border-color:rgba(69,26,3,0.2);">Karriere</span>
+      <h2>Werde Teil unseres Teams</h2>
+      <p>Du teilst unsere Leidenschaft für gute Arbeitsplätze und guten Kaffee? Lerne in unserer Übungsfirma echte Geschäftsprozesse kennen – von Einkauf bis Vertrieb.</p>
+      <a href="#kontakt" class="btn btn-primary">Initiativ bewerben
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 
-          <!-- Floating badges -->
-          <div class="about-float-badge">
-            <div class="stat-number" style="font-size:1.8rem;margin-bottom:4px;"><span class="counter" data-target="1200">0</span>+</div>
-            <div class="stat-label">Erfolgreich vermittelt</div>
-          </div>
-
-          <div class="about-float-badge-2">
-            <div class="glow-dot"></div>
-            <span class="badge-text">TÜV-zertifizierter Prozess</span>
-          </div>
-        </div>
-
-        <!-- Content side -->
-        <div class="about-content fade-in-right">
-          <p class="section-label">Über uns</p>
-          <h2 id="about-heading" class="section-title">
-            Mehr als 10 Jahre<br><span class="text-gradient">Personalexpertise</span>
-          </h2>
-          <p class="section-subtitle" style="margin-bottom:20px;">
-            Seit 2014 sind wir Ihr verlässlicher Partner für die Besetzung von Schlüsselpositionen
-            und die flexible Personalplanung in Unternehmen jeder Größe.
-          </p>
-          <p class="section-subtitle">
-            Unser Team aus erfahrenen HR-Experten kennt die Anforderungen des deutschen
-            Arbeitsmarktes in und auswendig. Wir verbinden Talente und Chancen – mit Leidenschaft,
-            Präzision und einem tiefen Verständnis für Ihre Branche.
-          </p>
-
-          <div class="about-values">
-            <div class="value-item fade-in-up">
-              <span class="value-icon">🎯</span>
-              <h4>Präzision</h4>
-              <p>Passgenaue Besetzungen durch strukturierte Anforderungsanalysen.</p>
-            </div>
-            <div class="value-item fade-in-up">
-              <span class="value-icon">⚡</span>
-              <h4>Schnelligkeit</h4>
-              <p>Erste qualifizierte Profile innerhalb von 48 Stunden.</p>
-            </div>
-            <div class="value-item fade-in-up">
-              <span class="value-icon">🤝</span>
-              <h4>Partnerschaft</h4>
-              <p>Langfristige Beziehungen statt kurzfristiger Transaktionen.</p>
-            </div>
-            <div class="value-item fade-in-up">
-              <span class="value-icon">🔒</span>
-              <h4>Verlässlichkeit</h4>
-              <p>Diskretion, Compliance und DSGVO-konforme Prozesse.</p>
-            </div>
-          </div>
-        </div>
+<!-- ─────────── KONTAKT ─────────── -->
+<section id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow reveal">Kontakt</span>
+      <h2 class="sec-title reveal">Lassen Sie uns <span class="accent">reden</span></h2>
+      <p class="reveal">Fragen zum Sortiment, zur Beratung oder zur Übungsfirma? Schreiben Sie uns – wir melden uns gern zurück.</p>
+      <ul class="ci-list">
+        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><div><div class="k">E-Mail</div><div class="v">info@stuff4staff.de</div></div></li>
+        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><div class="k">Telefon</div><div class="v">+49 (0) 123 4567-0</div></div></li>
+        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="k">Standort</div><div class="v">Übungsfirma · Deutschland</div></div></li>
+      </ul>
+      <div class="socials">
+        <a href="https://instagram.com/stuff4staff" aria-label="Instagram @stuff4staff" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+        <a href="https://tiktok.com/@stuff4staff" aria-label="TikTok @stuff4staff" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.75V15a6 6 0 1 1-6-6c.34 0 .67.03 1 .08v3.18A3 3 0 1 0 13 15V3h3z"/></svg></a>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================================
-       TESTIMONIALS
-  ============================================================ -->
-  <section id="testimonials" aria-labelledby="testimonials-heading">
-    <div class="container">
-      <div class="testimonials-header">
-        <p class="section-label">Referenzen</p>
-        <h2 id="testimonials-heading" class="section-title fade-in-up">Was unsere <span class="text-gradient">Kunden sagen</span></h2>
-        <p class="section-subtitle fade-in-up">
-          Über 200 Unternehmen vertrauen auf unsere Expertise. Hier einige Stimmen aus unserem Netzwerk.
-        </p>
+    <form class="contact glass reveal-r" id="contactForm" novalidate>
+      <div class="frow">
+        <div class="field"><label for="vorname">Vorname <span class="req">*</span></label><input id="vorname" name="vorname" type="text" required /></div>
+        <div class="field"><label for="nachname">Nachname <span class="req">*</span></label><input id="nachname" name="nachname" type="text" required /></div>
       </div>
-
-      <div class="testimonials-track-wrap">
-        <div class="testimonials-track" id="testimonials-track">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Stuff4Staff hat innerhalb von nur 3 Wochen exzellente Kandidaten für unsere offenen Stellen gefunden.
-              Die Qualität der Profile übertraf unsere Erwartungen bei Weitem – wir sind begeistert."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">MK</div>
-              <div>
-                <div class="testimonial-name">Michael Kaufmann</div>
-                <div class="testimonial-role">HR-Direktor, TechCorp AG</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Die HR-Beratung von Stuff4Staff hat unsere Recruitingprozesse grundlegend optimiert.
-              Wir sparen heute 40% mehr Zeit bei der Personalgewinnung – ein echter Gamechanger."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">SB</div>
-              <div>
-                <div class="testimonial-name">Sandra Berger</div>
-                <div class="testimonial-role">Geschäftsführerin, Logistik GmbH</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Zuverlässig, professionell und immer erreichbar. Besonders die Zeitarbeitslösung hat uns in
-              Hochphasen enorm geholfen. Absolut empfehlenswert für jedes mittelständische Unternehmen."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">TW</div>
-              <div>
-                <div class="testimonial-name">Thomas Winter</div>
-                <div class="testimonial-role">Operations Manager, IndustriePro</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Das Team von Stuff4Staff versteht unsere Unternehmenskultur wie kein anderer Dienstleister.
-              Jeder vermittelte Mitarbeiter war ein echter Gewinn für unser Unternehmen."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">AF</div>
-              <div>
-                <div class="testimonial-name">Anna Fischer</div>
-                <div class="testimonial-role">People & Culture Lead, StartupHub</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Schnell, diskret und treffsicher. Die Direktvermittlung unseres neuen CTOs war in unter
-              vier Wochen abgeschlossen. Hervorragende Leistung – wir werden immer wieder kommen."
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">JM</div>
-              <div>
-                <div class="testimonial-name">Jonas Müller</div>
-                <div class="testimonial-role">CEO, DigitalVentures GmbH</div>
-              </div>
-            </div>
-          </div>
+      <div class="frow">
+        <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="thema">Anliegen</label>
+          <select id="thema" name="thema">
+            <option>Produktberatung</option><option>Kaffee &amp; Vollautomaten</option><option>Büromöbel</option><option>Karriere</option><option>Sonstiges</option>
+          </select>
         </div>
       </div>
+      <div class="field"><label for="nachricht">Nachricht <span class="req">*</span></label><textarea id="nachricht" name="nachricht" required></textarea></div>
+      <label class="privacy"><input type="checkbox" id="dsgvo" required /> <span>Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage gemäß <a href="#">Datenschutzerklärung</a> verarbeitet werden. <span class="req">*</span></span></label>
+      <div class="form-done" id="formDone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Danke! Ihre Nachricht wurde übermittelt – wir melden uns in Kürze.</div>
+      <button type="submit" class="btn btn-gold" style="justify-content:center;">Nachricht senden
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
 
-      <div class="testimonials-controls">
-        <button class="carousel-btn" id="carousel-prev" aria-label="Vorherige Bewertung">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="carousel-dots" id="carousel-dots">
-          <!-- Dots generated by JS -->
-        </div>
-        <button class="carousel-btn" id="carousel-next" aria-label="Nächste Bewertung">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
+<!-- ─────────── FOOTER ─────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#hero" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg></span>Stuff<b>4</b>Staff</a>
+        <p>Produkte für einen gesunden und angenehmen Arbeitsplatz. Eine Übungsfirma zu Lern- und Demonstrationszwecken.</p>
       </div>
+      <div class="foot-col"><h4>Produkte</h4><ul><li><a href="#produkte">Bürostühle</a></li><li><a href="#produkte">Büroschränke</a></li><li><a href="#produkte">Kaffeevollautomaten</a></li><li><a href="#produkte">Kaffeesorten</a></li></ul></div>
+      <div class="foot-col"><h4>Unternehmen</h4><ul><li><a href="#ueber">Über uns</a></li><li><a href="#qualitaet">Qualität</a></li><li><a href="#karriere">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+      <div class="foot-col"><h4>Rechtliches</h4><ul><li><a href="#">AGB</a></li><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li></ul></div>
     </div>
-  </section>
-
-  <!-- ============================================================
-       CONTACT SECTION
-  ============================================================ -->
-  <section id="contact" aria-labelledby="contact-heading">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- Info -->
-        <div class="fade-in-left">
-          <p class="section-label">Kontakt</p>
-          <h2 id="contact-heading" class="section-title">
-            Lassen Sie uns<br><span class="text-gradient">sprechen</span>
-          </h2>
-          <p class="contact-tagline">
-            Ob Sie die passende Fachkraft suchen oder Ihren HR-Prozess optimieren möchten –
-            wir sind für Sie da. Kontaktieren Sie uns und wir melden uns innerhalb von 24 Stunden.
-          </p>
-
-          <div class="contact-details">
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-              </div>
-              <div>
-                <div class="contact-detail-label">Telefon</div>
-                <div class="contact-detail-value">+49 (0) 000 – 00000</div>
-              </div>
-            </div>
-
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div>
-                <div class="contact-detail-label">E-Mail</div>
-                <div class="contact-detail-value">info@stuff4staff.de</div>
-              </div>
-            </div>
-
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div>
-                <div class="contact-detail-label">Adresse</div>
-                <div class="contact-detail-value">Musterstraße 1, 10115 Berlin</div>
-              </div>
-            </div>
-
-            <div class="contact-detail-item">
-              <div class="contact-detail-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div>
-                <div class="contact-detail-label">Erreichbarkeit</div>
-                <div class="contact-detail-value">Mo–Fr, 8:00–18:00 Uhr</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Form -->
-        <div class="contact-form-wrap fade-in-right">
-          <h3 class="form-title">Anfrage senden</h3>
-          <p class="form-subtitle">Wir antworten innerhalb von 24 Stunden.</p>
-
-          <form id="contact-form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-firstname">Vorname *</label>
-                <input type="text" id="f-firstname" name="firstname" class="form-input" placeholder="Max" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-lastname">Nachname *</label>
-                <input type="text" id="f-lastname" name="lastname" class="form-input" placeholder="Mustermann" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-company">Unternehmen</label>
-                <input type="text" id="f-company" name="company" class="form-input" placeholder="Musterfirma GmbH" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-email">E-Mail *</label>
-                <input type="email" id="f-email" name="email" class="form-input" placeholder="max@musterfirma.de" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="f-service">Gewünschte Leistung</label>
-              <select id="f-service" name="service" class="form-select">
-                <option value="">Bitte wählen…</option>
-                <option value="vermittlung">Personalvermittlung</option>
-                <option value="zeitarbeit">Zeitarbeit</option>
-                <option value="hr-beratung">HR Beratung</option>
-                <option value="sonstiges">Sonstiges</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="f-message">Ihre Nachricht *</label>
-              <textarea id="f-message" name="message" class="form-textarea" placeholder="Beschreiben Sie kurz Ihr Anliegen…" required></textarea>
-            </div>
-
-            <div class="form-checkbox-wrap">
-              <input type="checkbox" id="f-privacy" name="privacy" class="form-checkbox" required />
-              <label class="form-checkbox-label" for="f-privacy">
-                Ich stimme der Verarbeitung meiner Daten gemäß der
-                <a href="#">Datenschutzerklärung</a> zu. *
-              </label>
-            </div>
-
-            <button type="submit" class="form-submit">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              Nachricht absenden
-            </button>
-          </form>
-
-          <div class="form-success" id="form-success">
-            <div class="form-success-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <h3 style="font-size:1.3rem;font-weight:700;">Vielen Dank!</h3>
-            <p style="color:var(--muted);max-width:320px;font-size:0.95rem;line-height:1.6;">
-              Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Stuff4Staff GmbH (Übungsfirma). Alle Rechte vorbehalten.</span>
+      <span>Weil der Arbeitsplatz mehr sein darf als nur ein Ort zum Arbeiten.</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer id="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#hero" class="nav-logo" style="margin-bottom:0;">
-            <div class="nav-logo-icon">S4S</div>
-            <div class="nav-logo-text">
-              <span class="nav-logo-name">Stuff4Staff</span>
-              <span class="nav-logo-tagline">GmbH · Personalexperten</span>
-            </div>
-          </a>
-          <p>Ihr verlässlicher Partner für Personalvermittlung, Zeitarbeit und HR-Beratung in Deutschland. Professionell, schnell und nachhaltig.</p>
-          <div class="footer-social">
-            <a href="#" class="social-btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Xing">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.96 5.5H4l3.07 5.44L3 17.5h3l4.07-6.56L6.96 5.5zM21 5.5h-3.07l-7.4 13.04h3.08L21 5.5z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
-        </div>
+<!-- ─────────── LIBS ─────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-        <div class="footer-col">
-          <h4>Leistungen</h4>
-          <ul>
-            <li><a href="#services">Personalvermittlung</a></li>
-            <li><a href="#services">Zeitarbeit</a></li>
-            <li><a href="#services">HR Beratung</a></li>
-            <li><a href="#contact">Executive Search</a></li>
-          </ul>
-        </div>
+<script>
+"use strict";
+var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.getElementById('year').textContent = new Date().getFullYear();
 
-        <div class="footer-col">
-          <h4>Unternehmen</h4>
-          <ul>
-            <li><a href="#about">Über uns</a></li>
-            <li><a href="#testimonials">Referenzen</a></li>
-            <li><a href="#contact">Karriere</a></li>
-            <li><a href="#contact">Presse</a></li>
-          </ul>
-        </div>
+function revealStatic() {
+  document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(function (el) {
+    el.style.opacity = '1'; el.style.transform = 'none';
+  });
+}
 
-        <div class="footer-col">
-          <h4>Rechtliches</h4>
-          <ul>
-            <li><a href="#">Impressum</a></li>
-            <li><a href="#">Datenschutz</a></li>
-            <li><a href="#">AGB</a></li>
-            <li><a href="#">Cookies</a></li>
-          </ul>
-        </div>
-      </div>
+/* ───── 1. THREE.JS — coffee beans, glass orbs, warm steam ───── */
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
 
-      <div class="footer-bottom">
-        <p>&copy; <span id="copyright-year">2026</span> Stuff4Staff GmbH. Alle Rechte vorbehalten.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
-          <a href="#">AGB</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 18;
 
-  <!-- Back to top -->
-  <button id="back-to-top" aria-label="Nach oben scrollen">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  <!-- ============================================================
-       SCRIPTS
-  ============================================================ -->
-  <script>
-  /* ============================================================
-     GLOBAL FLAGS & HELPERS
-  ============================================================ */
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  scene.add(new THREE.AmbientLight(0xffe9c4, 0.7));
+  var key = new THREE.PointLight(0xfbbf24, 2.4, 120); key.position.set(14, 16, 20); scene.add(key);
+  var fill = new THREE.PointLight(0xb45309, 1.6, 120); fill.position.set(-18, -10, 12); scene.add(fill);
 
-  /* Safety net: reveal all animated elements without motion.
-     Used when the user prefers reduced motion or when GSAP fails to load. */
-  function revealStatic() {
-    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in').forEach(function (el) {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+  var group = new THREE.Group(); scene.add(group);
+
+  /* Coffee bean: flattened ellipsoid + a darker crease torus */
+  function makeBean() {
+    var bean = new THREE.Group();
+    var body = new THREE.Mesh(
+      new THREE.SphereGeometry(1, 24, 18),
+      new THREE.MeshStandardMaterial({ color: 0x5c2708, roughness: 0.55, metalness: 0.15 })
+    );
+    body.scale.set(1, 0.74, 0.5);
+    bean.add(body);
+    var crease = new THREE.Mesh(
+      new THREE.TorusGeometry(0.86, 0.07, 8, 28, Math.PI),
+      new THREE.MeshStandardMaterial({ color: 0x2b1605, roughness: 0.7 })
+    );
+    crease.rotation.x = Math.PI / 2; crease.position.z = 0.5; crease.scale.set(1, 1, 0.4);
+    bean.add(crease);
+    return bean;
   }
 
-  /* ============================================================
-     THREE.JS — HERO 3D SCENE
-  ============================================================ */
-  (function () {
-    var canvas = document.getElementById('three-canvas');
-    if (!canvas || typeof THREE === 'undefined') return;
+  var beanData = [
+    [-7, 2, 1, 1.6], [6.5, -1.5, -2, 1.9], [4.5, 4, -3, 1.2],
+    [-4.5, -3.2, -2, 1.4], [1, -4.2, 0, 1.1], [-1.5, 4.5, -4, 1.0]
+  ];
+  var beans = [];
+  beanData.forEach(function (d) {
+    var b = makeBean();
+    b.position.set(d[0], d[1], d[2]);
+    b.scale.setScalar(d[3]);
+    b.userData = { rx: 0.002 + Math.random() * 0.004, ry: 0.003 + Math.random() * 0.004, off: Math.random() * 6.28, baseY: d[1] };
+    group.add(b); beans.push(b);
+  });
 
-    var W = window.innerWidth, H = window.innerHeight;
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(W, H);
-    renderer.setClearColor(0x000000, 0);
+  /* Glass orbs (liquid-glass accent) */
+  var orbMat = new THREE.MeshStandardMaterial({ color: 0xfff3d6, roughness: 0.05, metalness: 0.0, transparent: true, opacity: 0.28 });
+  [[8, 3, -1, 2.2], [-6.5, -1, 0, 1.5]].forEach(function (d) {
+    var orb = new THREE.Mesh(new THREE.SphereGeometry(d[3], 32, 24), orbMat);
+    orb.position.set(d[0], d[1], d[2]);
+    orb.userData = { off: Math.random() * 6.28, baseY: d[1] };
+    beans.push(orb); group.add(orb);
+  });
 
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
-    camera.position.set(0, 0, 20);
+  /* Warm rising "steam" particles */
+  var pCount = 480;
+  var pos = new Float32Array(pCount * 3);
+  for (var i = 0; i < pCount; i++) {
+    pos[i*3] = (Math.random() - 0.5) * 60;
+    pos[i*3+1] = (Math.random() - 0.5) * 44;
+    pos[i*3+2] = (Math.random() - 0.5) * 30 - 4;
+  }
+  var pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xfcd34d, size: 0.1, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending, depthWrite: false }));
+  scene.add(particles);
 
-    /* ---------- MATERIALS ---------- */
-    var matWire = new THREE.MeshBasicMaterial({ color: 0x4f8ef7, wireframe: true, transparent: true, opacity: 0.18 });
-    var matSolid = new THREE.MeshBasicMaterial({ color: 0x4f8ef7, transparent: true, opacity: 0.06 });
-    var matWireWhite = new THREE.MeshBasicMaterial({ color: 0x7ab4ff, wireframe: true, transparent: true, opacity: 0.12 });
+  var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  window.addEventListener('mousemove', function (e) {
+    mouse.tx = (e.clientX / window.innerWidth - 0.5);
+    mouse.ty = (e.clientY / window.innerHeight - 0.5);
+  });
+  var scrollY = 0;
+  window.addEventListener('scroll', function () { scrollY = window.scrollY; }, { passive: true });
 
-    function makeDualMesh(geo, x, y, z, scale) {
-      var grp = new THREE.Group();
-      grp.add(new THREE.Mesh(geo, matSolid));
-      grp.add(new THREE.Mesh(geo, matWire));
-      grp.position.set(x, y, z);
-      grp.scale.setScalar(scale);
-      scene.add(grp);
-      return grp;
-    }
-
-    /* ---------- SHAPES ---------- */
-    var icosa = makeDualMesh(new THREE.IcosahedronGeometry(2.5, 0),  9,  2, -4, 1);
-    var torus = (function () {
-      var g = new THREE.TorusGeometry(2.2, 0.45, 14, 48);
-      var grp = new THREE.Group();
-      grp.add(new THREE.Mesh(g, matSolid));
-      grp.add(new THREE.Mesh(g, matWire));
-      grp.position.set(-10, -2, -6);
-      grp.scale.setScalar(1);
-      scene.add(grp);
-      return grp;
-    })();
-    var box1   = makeDualMesh(new THREE.BoxGeometry(2, 2, 2),      -6,  5, -8, 1);
-    var box2   = makeDualMesh(new THREE.BoxGeometry(1.4, 1.4, 1.4), 4, -5, -5, 1);
-    var octa   = makeDualMesh(new THREE.OctahedronGeometry(1.8, 0), 0,  6, -10, 1);
-    var cone   = (function () {
-      var g = new THREE.ConeGeometry(1.2, 2.4, 6);
-      var grp = new THREE.Group();
-      grp.add(new THREE.Mesh(g, matSolid));
-      grp.add(new THREE.Mesh(g, matWireWhite));
-      grp.position.set(14, -4, -9);
-      scene.add(grp);
-      return grp;
-    })();
-
-    /* ---------- PARTICLE FIELD ---------- */
-    var pCount = 700;
-    var pGeo = new THREE.BufferGeometry();
-    var pPos = new Float32Array(pCount * 3);
+  var clock = new THREE.Clock();
+  function frame() {
+    var t = clock.getElapsedTime();
+    beans.forEach(function (b) {
+      if (b.userData.rx) { b.rotation.x += b.userData.rx; b.rotation.y += b.userData.ry; }
+      b.position.y = b.userData.baseY + Math.sin(t * 0.6 + b.userData.off) * 0.5;
+    });
+    var arr = pGeo.attributes.position.array;
     for (var i = 0; i < pCount; i++) {
-      pPos[i * 3]     = (Math.random() - 0.5) * 80;
-      pPos[i * 3 + 1] = (Math.random() - 0.5) * 60;
-      pPos[i * 3 + 2] = (Math.random() - 0.5) * 40 - 10;
+      arr[i*3+1] += 0.012 + (i % 5) * 0.002;
+      if (arr[i*3+1] > 22) arr[i*3+1] = -22;
     }
-    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-    var pMat = new THREE.PointsMaterial({ color: 0x4f8ef7, size: 0.09, transparent: true, opacity: 0.6 });
-    scene.add(new THREE.Points(pGeo, pMat));
+    pGeo.attributes.position.needsUpdate = true;
+    particles.rotation.y = t * 0.02;
 
-    /* ---------- FLOATING RINGS ---------- */
-    (function () {
-      var ringGeo = new THREE.TorusGeometry(4, 0.04, 6, 80);
-      var ringMat = new THREE.MeshBasicMaterial({ color: 0x4f8ef7, transparent: true, opacity: 0.08 });
-      for (var r = 0; r < 3; r++) {
-        var ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.position.set((r - 1) * 6, (r - 1) * 2, -12);
-        ring.rotation.x = Math.PI / (2 + r * 0.5);
-        scene.add(ring);
-      }
-    })();
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+    group.rotation.y = mouse.x * 0.4;
+    group.rotation.x = mouse.y * 0.22;
+    camera.position.y = -scrollY * 0.004;
 
-    /* ---------- MOUSE PARALLAX ---------- */
-    var mouse = { x: 0, y: 0 };
-    window.addEventListener('mousemove', function (e) {
-      mouse.x = (e.clientX / W - 0.5) * 2;
-      mouse.y = (e.clientY / H - 0.5) * 2;
-    });
-
-    /* ---------- RESIZE ---------- */
-    window.addEventListener('resize', function () {
-      W = window.innerWidth; H = window.innerHeight;
-      camera.aspect = W / H;
-      camera.updateProjectionMatrix();
-      renderer.setSize(W, H);
-    });
-
-    /* ---------- ANIMATE ---------- */
-    var clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      var t = clock.getElapsedTime();
-
-      icosa.rotation.x = t * 0.18;
-      icosa.rotation.y = t * 0.25;
-      torus.rotation.x = t * 0.14;
-      torus.rotation.z = t * 0.10;
-      box1.rotation.x  = t * 0.20;
-      box1.rotation.y  = t * 0.28;
-      box2.rotation.y  = t * 0.35;
-      box2.rotation.z  = t * 0.15;
-      octa.rotation.x  = t * 0.22;
-      octa.rotation.z  = t * 0.18;
-      cone.rotation.y  = t * 0.30;
-
-      /* Subtle float */
-      icosa.position.y =  2 + Math.sin(t * 0.6) * 0.5;
-      torus.position.y = -2 + Math.cos(t * 0.5) * 0.6;
-      box1.position.y  =  5 + Math.sin(t * 0.7 + 1) * 0.4;
-      box2.position.y  = -5 + Math.cos(t * 0.8 + 2) * 0.4;
-
-      /* Camera mouse parallax */
-      camera.position.x += (mouse.x * 1.5 - camera.position.x) * 0.04;
-      camera.position.y += (-mouse.y * 1.0 - camera.position.y) * 0.04;
-      camera.lookAt(scene.position);
-
-      renderer.render(scene, camera);
-    }
-    /* Honour reduced-motion: render a single static frame instead of looping. */
-    if (prefersReduced) renderer.render(scene, camera);
-    else animate();
-  })();
-
-  /* ============================================================
-     NAVIGATION — sticky + burger
-  ============================================================ */
-  (function () {
-    var navbar = document.getElementById('navbar');
-    var burger = document.getElementById('nav-burger');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var mobileClose = document.getElementById('mobile-close');
-
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 60) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-
-      /* Back to top */
-      var btn = document.getElementById('back-to-top');
-      if (window.scrollY > 400) btn.classList.add('visible');
-      else btn.classList.remove('visible');
-    });
-
-    burger.addEventListener('click', function () {
-      mobileMenu.classList.add('open');
-      burger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    });
-
-    mobileClose.addEventListener('click', function () { closeMobileMenu(); });
-
-    mobileMenu.addEventListener('click', function (e) {
-      if (e.target === mobileMenu) closeMobileMenu();
-    });
-  })();
-
-  function closeMobileMenu() {
-    var mm = document.getElementById('mobile-menu');
-    var bg = document.getElementById('nav-burger');
-    mm.classList.remove('open');
-    bg && bg.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    renderer.render(scene, camera);
   }
+  function loop() { requestAnimationFrame(loop); frame(); }
 
-  /* Back to top */
-  document.getElementById('back-to-top').addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (prefersReduced) frame(); else loop();
+
+  window.addEventListener('resize', function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
+})();
 
-  /* ============================================================
-     TYPEWRITER EFFECT
-  ============================================================ */
-  (function () {
-    var phrases = [
-      'erstklassiges Personal',
-      'Zeitarbeit & Flexibilität',
-      'HR-Exzellenz',
-      'Fachkräftevermittlung',
-      'nachhaltiges Wachstum'
-    ];
-    var el = document.getElementById('typewriter-text');
-    if (!el) return;
-    if (prefersReduced) { el.textContent = phrases[0]; return; }
-    var phraseIdx = 0, charIdx = 0, deleting = false;
-    var typingSpeed = 70, deletingSpeed = 35, pauseEnd = 1800, pauseStart = 400;
-
-    function type() {
-      var current = phrases[phraseIdx];
-      if (!deleting) {
-        el.textContent = current.substring(0, charIdx + 1);
-        charIdx++;
-        if (charIdx === current.length) {
-          deleting = true;
-          setTimeout(type, pauseEnd);
-          return;
-        }
-        setTimeout(type, typingSpeed);
-      } else {
-        el.textContent = current.substring(0, charIdx - 1);
-        charIdx--;
-        if (charIdx === 0) {
-          deleting = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
-          setTimeout(type, pauseStart);
-          return;
-        }
-        setTimeout(type, deletingSpeed);
-      }
-    }
-
-    setTimeout(type, 800);
-  })();
-
-  /* ============================================================
-     GSAP ANIMATIONS
-  ============================================================ */
-  (function () {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { revealStatic(); return; }
-    if (prefersReduced) { revealStatic(); return; }
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* --- Hero entrance --- */
-    var heroTl = gsap.timeline({ delay: 0.2 });
-    heroTl.from('.hero-badge',     { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
-          .from('.hero-headline',  { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out' }, '-=0.3')
-          .from('.hero-sub',       { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-          .from('.hero-actions',   { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-          .from('.hero-trust',     { opacity: 0, y: 16, duration: 0.5, ease: 'power2.out' }, '-=0.2')
-          .from('.scroll-indicator', { opacity: 0, duration: 0.5 }, '-=0.1');
-
-    /* --- Generic fade-in-up --- */
-    gsap.utils.toArray('.fade-in-up').forEach(function (el) {
-      gsap.from(el, {
-        opacity: 0, y: 48, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
-        }
-      });
-    });
-
-    /* --- Fade in left/right --- */
-    gsap.utils.toArray('.fade-in-left').forEach(function (el) {
-      gsap.from(el, {
-        opacity: 0, x: -56, duration: 0.9, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-      });
-    });
-
-    gsap.utils.toArray('.fade-in-right').forEach(function (el) {
-      gsap.from(el, {
-        opacity: 0, x: 56, duration: 0.9, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-      });
-    });
-
-    /* --- Service cards stagger --- */
-    gsap.from('.service-card', {
-      opacity: 0, y: 60, duration: 0.7, ease: 'power2.out',
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: '.services-grid',
-        start: 'top 82%',
-        toggleActions: 'play none none none'
-      }
-    });
-
-    /* --- Stats stagger --- */
-    gsap.from('.stat-item', {
-      opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: '.stats-inner',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      }
-    });
-
-    /* --- About values stagger --- */
-    gsap.from('.value-item', {
-      opacity: 0, y: 30, scale: 0.95, duration: 0.6, ease: 'power2.out',
-      stagger: 0.12,
-      scrollTrigger: {
-        trigger: '.about-values',
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      }
-    });
-
-    /* --- Testimonials --- */
-    gsap.from('.testimonial-card', {
-      opacity: 0, y: 50, duration: 0.7, ease: 'power2.out',
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: '.testimonials-track',
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      }
-    });
-
-    /* --- Parallax on hero shapes --- */
-    gsap.to('#three-canvas', {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-
-    /* --- Section label lines --- */
-    gsap.utils.toArray('.section-label').forEach(function (el) {
-      gsap.from(el, {
-        opacity: 0, x: -20, duration: 0.6,
-        scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-      });
-    });
-  })();
-
-  /* ============================================================
-     ANIMATED COUNTERS
-  ============================================================ */
-  (function () {
-    var counters = document.querySelectorAll('.counter');
-    var started = new Set();
-
-    if (prefersReduced) {
-      counters.forEach(function (c) { c.textContent = c.getAttribute('data-target'); });
-      return;
-    }
-
-    function animateCounter(el) {
-      var target = parseInt(el.getAttribute('data-target'), 10);
-      var duration = 1800;
-      var start = null;
-
-      function step(ts) {
-        if (!start) start = ts;
-        var progress = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = target;
-      }
-      requestAnimationFrame(step);
-    }
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting && !started.has(entry.target)) {
-            started.add(entry.target);
-            animateCounter(entry.target);
-          }
-        });
-      }, { threshold: 0.4 });
-
-      counters.forEach(function (c) { io.observe(c); });
-    } else {
-      counters.forEach(function (c) { animateCounter(c); });
-    }
-  })();
-
-  /* ============================================================
-     3D CARD TILT EFFECT
-  ============================================================ */
-  (function () {
-    var tiltCards = document.querySelectorAll('[data-tilt]');
-    tiltCards.forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top + rect.height / 2;
-        var dx = (e.clientX - cx) / (rect.width / 2);
-        var dy = (e.clientY - cy) / (rect.height / 2);
-        var rotX = dy * -8;
-        var rotY = dx * 8;
-        card.style.transform = 'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale3d(1.02,1.02,1.02)';
-        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
-        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
-      });
-
-      card.addEventListener('mouseleave', function () {
-        card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';
-      });
-    });
-  })();
-
-  /* ============================================================
-     TESTIMONIALS CAROUSEL
-  ============================================================ */
-  (function () {
-    var track = document.getElementById('testimonials-track');
-    var dotsContainer = document.getElementById('carousel-dots');
-    var prevBtn = document.getElementById('carousel-prev');
-    var nextBtn = document.getElementById('carousel-next');
-    if (!track) return;
-
-    var cards = track.querySelectorAll('.testimonial-card');
-    var total = cards.length;
-    var current = 0;
-    var visibleCount = 3;
-
-    function getVisibleCount() {
-      if (window.innerWidth <= 600) return 1;
-      if (window.innerWidth <= 900) return 2;
-      return 3;
-    }
-
-    function maxIndex() {
-      return Math.max(0, total - getVisibleCount());
-    }
-
-    /* Build dots */
-    function buildDots() {
-      dotsContainer.innerHTML = '';
-      var pages = maxIndex() + 1;
-      for (var i = 0; i < pages; i++) {
-        var d = document.createElement('div');
-        d.className = 'carousel-dot' + (i === current ? ' active' : '');
-        d.dataset.idx = i;
-        d.addEventListener('click', function () { goTo(parseInt(this.dataset.idx, 10)); });
-        dotsContainer.appendChild(d);
-      }
-    }
-
-    function goTo(idx) {
-      var vc = getVisibleCount();
-      var gapPx = 28;
-      var cardW = track.children[0] ? track.children[0].getBoundingClientRect().width : 0;
-      current = Math.max(0, Math.min(idx, maxIndex()));
-      var offset = current * (cardW + gapPx);
-      track.style.transform = 'translateX(-' + offset + 'px)';
-      dotsContainer.querySelectorAll('.carousel-dot').forEach(function (d, i) {
-        d.classList.toggle('active', i === current);
-      });
-    }
-
-    prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    nextBtn.addEventListener('click', function () { goTo(current + 1); });
-
-    /* Auto-advance (disabled when the user prefers reduced motion) */
-    var autoTimer = prefersReduced ? null : setInterval(function () {
-      var next = current + 1 > maxIndex() ? 0 : current + 1;
-      goTo(next);
-    }, 5000);
-
-    [prevBtn, nextBtn].forEach(function (b) {
-      b.addEventListener('click', function () { clearInterval(autoTimer); });
-    });
-
-    window.addEventListener('resize', function () {
-      buildDots();
-      goTo(Math.min(current, maxIndex()));
-    });
-
-    buildDots();
-
-    /* Touch/swipe */
-    var touchStartX = 0;
-    track.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', function (e) {
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
-    });
-  })();
-
-  /* ============================================================
-     CONTACT FORM
-  ============================================================ */
-  (function () {
-    var form = document.getElementById('contact-form');
-    var success = document.getElementById('form-success');
-    if (!form) return;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      /* Basic validation */
-      var valid = true;
-      form.querySelectorAll('[required]').forEach(function (el) {
-        if (!el.value.trim() || (el.type === 'checkbox' && !el.checked)) {
-          el.style.borderColor = '#ef4444';
-          valid = false;
-        } else {
-          el.style.borderColor = '';
-        }
-      });
-
-      if (!valid) return;
-
-      /* Simulate submission */
-      var btn = form.querySelector('.form-submit');
-      btn.textContent = 'Wird gesendet…';
-      btn.disabled = true;
-
-      setTimeout(function () {
-        form.style.display = 'none';
-        success.style.display = 'flex';
-      }, 1200);
-    });
-
-    /* Clear error on input */
-    form.querySelectorAll('input, textarea, select').forEach(function (el) {
-      el.addEventListener('input', function () { el.style.borderColor = ''; });
-    });
-  })();
-
-  /* ============================================================
-     SMOOTH SCROLL — for all internal anchors
-  ============================================================ */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        var offset = 80;
-        var top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-    });
+/* ───── 2. NAV ───── */
+(function () {
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var links = document.getElementById('navLinks');
+  window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+  burger.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { links.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); });
+  });
+})();
 
-  /* ============================================================
-     DYNAMIC COPYRIGHT YEAR
-  ============================================================ */
-  (function () {
-    var y = document.getElementById('copyright-year');
-    if (y) y.textContent = new Date().getFullYear();
-  })();
-  </script>
+/* ───── 3. GSAP reveals ───── */
+(function () {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { revealStatic(); return; }
+  if (prefersReduced) { revealStatic(); return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.reveal').forEach(function (el) {
+    gsap.to(el, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+  });
+  gsap.utils.toArray('.reveal-l').forEach(function (el) {
+    gsap.to(el, { opacity: 1, x: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+  });
+  gsap.utils.toArray('.reveal-r').forEach(function (el) {
+    gsap.to(el, { opacity: 1, x: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+  });
+})();
+
+/* ───── 4. Counters ───── */
+(function () {
+  var nums = document.querySelectorAll('.n[data-target]');
+  function run(el) {
+    if (el.dataset.text) { el.textContent = el.dataset.text; return; }
+    var target = +el.dataset.target, suffix = el.dataset.suffix || '', dur = 1700, start = performance.now();
+    (function step(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  if (prefersReduced) { nums.forEach(function (el) { el.textContent = el.dataset.text || (el.dataset.target + (el.dataset.suffix || '')); }); return; }
+  if (typeof ScrollTrigger !== 'undefined') {
+    nums.forEach(function (el) { ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () { run(el); } }); });
+  } else { nums.forEach(run); }
+})();
+
+/* ───── 5. 3D tilt on product cards ───── */
+(function () {
+  if (prefersReduced || window.matchMedia('(pointer: coarse)').matches) return;
+  document.querySelectorAll('.tilt').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--mx', (px * 100) + '%');
+      card.style.setProperty('--my', (py * 100) + '%');
+      card.style.transform = 'perspective(900px) rotateY(' + ((px - 0.5) * 7) + 'deg) rotateX(' + (-(py - 0.5) * 7) + 'deg) translateY(-6px)';
+    });
+    card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+  });
+})();
+
+/* ───── 6. Contact form ───── */
+(function () {
+  var f = document.getElementById('contactForm'), done = document.getElementById('formDone');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    done.classList.add('show');
+    var btn = f.querySelector('button'); btn.textContent = 'Gesendet'; btn.disabled = true;
+    setTimeout(function () { f.reset(); }, 300);
+  });
+})();
+</script>
 </body>
 </html>
