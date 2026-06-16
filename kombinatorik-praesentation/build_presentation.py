@@ -258,7 +258,7 @@ def slide_06_kombination(prs):
 
     add_label_chip(slide, "AUFLÖSUNG: FRAGE 2", COL2_LEFT, CONTENT_TOP, fill=MID_BLUE,
                     width=Inches(3.0), height=Inches(0.45), size=Pt(13))
-    add_text(slide, "Ihr 14 Schüler:innen tauscht gegenseitig\nHandynummern aus – wie viele Austausche?",
+    add_text(slide, "Ihr 15 Schüler:innen tauscht gegenseitig\nHandynummern aus – wie viele Austausche?",
              COL2_LEFT, CONTENT_TOP + Inches(0.55), COL_W, Inches(1.0), size=Pt(16), bold=True, color=DEEP_BLUE)
     add_text(slide, "Reihenfolge egal (A tauscht mit B = B tauscht mit A) →",
              COL2_LEFT, CONTENT_TOP + Inches(1.55), COL_W, Inches(0.55), size=Pt(14))
@@ -283,8 +283,8 @@ def slide_06_kombination(prs):
 
     page_number(slide, 6)
     set_notes(slide, "Person B erklärt Kombination ohne Wiederholung am Handynummer-Beispiel: "
-              "14 Schüler:innen, Reihenfolge egal → C(14,2) = 91 Austausche! "
-              "Viele Leute erwarten ~14 oder ~28 – 91 überrascht. Das ist die Auflösung von Frage 2! "
+              "15 Schüler:innen, Reihenfolge egal → C(15,2) = 105 Austausche! "
+              "Viele Leute erwarten ~15 oder ~30 – 105 überrascht. Das ist die Auflösung von Frage 2! "
               "Dann Kombination MIT Wiederholung (Eisbecher). Überleitung zu Person C.")
     return slide
 
@@ -458,7 +458,7 @@ def slide_11_runde1_frage(prs):
     add_text(slide, "Wenn ihr alle nacheinander das Zimmer verlasst –",
              CONTENT_LEFT + Inches(0.5), CONTENT_TOP + Inches(0.35), CONTENT_W - Inches(1.0), Inches(0.9),
              size=Pt(24), bold=True, color=DEEP_BLUE)
-    add_text(slide, "wie viele verschiedene Reihenfolgen gibt es\nfür euch 14 Schüler:innen?",
+    add_text(slide, "wie viele verschiedene Reihenfolgen gibt es\nfür euch 15 Schüler:innen?",
              CONTENT_LEFT + Inches(0.5), CONTENT_TOP + Inches(1.25), CONTENT_W - Inches(1.0), Inches(1.2),
              size=Pt(28), bold=True, color=DARK)
     add_colored_word(slide, [(c, ORANGE) for c in "?!?!?"],
@@ -481,12 +481,12 @@ def slide_11_runde1_frage(prs):
 
 def slide_12_runde1_aufloesung(prs):
     slide = new_slide(prs)
-    add_title_bar(slide, "Runde 1 – Auflösung", person="B", kicker="14! – Permutation")
+    add_title_bar(slide, "Runde 1 – Auflösung", person="B", kicker="15! – Permutation")
 
     add_formula(slide, "f_klasse_perm", box_left=CONTENT_LEFT, box_top=CONTENT_TOP,
                  box_width=CONTENT_W, box_height=Inches(1.3))
 
-    add_text(slide, "Das entspricht der Permutation von 14 Personen: P(14) = 14!",
+    add_text(slide, "Das entspricht der Permutation von 15 Personen: P(15) = 15!",
              CONTENT_LEFT, CONTENT_TOP + Inches(1.45), CONTENT_W, Inches(0.6),
              size=Pt(17), color=DARK, align=PP_ALIGN.CENTER)
 
@@ -495,8 +495,8 @@ def slide_12_runde1_aufloesung(prs):
                     width=Inches(2.4), height=Inches(0.45), size=Pt(13))
     add_bullets(slide, [
         "1 Reihenfolge pro Sekunde →",
-        "≈ 2.764 Jahre, um alle durchzuprobieren",
-        "Beginn: ca. 738 n. Chr. (Mittelalter!)",
+        "≈ 41.466 Jahre, um alle durchzuprobieren",
+        "Beginn: ca. 39.000 v. Chr. (Steinzeit!)",
         "Ende: ca. heute",
     ], CONTENT_LEFT + Inches(0.3), Inches(4.1), COL_W - Inches(0.6), Inches(2.7),
        size=Pt(16), space_after=Pt(10), bullet_color=ORANGE)
@@ -504,16 +504,17 @@ def slide_12_runde1_aufloesung(prs):
     add_panel(slide, COL2_LEFT, Inches(3.3), COL_W, Inches(3.7), fill=YELLOW, line=ORANGE)
     add_label_chip(slide, "FORMEL", COL2_LEFT + Inches(0.3), Inches(3.5), fill=ORANGE,
                     width=Inches(1.5), height=Inches(0.45), size=Pt(13))
-    add_text(slide, "14! = 14 · 13 · 12 · ... · 2 · 1\n\n"
+    add_text(slide, "15! = 15 · 14 · 13 · ... · 2 · 1\n\n"
              "Wachstum der Fakultät ist astronomisch schnell –\n"
-             "schon 14! übersteigt 87 Milliarden!",
+             "schon 15! übersteigt 1,3 Billionen!",
              COL2_LEFT + Inches(0.3), Inches(4.1), COL_W - Inches(0.6), Inches(2.7),
              size=Pt(17), color=DEEP_BLUE)
 
     page_number(slide, 12)
-    set_notes(slide, "Person B enthüllt die Auflösung: 14! = 87.178.291.200 ≈ 87 Milliarden! "
-              "Den 'Mittelalter-Vergleich' als Anker verwenden: seit dem Jahr 738 n.Chr. eine "
-              "Reihenfolge pro Sekunde – und man wäre gerade fertig. Kurzes 'WOW' abwarten. "
+    set_notes(slide, "Person B enthüllt die Auflösung: 15! = 1.307.674.368.000 ≈ 1,3 Billionen! "
+              "Den 'Steinzeit-Vergleich' als Anker verwenden: seit ca. 39.000 v. Chr. eine "
+              "Reihenfolge pro Sekunde – und man wäre gerade fertig (Homo sapiens war damals "
+              "gerade auf dem Weg nach Europa!). Kurzes 'WOW' abwarten. "
               "Überleitung zu Person C für Runde 2.")
     return slide
 

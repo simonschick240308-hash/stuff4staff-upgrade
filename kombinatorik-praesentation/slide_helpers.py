@@ -84,8 +84,11 @@ def _no_bullet(paragraph):
 
 
 def add_title_bar(slide, title, person=None, kicker=None):
-    add_rect(slide, 0, 0, SLIDE_W, Inches(1.15), fill=DEEP_BLUE)
-    tx = slide.shapes.add_textbox(MARGIN, Inches(0.10), Inches(10.3), Inches(1.0))
+    # Near-black header bar with orange left accent stripe
+    add_rect(slide, 0, 0, SLIDE_W, Inches(1.12), fill=DARK)
+    add_rect(slide, 0, 0, Inches(0.07), Inches(1.12), fill=ORANGE)
+
+    tx = slide.shapes.add_textbox(Inches(0.25), Inches(0.08), Inches(10.3), Inches(1.0))
     tf = tx.text_frame
     tf.word_wrap = True
     if kicker:
@@ -93,7 +96,7 @@ def add_title_bar(slide, title, person=None, kicker=None):
         _no_bullet(p0)
         r0 = p0.add_run()
         r0.text = kicker
-        r0.font.size = Pt(13)
+        r0.font.size = Pt(12)
         r0.font.color.rgb = YELLOW
         r0.font.bold = True
         r0.font.name = FONT_BODY

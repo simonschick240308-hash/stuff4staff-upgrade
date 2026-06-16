@@ -57,8 +57,8 @@ FORMULAS = {
     "f_beispiel_pin": r"V_W(10,4) = 10^4 = 10\,000",
     "f_beispiel_eis": r"C_W(5,3) = \binom{7}{3} = 35",
     "f_beispiel_pascal_62": r"\binom{6}{2} = 15",
-    "f_handshake": r"\binom{14}{2} = \dfrac{14!}{2!\cdot 12!} = 91",
-    "f_klasse_perm": r"14! = 87\,178\,291\,200 \approx 8{,}7 \times 10^{10}",
+    "f_handshake": r"\binom{15}{2} = \dfrac{15!}{2!\cdot 13!} = 105",
+    "f_klasse_perm": r"15! = 1\,307\,674\,368\,000 \approx 1{,}3 \times 10^{12}",
     "f_kartenspiel": r"52! \approx 8{,}07 \times 10^{67}",
 }
 

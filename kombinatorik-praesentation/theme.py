@@ -3,16 +3,16 @@
 from pptx.util import Pt
 from pptx.dml.color import RGBColor
 
-# Core palette: deep blue (structure) + orange/yellow (everyday examples)
-DEEP_BLUE = RGBColor(0x1B, 0x3A, 0x5C)
-MID_BLUE = RGBColor(0x3D, 0x6E, 0xA5)
-LIGHT_BLUE = RGBColor(0xE8, 0xF1, 0xFA)
-ORANGE = RGBColor(0xF2, 0x8C, 0x3C)
-YELLOW = RGBColor(0xF6, 0xC8, 0x4C)
-DARK = RGBColor(0x27, 0x30, 0x3A)
-GRAY = RGBColor(0x8A, 0x96, 0xA6)
+# Core palette: modern navy + vibrant electric blue + punchy orange
+DEEP_BLUE = RGBColor(0x1E, 0x3A, 0x8A)   # blue-800
+MID_BLUE = RGBColor(0x25, 0x63, 0xEB)    # blue-600 vivid
+LIGHT_BLUE = RGBColor(0xEF, 0xF6, 0xFF)  # blue-50
+ORANGE = RGBColor(0xEA, 0x58, 0x0C)      # orange-600 vibrant
+YELLOW = RGBColor(0xFB, 0xBF, 0x24)      # amber-400
+DARK = RGBColor(0x0F, 0x17, 0x2A)        # slate-900 near-black
+GRAY = RGBColor(0x64, 0x74, 0x8B)        # slate-500
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
-BG = RGBColor(0xFA, 0xFB, 0xFC)
+BG = RGBColor(0xF0, 0xF4, 0xFF)          # blue-tinted off-white
 
 # Hex strings (for matplotlib)
 HEX_DEEP_BLUE = "#1B3A5C"
