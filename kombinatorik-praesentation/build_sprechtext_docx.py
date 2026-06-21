@@ -13,12 +13,11 @@ OUT = os.path.join(os.path.dirname(__file__), "sprechtext.docx")
 
 DEEP_BLUE = RGBColor(0x1E, 0x3A, 0x8A)
 ORANGE = RGBColor(0xEA, 0x58, 0x0C)
-GRAY = RGBColor(0x64, 0x74, 0x8B)
 DARK = RGBColor(0x0F, 0x17, 0x2A)
 
+PERSON_COLOR = {"A": DEEP_BLUE, "B": ORANGE, "C": RGBColor(0x25, 0x63, 0xEB)}
 NAMES = {"A": "Max", "B": "Simon", "C": "Daniel"}
 FULL_NAMES = {"A": "Max Manahl", "B": "Simon Schick", "C": "Daniel Kornfeld"}
-PERSON_COLOR = {"A": DEEP_BLUE, "B": ORANGE, "C": RGBColor(0x25, 0x63, 0xEB)}
 
 
 def add_heading(doc, text, size=16, color=DEEP_BLUE, space_before=14, space_after=6):
@@ -32,21 +31,11 @@ def add_heading(doc, text, size=16, color=DEEP_BLUE, space_before=14, space_afte
     return p
 
 
-def add_meta(doc, text):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(8)
-    r = p.add_run(text)
-    r.italic = True
-    r.font.size = Pt(10.5)
-    r.font.color.rgb = GRAY
-    return p
-
-
 def add_speaker_line(doc, person, text):
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(10)
     p.paragraph_format.line_spacing = 1.25
-    label = p.add_run(f"{NAMES.get(person, person)}: " if person else "")
+    label = p.add_run(f"{NAMES.get(person, person)}: ")
     label.bold = True
     label.font.size = Pt(11.5)
     label.font.color.rgb = PERSON_COLOR.get(person, DARK)
@@ -56,33 +45,9 @@ def add_speaker_line(doc, person, text):
     return p
 
 
-def add_stage_direction(doc, text):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(10)
-    r = p.add_run(text)
-    r.italic = True
-    r.font.size = Pt(10.5)
-    r.font.color.rgb = GRAY
-    return p
-
-
-def add_rule(doc):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(4)
-    p.paragraph_format.space_after = Pt(4)
-    pPr = p._p.get_or_add_pPr()
-    from docx.oxml.ns import qn
-    pBdr = pPr.makeelement(qn("w:pBdr"), {})
-    bottom = pPr.makeelement(qn("w:bottom"), {
-        qn("w:val"): "single", qn("w:sz"): "6", qn("w:space"): "1", qn("w:color"): "C7D2E8",
-    })
-    pBdr.append(bottom)
-    pPr.append(pBdr)
-
-
 SLIDES = [
     {
-        "num": 1, "title": "Titelfolie", "person": "Alle", "time": "~30 Sek.",
+        "num": 1, "title": "Titelfolie", "person": "Alle",
         "lines": [
             ("A", "Hallo zusammen! Wir sind Max, Simon und Daniel, und wir nehmen euch heute mit "
                   "in die Welt der Kombinatorik und Wahrscheinlichkeit."),
@@ -94,7 +59,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 2, "title": "Agenda & Einstiegsfragen", "person": "A", "time": "~90 Sek.",
+        "num": 2, "title": "Agenda & Einstiegsfragen", "person": "A",
         "lines": [
             ("A", "Kurz zur Agenda, damit ihr wisst, was kommt: Wir starten beim Zählprinzip, das "
                   "ist quasi die Basis für alles Weitere. Danach geht's um Permutation, Variation "
@@ -103,21 +68,16 @@ SLIDES = [
                   "bei dem ihr wirklich mitmachen müsst."),
             ("A", "Aber bevor wir starten, will ich euch noch drei Fragen stellen. Müsst nichts "
                   "sagen, einfach kurz im Kopf schätzen und euch die Zahl merken."),
-            ("A", "Wie viele verschiedene 4-stellige PIN-Codes gibt's überhaupt?"),
-            (None, "[kurze Pause]"),
-            ("A", "Dann: Stellt euch vor, ihr alle hier in der Klasse tauscht gegenseitig eure "
-                  "Handynummern aus, jeder mit jedem einmal. Wie viele Austausche sind das am Ende "
-                  "insgesamt?"),
-            (None, "[kurze Pause]"),
-            ("A", "Und die letzte: Wie wahrscheinlich ist eigentlich ein Sechser beim Lotto "
-                  "6 aus 45?"),
-            (None, "[kurze Pause]"),
+            ("A", "Wie viele verschiedene 4-stellige PIN-Codes gibt's überhaupt? Dann: Stellt euch "
+                  "vor, ihr alle hier in der Klasse tauscht gegenseitig eure Handynummern aus, "
+                  "jeder mit jedem einmal. Wie viele Austausche sind das am Ende insgesamt? Und die "
+                  "letzte: Wie wahrscheinlich ist eigentlich ein Sechser beim Lotto 6 aus 45?"),
             ("A", "Merkt euch eure drei Schätzungen, wir lösen die nach und nach im Laufe der "
                   "Präsentation auf. Simon erklärt jetzt das Zählprinzip."),
         ],
     },
     {
-        "num": 3, "title": "Das Zählprinzip", "person": "B", "time": "~80 Sek.",
+        "num": 3, "title": "Das Zählprinzip", "person": "B",
         "lines": [
             ("B", "Das Zählprinzip ist die Grundlage für so gut wie alles, was heute noch kommt, "
                   "und die Idee dahinter ist eigentlich ziemlich simpel: Besteht etwas aus mehreren "
@@ -136,7 +96,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 4, "title": "Permutation", "person": "C", "time": "~100 Sek.",
+        "num": 4, "title": "Permutation", "person": "C",
         "lines": [
             ("C", "Bei der Permutation bringen wir alle Elemente in eine Reihenfolge – jede "
                   "Position zählt dabei."),
@@ -158,7 +118,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 5, "title": "Variation", "person": "A", "time": "~100 Sek.",
+        "num": 5, "title": "Variation", "person": "A",
         "lines": [
             ("A", "Bei der Variation wählen wir nur einen Teil aus – k von n Elementen –, aber die "
                   "Reihenfolge spielt eine Rolle."),
@@ -178,7 +138,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 6, "title": "Kombination", "person": "B", "time": "~100 Sek.",
+        "num": 6, "title": "Kombination", "person": "B",
         "lines": [
             ("B", "Bei der Kombination ist die Reihenfolge – anders als bei Variation und "
                   "Permutation – komplett egal. Uns interessiert nur, welche Elemente überhaupt "
@@ -190,7 +150,6 @@ SLIDES = [
                   "keine Variation. Wir wählen 2 aus 15 aus, ohne dass die Reihenfolge zählt: "
                   "15 über 2, also 15 Fakultät durch 2 Fakultät mal 13 Fakultät – und das macht "
                   "genau 105."),
-            (None, "[kurze Pause]"),
             ("B", "105! Die meisten schätzen da viel zu niedrig, irgendwo bei 15 oder 30. Aber weil "
                   "wirklich jeder mit jedem tauscht, wächst das viel schneller, als man im ersten "
                   "Moment denkt."),
@@ -201,7 +160,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 7, "title": "Pascal'sches Dreieck", "person": "C", "time": "~70 Sek.",
+        "num": 7, "title": "Pascal'sches Dreieck", "person": "C",
         "lines": [
             ("C", "Das Pascal'sche Dreieck ist im Grunde eine fertige Tabelle für alle "
                   "Binomialkoeffizienten – also für all die 'n über k'-Werte, die wir bei der "
@@ -217,7 +176,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 8, "title": "Laplace-Wahrscheinlichkeit", "person": "A", "time": "~90 Sek.",
+        "num": 8, "title": "Laplace-Wahrscheinlichkeit", "person": "A",
         "lines": [
             ("A", "Bis jetzt haben wir nur gezählt – jetzt machen wir daraus Wahrscheinlichkeit. "
                   "Die Laplace-Formel ist eigentlich ziemlich simpel: P von A gleich Betrag A durch "
@@ -238,7 +197,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 9, "title": "Lotto 6 aus 45", "person": "B", "time": "~80 Sek.",
+        "num": 9, "title": "Lotto 6 aus 45", "person": "B",
         "lines": [
             ("B", "Jetzt lösen wir die letzte Frage von ganz am Anfang auf: Wie wahrscheinlich ist "
                   "ein Sechser beim Lotto 6 aus 45?"),
@@ -255,7 +214,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 10, "title": "Praktischer Teil: Estimation-Spiel", "person": "C", "time": "~40 Sek.",
+        "num": 10, "title": "Praktischer Teil: Estimation-Spiel", "person": "C",
         "lines": [
             ("C", "Jetzt seid ihr dran. Wir spielen ein kleines Schätzspiel, zwei Runden."),
             ("C", "So geht's: Wir stellen euch eine überraschende Frage, jeder schätzt für sich, im "
@@ -266,50 +225,40 @@ SLIDES = [
         ],
     },
     {
-        "num": 11, "title": "Runde 1: Eure Schätzung", "person": "A", "time": "~60 Sek.",
+        "num": 11, "title": "Runde 1: Eure Schätzung", "person": "A",
         "lines": [
             ("A", "Hier die erste Frage: Stellt euch vor, ihr verlasst alle nacheinander das "
                   "Klassenzimmer, einer nach dem anderen. Wie viele verschiedene Reihenfolgen gibt "
                   "es da – für euch 15 Schüler:innen?"),
-            (None, "[30–45 Sekunden Zeit zum Schätzen geben]"),
-            ("A", "Schreibt's auf oder merkt's euch gut, wir vergleichen gleich."),
-            (None, "[kurze Handzeichen-Abfrage: 'Wer schätzt unter 1.000? Unter 1 Million? Über "
-                   "1 Milliarde?']"),
-            ("A", "Simon löst auf."),
+            ("A", "Schreibt's auf oder merkt's euch gut, wir vergleichen gleich. Simon löst auf."),
         ],
     },
     {
-        "num": 12, "title": "Runde 1: Auflösung", "person": "B", "time": "~70 Sek.",
+        "num": 12, "title": "Runde 1: Auflösung", "person": "B",
         "lines": [
             ("B", "Das ist genau die Permutation von 15 Personen, P(15) gleich 15 Fakultät. Und "
-                  "15 Fakultät ist..."),
-            (None, "[kurze Pause, auf die Folie zeigen]"),
-            ("B", "...1.307.674.368.000. Über 1,3 Billionen. Damit ihr ein Gefühl dafür kriegt: "
-                  "Stellt euch vor, ihr probiert ab jetzt eine Reihenfolge pro Sekunde durch, ohne "
-                  "Pause. Wie lange würde das dauern, bis wirklich alle durch sind? Ungefähr "
-                  "41.466 Jahre. Hätte man damit heute angefangen, wäre man bei ca. 39.000 vor "
-                  "Christus gestartet – das ist die Steinzeit, da gab's noch nicht mal Schrift oder "
-                  "Landwirtschaft."),
+                  "15 Fakultät ist 1.307.674.368.000. Über 1,3 Billionen."),
+            ("B", "Damit ihr ein Gefühl dafür kriegt: Stellt euch vor, ihr probiert ab jetzt eine "
+                  "Reihenfolge pro Sekunde durch, ohne Pause. Wie lange würde das dauern, bis "
+                  "wirklich alle durch sind? Ungefähr 41.466 Jahre. Hätte man damit heute "
+                  "angefangen, wäre man bei ca. 39.000 vor Christus gestartet – das ist die "
+                  "Steinzeit, da gab's noch nicht mal Schrift oder Landwirtschaft."),
             ("B", "15 Fakultät heißt einfach 15 mal 14 mal 13 und so weiter bis runter auf 1 – und "
-                  "schon bei nur 15 Elementen kommt da diese Wahnsinnszahl raus. Daniel macht weiter "
-                  "mit Runde 2."),
+                  "schon bei nur 15 Elementen kommt da diese Wahnsinnszahl raus. Daniel macht "
+                  "weiter mit Runde 2."),
         ],
     },
     {
-        "num": 13, "title": "Runde 2: Eure Schätzung", "person": "C", "time": "~60 Sek.",
+        "num": 13, "title": "Runde 2: Eure Schätzung", "person": "C",
         "lines": [
             ("C", "Runde 2, und jetzt wird's richtig groß: Wie viele Möglichkeiten gibt's, ein "
                   "Kartenspiel mit 52 Karten zu mischen?"),
             ("C", "Kleiner Tipp: Das ist eine Permutation von 52 Elementen, also P(52) gleich "
-                  "52 Fakultät."),
-            (None, "[Zeit zum Schätzen geben]"),
-            (None, "[Handzeichen-Abfrage: 'Wer sagt mehr als 1.000? 1 Million? 1 Milliarde? "
-                   "1 Trillion?']"),
-            ("C", "Max löst auf."),
+                  "52 Fakultät. Max löst auf."),
         ],
     },
     {
-        "num": 14, "title": "Runde 2: Auflösung", "person": "A", "time": "~80 Sek.",
+        "num": 14, "title": "Runde 2: Auflösung", "person": "A",
         "lines": [
             ("A", "52 Fakultät ist ungefähr 8,07 mal 10 hoch 67 – eine Zahl mit 68 Stellen."),
             ("A", "Damit ihr eine Vorstellung davon kriegt, wie groß das ist: Das sichtbare "
@@ -324,7 +273,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 15, "title": "Übersichtstabelle", "person": "B", "time": "~70 Sek.",
+        "num": 15, "title": "Übersichtstabelle", "person": "B",
         "lines": [
             ("B", "Bevor wir zusammenfassen, hier noch mal die kompakte Übersicht über alles, was "
                   "wir heute besprochen haben."),
@@ -339,7 +288,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 16, "title": "Zusammenfassung", "person": "Alle", "time": "~60 Sek.",
+        "num": 16, "title": "Zusammenfassung", "person": "Alle",
         "lines": [
             ("A", "Mein wichtigster Punkt für heute: Das Zählprinzip ist die Basis von allem. Bei "
                   "unabhängigen Schritten einfach die Möglichkeiten pro Schritt multiplizieren – "
@@ -353,7 +302,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 17, "title": "Quellen", "person": "Alle", "time": "~20 Sek.",
+        "num": 17, "title": "Quellen", "person": "Alle",
         "lines": [
             ("A", "Hier noch kurz unsere Quellen: Lehrplan und Formelsammlung vom BMBWF, unser "
                   "Schulbuch, mathe-online.at, die Österreichischen Lotterien für die Lotto-Zahlen, "
@@ -362,7 +311,7 @@ SLIDES = [
         ],
     },
     {
-        "num": 18, "title": "Danke / Fragen", "person": "Alle", "time": "~20 Sek.",
+        "num": 18, "title": "Danke / Fragen", "person": "Alle",
         "lines": [
             ("A", "Damit wären wir fertig."),
             ("B", "Danke für eure Aufmerksamkeit!"),
@@ -392,54 +341,12 @@ def build():
     r.font.size = Pt(22)
     r.font.color.rgb = DEEP_BLUE
 
-    add_meta(doc, "Max Manahl (A) -> Simon Schick (B) -> Daniel Kornfeld (C), rotierend durch alle "
-                  "18 Folien. Zieldauer: ca. 20-25 Minuten (Zeitangaben sind Richtwerte).")
-
-    note = doc.add_paragraph()
-    note.paragraph_format.space_after = Pt(14)
-    r = note.add_run("Hinweis: Das hier ist eine Gedankenstütze, kein Text zum Ablesen. Lest es ein "
-                      "paar Mal durch und erzählt es dann mit euren eigenen Worten nach – das klingt "
-                      "automatisch lockerer und natürlicher, als wenn ihr es Wort für Wort "
-                      "vortragt.")
-    r.font.size = Pt(10.5)
-    r.font.color.rgb = GRAY
-    r.italic = True
-
-    add_rule(doc)
-
     for slide in SLIDES:
         person_label = (FULL_NAMES.get(slide["person"], slide["person"])
                          if slide["person"] != "Alle" else "Alle")
         add_heading(doc, f"Folie {slide['num']} – {slide['title']} ({person_label})")
-        add_meta(doc, slide["time"])
         for person, text in slide["lines"]:
-            if person is None:
-                add_stage_direction(doc, text)
-            else:
-                add_speaker_line(doc, person, text)
-        add_rule(doc)
-
-    add_heading(doc, "Gesamtdauer-Check", size=14)
-    p = doc.add_paragraph()
-    p.paragraph_format.space_after = Pt(10)
-    r = p.add_run(
-        "Reine Sprechzeit liegt bei ca. 20-21 Minuten. Mit den Pausen fürs Schätzspiel (Runde 1 + "
-        "Runde 2, je 30-60 Sek. Stille plus kurze Handzeichen-Abfrage) und etwas Luft zum normalen "
-        "Reden kommt ihr realistisch auf 22-25 Minuten – genau im Zielbereich."
-    )
-    r.font.size = Pt(11)
-
-    p2 = doc.add_paragraph()
-    label = p2.add_run("Tipp: ")
-    label.bold = True
-    label.font.size = Pt(11)
-    body = p2.add_run(
-        "Lernt nicht den ganzen Text auswendig, sondern nur den letzten Satz der eigenen Folie und "
-        "den ersten Satz der eigenen nächsten Folie – den Rest erzählt einfach mit eigenen Worten. "
-        "Übergaben wie 'Simon löst auf' oder 'Daniel zeigt euch...' kurz und beiläufig sagen, nicht "
-        "wie eine Ansage."
-    )
-    body.font.size = Pt(11)
+            add_speaker_line(doc, person, text)
 
     doc.save(OUT)
     print(f"Saved {OUT}")
