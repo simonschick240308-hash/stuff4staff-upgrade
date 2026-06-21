@@ -1,340 +1,322 @@
 # Sprechtext – Kombinatorik & Wahrscheinlichkeit
 
-Vollständiges Sprechskript für alle 18 Folien. A → B → C rotierend.
+Max Manahl (A) → Simon Schick (B) → Daniel Kornfeld (C), rotierend durch alle 18 Folien.
 Zieldauer: ca. 20–25 Minuten (Zeitangaben sind Richtwerte).
 
-Hinweis: Das ist ein Gerüst zum Üben, nicht zum Ablesen! Lest es ein paar Mal durch,
-dann sagt es mit euren eigenen Worten – das wirkt natürlicher und ihr wirkt sicherer.
+Hinweis: Das hier ist eine Gedankenstütze, kein Text zum Ablesen. Lest es ein paar Mal durch und
+erzählt es dann mit euren eigenen Worten nach – das klingt automatisch lockerer und natürlicher,
+als wenn ihr es Wort für Wort vortragt.
 
 ---
 
 ## Folie 1 – Titelfolie (Alle) · ~30 Sek.
 
-**Person A:** "Hallo zusammen! Wir drei – [Name A], [Name B] und [Name C] – nehmen euch heute mit
-in die Welt der Kombinatorik und Wahrscheinlichkeit."
+**Max:** "Hallo zusammen! Wir sind Max, Simon und Daniel, und wir nehmen euch heute mit in die Welt
+der Kombinatorik und Wahrscheinlichkeit."
 
-**Person B:** "Die zentrale Frage, um die es heute geht: Wie viele Möglichkeiten gibt es eigentlich
-wirklich – und warum sind das fast immer viel mehr, als man im Kopf schätzt?"
+**Simon:** "Es geht im Grunde um eine Frage: Wie viele Möglichkeiten gibt es eigentlich wirklich –
+und warum ist das fast immer viel mehr, als man im ersten Moment denkt?"
 
-**Person C:** "Es wird nicht nur trockene Theorie, sondern auch ein praktischer Teil, bei dem ihr
-mitraten dürft. Legen wir los!"
+**Daniel:** "Wird nicht nur Theorie, es gibt auch einen Teil, wo ihr selbst mitraten müsst. Legen
+wir los."
 
 ---
 
-## Folie 2 – Agenda & Einstiegsfragen (Person A) · ~90 Sek.
+## Folie 2 – Agenda & Einstiegsfragen (Max Manahl) · ~90 Sek.
 
-"Kurz zur Agenda: Wir starten beim Zählprinzip, das die Basis für alles Weitere ist. Danach schauen
-wir uns Permutation, Variation und Kombination an – das sind die drei großen Werkzeuge der
-Kombinatorik. Dann verbinden wir das mit dem Pascal'schen Dreieck und der Laplace-Wahrscheinlichkeit.
-Zum Schluss gibt's einen praktischen Teil, bei dem ihr aktiv mitmachen müsst.
+"Kurz zur Agenda, damit ihr wisst, was kommt: Wir starten beim Zählprinzip, das ist quasi die Basis
+für alles Weitere. Danach geht's um Permutation, Variation und Kombination, dann verbinden wir das
+mit dem Pascal'schen Dreieck und der Laplace-Wahrscheinlichkeit. Und ganz am Schluss gibt's einen
+praktischen Teil, bei dem ihr wirklich mitmachen müsst.
 
-Bevor wir inhaltlich einsteigen, möchte ich euch drei Fragen stellen. Ihr müsst nichts sagen oder
-aufschreiben – schätzt einfach kurz im Kopf, und merkt euch eure Schätzung.
+Aber bevor wir starten, will ich euch noch drei Fragen stellen. Müsst nichts sagen, einfach kurz im
+Kopf schätzen und euch die Zahl merken.
 
-Erste Frage: Wie viele verschiedene 4-stellige PIN-Codes gibt es überhaupt?
+Wie viele verschiedene 4-stellige PIN-Codes gibt's überhaupt?
 
 *[kurze Pause]*
 
-Zweite Frage: Stellt euch vor, ihr alle in dieser Klasse tauscht gegenseitig eure Handynummern aus –
-jede Person mit jeder anderen, einmal. Wie viele Austausche finden dabei insgesamt statt?
+Dann: Stellt euch vor, ihr alle hier in der Klasse tauscht gegenseitig eure Handynummern aus, jeder
+mit jedem einmal. Wie viele Austausche sind das am Ende insgesamt?
 
 *[kurze Pause]*
 
-Und drittens: Wie wahrscheinlich ist es, beim Lotto 6 aus 45 einen Sechser zu haben?
+Und die letzte: Wie wahrscheinlich ist eigentlich ein Sechser beim Lotto 6 aus 45?
 
 *[kurze Pause]*
 
-Behaltet eure drei Schätzungen im Kopf – wir werden sie im Laufe der Präsentation Stück für Stück
-auflösen. Ich gebe jetzt weiter an [Name B] für das Zählprinzip."
+Merkt euch eure drei Schätzungen, wir lösen die nach und nach im Laufe der Präsentation auf. Simon
+erklärt jetzt das Zählprinzip."
 
 ---
 
-## Folie 3 – Das Zählprinzip (Person B) · ~80 Sek.
+## Folie 3 – Das Zählprinzip (Simon Schick) · ~80 Sek.
 
-"Das Zählprinzip ist die Grundlage von allem, was heute noch kommt. Die Idee dahinter ist eigentlich
-ganz simpel: Wenn ein Vorgang aus mehreren Schritten besteht, und es für jeden Schritt mehrere
-Möglichkeiten gibt, dann multipliziert man einfach die Anzahl der Möglichkeiten pro Schritt.
+"Das Zählprinzip ist die Grundlage für so gut wie alles, was heute noch kommt, und die Idee dahinter
+ist eigentlich ziemlich simpel: Besteht etwas aus mehreren Schritten, und gibt's für jeden Schritt
+mehrere Möglichkeiten, multipliziert man einfach die Möglichkeiten pro Schritt.
 
-Schauen wir uns das an einem Beispiel an, das jeder kennt: Sich morgens anziehen. Sagen wir, ich habe
-3 Hemden, 4 Hosen und 2 Paar Schuhe zur Auswahl. Wie viele komplette Outfits kann ich daraus
-zusammenstellen?
+Nehmen wir was ganz Alltägliches: sich Anziehen am Morgen. Sagen wir, ich hab 3 Hemden, 4 Hosen und
+2 Paar Schuhe zur Auswahl – wie viele komplette Outfits kann ich mir daraus zusammenstellen?
 
-Man könnte jetzt anfangen, alles einzeln durchzuzählen – aber das Zählprinzip macht es viel
-einfacher: 3 Hemden mal 4 Hosen ergibt 12 mögliche Hemd-Hosen-Kombinationen – das seht ihr auch im
-Raster hier rechts. Jede dieser 12 Kombinationen kann ich jetzt noch mit 2 verschiedenen Schuhen
-kombinieren. Also: 3 mal 4 mal 2 gleich 24 Outfits.
+Man könnte das jetzt alles einzeln aufzählen, aber es geht einfacher: 3 Hemden mal 4 Hosen, das sind
+schon mal 12 Hemd-Hosen-Kombinationen – seht ihr auch im Raster da rechts. Und jede davon kann ich
+noch mit 2 Schuhen kombinieren. Macht 3 mal 4 mal 2, also 24 Outfits.
 
-Das Zählprinzip ist wirklich die Basis – Permutation, Variation und Kombination, die jetzt kommen,
-sind im Grunde nur spezielle, klar definierte Anwendungsfälle genau dieses Prinzips. Ich gebe weiter
-an [Name C]."
+Und das Wichtige dabei: Permutation, Variation und Kombination, die gleich kommen, sind im Grunde
+nichts anderes als spezielle Fälle von genau diesem Prinzip hier. Daniel zeigt euch jetzt die
+Permutation."
 
 ---
 
-## Folie 4 – Permutation (Person C) · ~100 Sek.
+## Folie 4 – Permutation (Daniel Kornfeld) · ~100 Sek.
 
-"Bei der Permutation geht es darum, alle Elemente einer Menge in eine Reihenfolge zu bringen – jede
-Position zählt.
+"Bei der Permutation bringen wir alle Elemente in eine Reihenfolge – jede Position zählt dabei.
 
-Schauen wir uns das zuerst ohne Wiederholung an, am Beispiel von 3 Freunden – A, B und C – die sich
-nebeneinander hinsetzen. Im Baumdiagramm seht ihr: Für die erste Position gibt es 3 Möglichkeiten,
-für die zweite noch 2, und für die letzte bleibt nur noch 1 übrig. Das ergibt 3 mal 2 mal 1, also 3
-Fakultät, gleich 6 mögliche Sitzordnungen. Allgemein gilt: Die Anzahl der Reihenfolgen von n
-Elementen ist P(n) gleich n Fakultät. Bei 5 Personen am Tisch wären das schon 5 Fakultät, also 120
-Sitzordnungen – die Zahl wächst extrem schnell, das werden wir später noch genauer sehen.
+Schauen wir uns zuerst die Variante ohne Wiederholung an, an 3 Freunden – A, B und C –, die sich
+nebeneinandersetzen. Im Baumdiagramm seht ihr's: für den ersten Platz gibt's 3 Möglichkeiten, für
+den zweiten nur noch 2, und für den letzten bleibt eh nur noch einer übrig. 3 mal 2 mal 1, also
+3 Fakultät, gleich 6 Sitzordnungen. Ganz allgemein: P(n) gleich n Fakultät. Bei 5 Leuten am Tisch
+wären das schon 120 – das wächst echt schnell, dazu kommen wir später noch.
 
-Jetzt zur Permutation mit Wiederholung: Hier kommen manche Elemente mehrfach vor, und dann muss man
-durch die Fakultäten dieser Wiederholungen teilen, weil sonst Reihenfolgen doppelt gezählt würden,
-die eigentlich gleich aussehen.
+Jetzt die Variante mit Wiederholung: Wenn manche Elemente mehrfach vorkommen, müssen wir durch deren
+Fakultäten teilen, sonst zählen wir Reihenfolgen doppelt, die eigentlich gleich aussehen.
 
-Bestes Beispiel: das Wort ANANAS. 6 Buchstaben insgesamt, aber das A kommt 3 mal vor und das N 2 mal.
-Wenn wir einfach 6 Fakultät rechnen würden, hätten wir viel zu viele Anordnungen gezählt – weil ein
-Vertauschen der drei A's untereinander ja optisch gar keinen Unterschied macht. Deshalb teilen wir
-6 Fakultät durch 3 Fakultät mal 2 Fakultät mal 1 Fakultät, und kommen auf 60 verschiedene Anordnungen
-des Wortes ANANAS. Weiter geht's mit [Name A] und der Variation."
+Bestes Beispiel dafür ist ANANAS. 6 Buchstaben, aber das A kommt 3 mal vor und das N 2 mal. Würden
+wir einfach 6 Fakultät rechnen, hätten wir viel zu viel gezählt, weil es ja optisch keinen
+Unterschied macht, wenn man die drei A's untereinander vertauscht. Deshalb teilt man 6 Fakultät
+durch 3 Fakultät mal 2 Fakultät mal 1 Fakultät – kommt man auf 60 Anordnungen. Max macht jetzt mit
+der Variation weiter."
 
 ---
 
-## Folie 5 – Variation (Person A) · ~100 Sek.
+## Folie 5 – Variation (Max Manahl) · ~100 Sek.
 
-"Bei der Variation wählen wir nur einen Teil – k von n Elementen – aus, und die Reihenfolge ist
-wichtig.
+"Bei der Variation wählen wir nur einen Teil aus – k von n Elementen –, aber die Reihenfolge spielt
+eine Rolle.
 
-Ohne Wiederholung heißt: kein Element darf doppelt gewählt werden, wie beim Ziehen ohne
-Zurücklegen. Klassisches Beispiel: ein Wettlauf mit 8 Läuferinnen und Läufern, aber nur die Plätze 1
-bis 3 zählen fürs Stockerl. Reihenfolge ist hier extrem wichtig – Gold, Silber und Bronze sind nicht
-gleich! Für Platz 1 gibt es 8 Möglichkeiten, für Platz 2 noch 7, für Platz 3 noch 6. Das ergibt
-V(8,3) gleich 8 mal 7 mal 6, also 336 mögliche Stockerl-Besetzungen – aus nur 8 Personen!
+Ohne Wiederholung heißt, kein Element darf doppelt gewählt werden, wie beim Ziehen ohne Zurücklegen.
+Stellt euch einen Wettlauf mit 8 Läuferinnen und Läufern vor, aber nur die Plätze 1 bis 3 zählen
+fürs Stockerl. Reihenfolge ist hier extrem wichtig, Gold ist nicht Silber. Für Platz 1 gibt's
+8 Möglichkeiten, für Platz 2 noch 7, für Platz 3 noch 6 – macht 8 mal 7 mal 6, also 336 mögliche
+Stockerl-Besetzungen, aus nur 8 Leuten.
 
-Jetzt zur Variation mit Wiederholung: Hier darf jede Stelle erneut aus allen n Möglichkeiten gewählt
-werden, ganz unabhängig von den vorherigen Stellen.
+Mit Wiederholung darf jede Stelle wieder aus allen n Möglichkeiten gewählt werden, ganz unabhängig
+davon, was vorher schon dran war.
 
-Und damit lösen wir jetzt unsere allererste Frage von vorhin auf: Wie viele 4-stellige PIN-Codes gibt
-es? Jede der 4 Stellen kann eine Ziffer von 0 bis 9 sein, und Wiederholungen sind erlaubt – man kann
-ja z.B. 1-1-1-1 als PIN haben. Das ergibt 10 hoch 4, also genau 10.000 mögliche PIN-Codes. Vergleicht
-das mal mit eurer Schätzung von vorhin! Übergabe an [Name B] für die Kombination."
+Und damit können wir die allererste Frage von vorhin auflösen: 4-stellige PIN-Codes. Jede der
+4 Stellen kann eine Ziffer von 0 bis 9 sein, und Wiederholung ist erlaubt – 1-1-1-1 geht ja auch.
+Also 10 hoch 4, macht genau 10.000 mögliche PINs. Schaut mal, wie nah ihr mit eurer Schätzung dran
+wart. Simon erklärt jetzt die Kombination."
 
 ---
 
-## Folie 6 – Kombination (Person B) · ~100 Sek.
+## Folie 6 – Kombination (Simon Schick) · ~100 Sek.
 
-"Bei der Kombination ist – im Unterschied zu Permutation und Variation – die Reihenfolge völlig egal.
-Uns interessiert nur, WELCHE Elemente ausgewählt wurden, nicht WANN oder in welcher Reihenfolge.
+"Bei der Kombination ist die Reihenfolge – anders als bei Variation und Permutation – komplett egal.
+Uns interessiert nur, welche Elemente überhaupt gewählt wurden, nicht in welcher Reihenfolge.
 
-Schauen wir uns das ohne Wiederholung an unserer zweiten Frage von ganz am Anfang an: Wenn ihr alle
-15 Schüler:innen in dieser Klasse gegenseitig eure Handynummern austauscht – wie viele Austausche
-sind das insgesamt? Wichtig hier: Wenn A mit B tauscht, ist das dasselbe wie wenn B mit A tauscht –
-die Reihenfolge ist egal, deshalb ist das eine Kombination, keine Variation! Wir wählen 2 Personen
-aus 15 aus, ohne dass die Reihenfolge zählt. Das ergibt 15 über 2, also 15 Fakultät durch 2 Fakultät
-mal 13 Fakultät, und das macht genau 105 Austausche.
+Damit lösen wir gleich unsere zweite Frage von vorhin auf: Ihr seid 15 Leute in dieser Klasse, und
+jeder tauscht mit jedem die Handynummer. Wie viele Austausche sind das? Wichtig: Wenn ich mit dir
+tausche, ist das dasselbe, als würdest du mit mir tauschen – die Reihenfolge ist egal, darum ist das
+eine Kombination und keine Variation. Wir wählen 2 aus 15 aus, ohne dass die Reihenfolge zählt:
+15 über 2, also 15 Fakultät durch 2 Fakultät mal 13 Fakultät – und das macht genau 105.
 
 *[kurze Pause]*
 
-105! Die meisten schätzen hier viel zu niedrig – irgendwo bei 15 oder vielleicht 30. Aber weil jede
-Person mit jeder anderen tauscht, wächst das viel schneller als man denkt. Das war Frage Nummer 2 von
-ganz am Anfang.
+105! Die meisten schätzen da viel zu niedrig, irgendwo bei 15 oder 30. Aber weil wirklich jeder mit
+jedem tauscht, wächst das viel schneller, als man im ersten Moment denkt.
 
-Jetzt noch kurz die Kombination mit Wiederholung, am Beispiel eines Eisbechers: Wir wählen 3 Kugeln
-aus 5 Sorten, und dabei dürfen auch mehrere Kugeln derselben Sorte gewählt werden – zum Beispiel
-3 mal Schoko. Mit der Formel für Kombination mit Wiederholung kommen wir hier auf 35 mögliche
-Eisbecher-Zusammenstellungen. Weiter zu [Name C] und dem Pascal'schen Dreieck."
+Kurz noch die Variante mit Wiederholung, am Beispiel Eisbecher: Wir wählen 3 Kugeln aus 5 Sorten, und
+es dürfen auch mehrere Kugeln derselben Sorte dabei sein, zum Beispiel 3 mal Schoko. Mit der Formel
+kommt man da auf 35 mögliche Eisbecher. Daniel zeigt euch jetzt das Pascal'sche Dreieck."
 
 ---
 
-## Folie 7 – Pascal'sches Dreieck (Person C) · ~70 Sek.
+## Folie 7 – Pascal'sches Dreieck (Daniel Kornfeld) · ~70 Sek.
 
-"Das Pascal'sche Dreieck ist im Grunde eine fertige Tabelle für alle Binomialkoeffizienten – also für
-alle 'n über k'-Werte, die wir bei der Kombination brauchen.
+"Das Pascal'sche Dreieck ist im Grunde eine fertige Tabelle für alle Binomialkoeffizienten – also
+für all die 'n über k'-Werte, die wir bei der Kombination gebraucht haben.
 
-Die Regel, nach der es aufgebaut ist, ist eine Rekursionsformel: Jede Zahl im Dreieck ist die Summe
-der zwei Zahlen direkt darüber. n über k ist also gleich n-minus-1 über k-minus-1, plus n-minus-1
-über k.
+Aufgebaut ist es nach einer ganz einfachen Regel: Jede Zahl ist die Summe der beiden Zahlen direkt
+darüber. n über k ist also n-minus-1 über k-minus-1 plus n-minus-1 über k.
 
-Schaut euch die orange markierte 15 im Dreieck an – das ist genau 6 über 2. Erkennt ihr das wieder?
-Genauso haben wir vorhin beim Lotto-Beispiel mit Binomialkoeffizienten gerechnet. Das Dreieck ist
-also nicht nur eine mathematische Spielerei, sondern ein super praktisches Hilfsmittel, wenn man
-schnell einen Binomialkoeffizienten ohne Taschenrechner abschätzen will. Übergabe an [Name A] für
-die Laplace-Wahrscheinlichkeit."
+Schaut euch mal die orange 15 im Dreieck an – das ist genau 6 über 2. Kommt euch das bekannt vor?
+Genau das hatten wir vorhin schon beim Lotto-Beispiel. Das Dreieck ist also keine reine Spielerei,
+sondern richtig praktisch, wenn man schnell einen Binomialkoeffizienten braucht, ohne den
+Taschenrechner rauszuholen. Max erklärt jetzt die Laplace-Wahrscheinlichkeit."
 
 ---
 
-## Folie 8 – Laplace-Wahrscheinlichkeit (Person A) · ~90 Sek.
+## Folie 8 – Laplace-Wahrscheinlichkeit (Max Manahl) · ~90 Sek.
 
-"Bis jetzt haben wir nur gezählt – jetzt verbinden wir das mit Wahrscheinlichkeit. Die
-Laplace-Formel ist denkbar einfach: P von A gleich Betrag A durch Betrag Omega.
+"Bis jetzt haben wir nur gezählt – jetzt machen wir daraus Wahrscheinlichkeit. Die Laplace-Formel ist
+eigentlich ziemlich simpel: P von A gleich Betrag A durch Betrag Omega.
 
-Betrag A sind die günstigen Fälle – also alle Ergebnisse, die unser gewünschtes Ereignis A erfüllen.
-Betrag Omega ist die Anzahl aller möglichen Ergebnisse, der komplette Ergebnisraum.
+Betrag A sind die günstigen Fälle, also die Ergebnisse, die unser Ereignis A erfüllen. Betrag Omega
+ist einfach alles, was überhaupt passieren kann, der ganze Ergebnisraum.
 
-Ganz wichtig dabei: Diese Formel funktioniert nur, wenn alle Ergebnisse gleich wahrscheinlich sind –
-das nennt man ein Laplace-Experiment. Bei einem fairen Würfel ist das der Fall, bei einem gezinkten
-Würfel nicht mehr!
+Wichtig dabei: Das funktioniert nur, wenn alle Ergebnisse gleich wahrscheinlich sind – das nennt man
+ein Laplace-Experiment. Bei einem fairen Würfel passt das, bei einem gezinkten nicht mehr.
 
-Schauen wir uns das am Würfeln an: Wir werfen zwei Würfel und fragen uns, wie wahrscheinlich ein
-Pasch ist – also dass beide Würfel die gleiche Zahl zeigen. Mit dem Zählprinzip von ganz am Anfang
-wissen wir: Es gibt 6 mal 6, also 36 mögliche Ergebnisse – das ist unser Omega. Schaut euch die
-Diagonale im Raster an: Das sind genau die 6 Fälle, in denen beide Würfel gleich sind – das ist unser
-A. Also P von Pasch gleich 6 durch 36, gleich 1 durch 6.
+Schauen wir uns das beim Würfeln an: Wir werfen zwei Würfel, wie wahrscheinlich ist ein Pasch, also
+beide zeigen die gleiche Zahl? Mit dem Zählprinzip von ganz am Anfang wissen wir schon: 6 mal 6, also
+36 mögliche Ergebnisse, das ist unser Omega. Und die Diagonale im Raster, das sind die 6 Fälle, wo
+beide gleich sind – unser A. Also P von Pasch gleich 6 durch 36, gleich 1 durch 6.
 
-Das zeigt schön: Kombinatorik und Wahrscheinlichkeit hängen direkt zusammen – ohne richtig zu
-zählen, kann man gar keine Wahrscheinlichkeit berechnen. Weiter zu [Name B] und unserer
-Lotto-Frage."
+Man sieht schön: Ohne richtig zu zählen, kommt man bei der Wahrscheinlichkeit nirgends hin. Simon
+zeigt euch jetzt, was das fürs Lotto bedeutet."
 
 ---
 
-## Folie 9 – Lotto 6 aus 45 (Person B) · ~80 Sek.
+## Folie 9 – Lotto 6 aus 45 (Simon Schick) · ~80 Sek.
 
-"Jetzt lösen wir die dritte und letzte Frage von ganz am Anfang auf: Wie wahrscheinlich ist ein
-Sechser beim Lotto 6 aus 45?
+"Jetzt lösen wir die letzte Frage von ganz am Anfang auf: Wie wahrscheinlich ist ein Sechser beim
+Lotto 6 aus 45?
 
-Zuerst brauchen wir Omega – alle möglichen Tipps. Wir wählen 6 Zahlen aus 45, Reihenfolge ist egal,
-also eine Kombination ohne Wiederholung: 45 über 6. Das ergibt die unglaubliche Zahl von
-8.145.060 möglichen Tipps.
+Zuerst Omega, also alle möglichen Tipps. Wir wählen 6 Zahlen aus 45, Reihenfolge egal, also eine
+Kombination ohne Wiederholung: 45 über 6. Kommt da eine wahnsinnige Zahl raus – 8.145.060 mögliche
+Tipps.
 
-Und A – die für uns günstigen Fälle? Das ist genau 1: nur der eine Tipp, der tatsächlich gezogen
-wird. Damit ergibt sich P von 6 Richtige gleich 1 durch 8.145.060 – das sind ungefähr
-0,0000123 Prozent.
+Und A, die günstigen Fälle? Genau 1 – nur der eine Tipp, der wirklich gezogen wird. Damit ist P von
+6 Richtige gleich 1 durch 8.145.060, also ungefähr 0,0000123 Prozent.
 
-Um sich das vorstellen zu können: Das ist ungefähr so wahrscheinlich, wie wenn man unter allen
-9 Millionen Einwohnerinnen und Einwohnern Österreichs zufällig genau eine ganz bestimmte Person
-herauspickt. Jetzt haben wir alle drei Einstiegsfragen beantwortet – Zeit für den praktischen Teil!
-Übergabe an [Name C]."
+Damit ihr ein Gefühl dafür kriegt: Das ist ungefähr so wahrscheinlich, wie wenn man unter allen
+9 Millionen Leuten in Österreich zufällig genau eine bestimmte Person herauspickt. Damit sind alle
+drei Fragen von vorhin geklärt – Zeit für den praktischen Teil, den übernimmt jetzt Daniel."
 
 ---
 
-## Folie 10 – Praktischer Teil: Estimation-Spiel (Person C) · ~40 Sek.
+## Folie 10 – Praktischer Teil: Estimation-Spiel (Daniel Kornfeld) · ~40 Sek.
 
-"Jetzt seid ihr dran! Wir machen ein kleines Schätzspiel mit zwei Runden.
+"Jetzt seid ihr dran. Wir spielen ein kleines Schätzspiel, zwei Runden.
 
-So funktioniert's: Wir stellen euch jeweils eine überraschende Frage. Jede Person schätzt für sich
-selbst, still im Kopf oder auf einem Zettel – bitte keinen Taschenrechner und kein Absprechen mit dem
-Sitznachbarn! Dann rechnen wir gemeinsam die richtige Antwort aus, und ihr seht, wie nahe ihr
-dran wart.
+So geht's: Wir stellen euch eine überraschende Frage, jeder schätzt für sich, im Kopf oder auf einem
+Zettel – bitte kein Taschenrechner, kein Absprechen mit dem Sitznachbarn. Dann rechnen wir gemeinsam
+aus, was wirklich rauskommt, und ihr seht, wie nah ihr dran wart.
 
-Zwei Runden – seid ihr bereit?"
+Bereit für Runde 1?"
 
 ---
 
-## Folie 11 – Runde 1: Eure Schätzung (Person A) · ~60 Sek.
+## Folie 11 – Runde 1: Eure Schätzung (Max Manahl) · ~60 Sek.
 
-"Hier die erste Frage: Stellt euch vor, ihr alle verlasst nacheinander, einer nach dem anderen, das
-Klassenzimmer. Wie viele verschiedene Reihenfolgen gibt es dafür – für euch 15 Schüler:innen?
+"Hier die erste Frage: Stellt euch vor, ihr verlasst alle nacheinander das Klassenzimmer, einer nach
+dem anderen. Wie viele verschiedene Reihenfolgen gibt es da – für euch 15 Schüler:innen?
 
 *[30–45 Sekunden Zeit zum Schätzen geben]*
 
-Schreibt eure Schätzung auf oder merkt sie euch gut – wir vergleichen gleich!
+Schreibt's auf oder merkt's euch gut, wir vergleichen gleich.
 
 *[kurze Handzeichen-Abfrage: 'Wer schätzt unter 1.000? Unter 1 Million? Über 1 Milliarde?']*
 
-Übergabe an [Name B] für die Auflösung."
+Simon löst auf."
 
 ---
 
-## Folie 12 – Runde 1: Auflösung (Person B) · ~70 Sek.
+## Folie 12 – Runde 1: Auflösung (Simon Schick) · ~70 Sek.
 
-"Das hier ist genau die Permutation von 15 Personen – P(15) gleich 15 Fakultät. Und 15 Fakultät ist...
+"Das ist genau die Permutation von 15 Personen, P(15) gleich 15 Fakultät. Und 15 Fakultät ist...
 
 *[kurze Pause, auf die Folie zeigen]*
 
-...1.307.674.368.000. Über 1,3 Billionen! Damit das greifbar wird: Stellt euch vor, ihr probiert ab
-jetzt eine Reihenfolge pro Sekunde durch, ohne Pause. Wie lange würdet ihr brauchen, um wirklich alle
-durchzuprobieren? Die Antwort: ungefähr 41.466 Jahre. Wenn man heute damit anfangen würde, hätte man
-um ca. 39.000 vor Christus begonnen – das ist die Steinzeit, also bevor es überhaupt Schrift,
-Landwirtschaft oder sesshafte Siedlungen gab!
+...1.307.674.368.000. Über 1,3 Billionen. Damit ihr ein Gefühl dafür kriegt: Stellt euch vor, ihr
+probiert ab jetzt eine Reihenfolge pro Sekunde durch, ohne Pause. Wie lange würde das dauern, bis
+wirklich alle durch sind? Ungefähr 41.466 Jahre. Hätte man damit heute angefangen, wäre man bei ca.
+39.000 vor Christus gestartet – das ist die Steinzeit, da gab's noch nicht mal Schrift oder
+Landwirtschaft.
 
-Das zeigt: 15 Fakultät heißt 15 mal 14 mal 13 und so weiter bis 1 – die Fakultät wächst astronomisch
-schnell. Schon bei nur 15 Elementen übersteigt das Ergebnis 1,3 Billionen. Übergabe an [Name C] für
-Runde 2."
+15 Fakultät heißt einfach 15 mal 14 mal 13 und so weiter bis runter auf 1 – und schon bei nur
+15 Elementen kommt da diese Wahnsinnszahl raus. Daniel macht weiter mit Runde 2."
 
 ---
 
-## Folie 13 – Runde 2: Eure Schätzung (Person C) · ~60 Sek.
+## Folie 13 – Runde 2: Eure Schätzung (Daniel Kornfeld) · ~60 Sek.
 
-"Runde 2, und jetzt wird's richtig groß: Wie viele verschiedene Möglichkeiten gibt es, ein
-Standard-Kartenspiel mit 52 Karten zu mischen?
+"Runde 2, und jetzt wird's richtig groß: Wie viele Möglichkeiten gibt's, ein Kartenspiel mit
+52 Karten zu mischen?
 
-Kleiner Tipp dazu: Das ist eine Permutation von 52 Elementen, also P(52) gleich 52 Fakultät.
+Kleiner Tipp: Das ist eine Permutation von 52 Elementen, also P(52) gleich 52 Fakultät.
 
 *[Zeit zum Schätzen geben]*
 
 *[Handzeichen-Abfrage: 'Wer sagt mehr als 1.000? 1 Million? 1 Milliarde? 1 Trillion?']*
 
-Übergabe an [Name A] für die Auflösung."
+Max löst auf."
 
 ---
 
-## Folie 14 – Runde 2: Auflösung (Person A) · ~80 Sek.
+## Folie 14 – Runde 2: Auflösung (Max Manahl) · ~80 Sek.
 
-"52 Fakultät ist ungefähr 8,07 mal 10 hoch 67 – eine Zahl mit 68 Stellen!
+"52 Fakultät ist ungefähr 8,07 mal 10 hoch 67 – eine Zahl mit 68 Stellen.
 
-Damit ihr eine Vorstellung davon kriegt, wie riesig das ist: Das gesamte sichtbare Universum hat
-schätzungsweise 10 hoch 80 Atome. 52 Fakultät ist zwar immer noch kleiner als das – aber stellt euch
-vor: Wenn seit dem Urknall JEDES einzelne Atom im Universum JEDE Sekunde eine komplett neue Reihenfolge
-bilden würde, gäbe es bis heute trotzdem kaum Wiederholungen.
+Damit ihr eine Vorstellung davon kriegt, wie groß das ist: Das sichtbare Universum hat ungefähr
+10 hoch 80 Atome. 52 Fakultät ist zwar noch kleiner als das, aber stellt euch vor: Würde seit dem
+Urknall jedes einzelne Atom im Universum jede Sekunde eine komplett neue Reihenfolge bilden, gäbe es
+bis heute trotzdem kaum Wiederholungen.
 
-Die Schlussfolgerung daraus: Fast jede Kartenmischung, die du jemals in deinem Leben machst, ist mit
-an Sicherheit grenzender Wahrscheinlichkeit einzigartig in der gesamten Menschheitsgeschichte – noch
-nie zuvor in genau dieser Reihenfolge gemischt worden, und wird es wahrscheinlich auch nie wieder.
-Übergabe an [Name B] für die Zusammenfassung."
+Heißt im Endeffekt: Fast jedes Mal, wenn du Karten mischst, ist das mit ziemlicher Sicherheit eine
+Reihenfolge, die es in der ganzen Menschheitsgeschichte noch nie gab – und wahrscheinlich auch nie
+wieder geben wird. Simon fasst jetzt alles zusammen."
 
 ---
 
-## Folie 15 – Übersichtstabelle (Person B) · ~70 Sek.
+## Folie 15 – Übersichtstabelle (Simon Schick) · ~70 Sek.
 
-"Bevor wir zusammenfassen, hier noch die kompakte Übersicht über alles, was wir heute besprochen
+"Bevor wir zusammenfassen, hier noch mal die kompakte Übersicht über alles, was wir heute besprochen
 haben.
 
-Der Trick, um in der Matura schnell die richtige Formel zu finden, sind eigentlich nur zwei Fragen:
-Erstens – ist die Reihenfolge wichtig? Wenn ja, sind wir bei Variation oder Permutation, wenn alle
-Elemente verwendet werden. Wenn die Reihenfolge egal ist, sind wir bei Kombination.
+Der Trick, um in der Matura schnell auf die richtige Formel zu kommen, sind eigentlich nur zwei
+Fragen. Erstens: Ist die Reihenfolge wichtig? Wenn ja, sind wir bei Variation, oder bei Permutation,
+wenn alle Elemente verwendet werden. Wenn die Reihenfolge egal ist, sind wir bei Kombination.
 
-Zweitens – wird mit oder ohne Wiederholung gewählt, also mit oder ohne Zurücklegen? Das entscheidet,
-welche der beiden Formel-Varianten man nimmt.
+Und zweitens: Wird mit oder ohne Wiederholung gewählt, also mit oder ohne Zurücklegen? Das
+entscheidet dann, welche der beiden Formeln man genau nimmt.
 
-Mit diesen zwei Fragen kommt man bei jeder Kombinatorik-Aufgabe in der Matura zur richtigen Formel.
-Übergabe an alle drei für die Zusammenfassung."
+Mit diesen zwei Fragen kommt man bei jeder Kombinatorik-Aufgabe in der Matura zur richtigen Formel."
 
 ---
 
 ## Folie 16 – Zusammenfassung (Alle) · ~60 Sek.
 
-**Person A:** "Mein wichtigster Punkt für heute: Das Zählprinzip ist die Basis von allem. Bei
-unabhängigen Schritten einfach die Möglichkeiten pro Schritt multiplizieren – daraus folgt am Ende
-alles andere."
+**Max:** "Mein wichtigster Punkt für heute: Das Zählprinzip ist die Basis von allem. Bei
+unabhängigen Schritten einfach die Möglichkeiten pro Schritt multiplizieren – der Rest folgt
+eigentlich daraus."
 
-**Person B:** "Für mich: Zwei Fragen führen euch zur richtigen Formel – Ist die Reihenfolge wichtig?
-Und: Wird mit Wiederholung gewählt? Wenn ihr diese zwei Fragen stellt, findet ihr in der Matura immer
+**Simon:** "Für mich: Zwei Fragen bringen euch zur richtigen Formel. Ist die Reihenfolge wichtig?
+Und wird mit Wiederholung gewählt? Wenn ihr die zwei Fragen stellt, findet ihr in der Matura immer
 die passende Formel."
 
-**Person C:** "Und von mir: Mit Laplace, P von A gleich Betrag A durch Betrag Omega, werden aus
-abstrakten Kombinatorik-Formeln ganz konkrete Wahrscheinlichkeiten – egal ob beim Würfeln, beim
+**Daniel:** "Und von mir: Mit Laplace, P von A gleich Betrag A durch Betrag Omega, werden aus
+abstrakten Kombinatorik-Formeln plötzlich ganz konkrete Wahrscheinlichkeiten – beim Würfeln, beim
 Lotto, oder beim Kartenmischen."
 
 ---
 
 ## Folie 17 – Quellen (Alle) · ~20 Sek.
 
-**Person A** (oder wer möchte): "Hier kurz unsere Quellen – Lehrplan und Formelsammlung vom BMBWF,
-unser Schulbuch, mathe-online.at, die Österreichischen Lotterien für die Lotto-Daten, und Wikipedia
-für die Begriffsdefinitionen. Alle Diagramme und Grafiken haben wir selbst mit Python erstellt."
+**Max:** "Hier noch kurz unsere Quellen: Lehrplan und Formelsammlung vom BMBWF, unser Schulbuch,
+mathe-online.at, die Österreichischen Lotterien für die Lotto-Zahlen, und Wikipedia für die Begriffe.
+Alle Grafiken haben wir selbst mit Python erstellt."
 
 ---
 
 ## Folie 18 – Danke / Fragen (Alle) · ~20 Sek.
 
-**Person A:** "Damit sind wir am Ende unserer Präsentation."
+**Max:** "Damit wären wir fertig."
 
-**Person B:** "Danke für eure Aufmerksamkeit!"
+**Simon:** "Danke für eure Aufmerksamkeit!"
 
-**Person C:** "Habt ihr noch Fragen? Oder – was war eure überraschendste Zahl heute?"
+**Daniel:** "Habt ihr noch Fragen? Oder sagt uns – was war eure überraschendste Zahl heute?"
 
 ---
 
 ### Gesamtdauer-Check
 
-Reine Sprechzeit liegt bei ca. 20–21 Minuten. Mit den eingeplanten Pausen für das Schätzspiel
-(Runde 1 + Runde 2, je 30–60 Sek. Stille + kurze Handzeichen-Abfrage) und etwas Luft zum natürlichen
-Sprechen kommt ihr realistisch auf 22–25 Minuten – genau im Zielbereich.
+Reine Sprechzeit liegt bei ca. 20–21 Minuten. Mit den Pausen fürs Schätzspiel (Runde 1 + Runde 2, je
+30–60 Sek. Stille plus kurze Handzeichen-Abfrage) und etwas Luft zum normalen Reden kommt ihr
+realistisch auf 22–25 Minuten – genau im Zielbereich.
 
-**Tipp:** Übt die Übergaben zwischen den Personen extra – "Übergabe an [Name]" sollte flüssig
-klingen, nicht abgelesen. Am besten merkt sich jede:r nur den letzten Satz der eigenen Folie und den
-ersten Satz der eigenen nächsten Folie auswendig, den Rest in eigenen Worten erzählen.
+**Tipp:** Lernt nicht den ganzen Text auswendig, sondern nur den letzten Satz der eigenen Folie und
+den ersten Satz der eigenen nächsten Folie – den Rest erzählt einfach mit eigenen Worten. Übergaben
+wie "Simon löst auf" oder "Daniel zeigt euch..." kurz und beiläufig sagen, nicht wie eine Ansage.

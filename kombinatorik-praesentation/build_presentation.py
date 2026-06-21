@@ -48,7 +48,7 @@ def slide_01_title(prs):
     add_text(slide, "Wie viele Möglichkeiten gibt es wirklich?", Inches(0.9), Inches(3.75), Inches(11.5), Inches(0.7),
              size=Pt(22), color=LIGHT_BLUE, italic=True, font=FONT_BODY)
 
-    add_text(slide, "Vorgetragen von Person A, Person B & Person C", Inches(0.9), Inches(6.3), Inches(11.5), Inches(0.5),
+    add_text(slide, "Vorgetragen von Max Manahl, Simon Schick & Daniel Kornfeld", Inches(0.9), Inches(6.3), Inches(11.5), Inches(0.5),
              size=Pt(16), color=WHITE, font=FONT_BODY)
     add_text(slide, "5. Klasse HAK · Angewandte Mathematik", Inches(0.9), Inches(6.75), Inches(11.5), Inches(0.4),
              size=Pt(13), color=GRAY, font=FONT_BODY)
@@ -93,10 +93,10 @@ def slide_02_agenda(prs):
         add_text(slide, q, COL2_LEFT + Inches(1.1), top, COL_W - Inches(1.4), Inches(1.15), size=Pt(15))
 
     page_number(slide, 2)
-    set_notes(slide, "Person A stellt die Agenda vor und präsentiert die drei Gedankenexperiment-Fragen. "
+    set_notes(slide, "Max stellt die Agenda vor und präsentiert die drei Gedankenexperiment-Fragen. "
               "Kurze Pause nach jeder Frage – das Publikum soll mental schätzen, NICHT laut antworten. "
               "Sagen: 'Diese drei Fragen werden wir heute Schritt für Schritt beantworten!' "
-              "Überleitung zu Person B für das Zählprinzip.")
+              "Überleitung zu Simon für das Zählprinzip.")
     return slide
 
 
@@ -128,10 +128,10 @@ def slide_03_zaehlprinzip(prs):
     add_formula(slide, "f_beispiel_outfits", left=COL2_LEFT + Inches(2.5), top=Inches(5.6), height=Inches(0.55))
 
     page_number(slide, 3)
-    set_notes(slide, "Person B erklärt das Zählprinzip am Outfit-Beispiel: 3×4=12 Hemd-Hosen-Kombinationen, "
+    set_notes(slide, "Simon erklärt das Zählprinzip am Outfit-Beispiel: 3×4=12 Hemd-Hosen-Kombinationen, "
               "jede davon × 2 Schuhe = 24. Das Raster macht das visuell greifbar. "
               "Betonen: Das Zählprinzip ist die GRUNDLAGE für Permutation, Variation und Kombination! "
-              "Überleitung zu Person C.")
+              "Überleitung zu Daniel.")
     return slide
 
 
@@ -178,10 +178,10 @@ def slide_04_permutation(prs):
                  box_width=COL_W, box_height=Inches(0.65))
 
     page_number(slide, 4)
-    set_notes(slide, "Person C erklärt Permutation ohne Wiederholung (Baumdiagramm, 3 Freunde = 6 Reihenfolgen, "
+    set_notes(slide, "Daniel erklärt Permutation ohne Wiederholung (Baumdiagramm, 3 Freunde = 6 Reihenfolgen, "
               "dann 5 Personen = 5!=120). Danach ANANAS mit Wiederholung: 6 Buchstaben, "
               "A kommt 3x, N 2x vor → 6!/(3!·2!·1!)=60. "
-              "Überleitung zu Person A.")
+              "Überleitung zu Max.")
     return slide
 
 
@@ -234,10 +234,10 @@ def slide_05_variation(prs):
                  box_width=COL_W, box_height=Inches(0.6))
 
     page_number(slide, 5)
-    set_notes(slide, "Person A erklärt Variation ohne Wiederholung (Stockerlplatz: 8 Läufer, nur 3 Plätze, "
+    set_notes(slide, "Max erklärt Variation ohne Wiederholung (Stockerlplatz: 8 Läufer, nur 3 Plätze, "
               "Reihenfolge zählt → V(8,3)=336). Dann Variation MIT Wiederholung und die Auflösung der "
               "ersten Gedankenexperiment-Frage: 10^4 = 10.000 PINs! "
-              "Überleitung zu Person B.")
+              "Überleitung zu Simon.")
     return slide
 
 
@@ -282,10 +282,10 @@ def slide_06_kombination(prs):
                  box_width=COL_W, box_height=Inches(0.5))
 
     page_number(slide, 6)
-    set_notes(slide, "Person B erklärt Kombination ohne Wiederholung am Handynummer-Beispiel: "
+    set_notes(slide, "Simon erklärt Kombination ohne Wiederholung am Handynummer-Beispiel: "
               "15 Schüler:innen, Reihenfolge egal → C(15,2) = 105 Austausche! "
               "Viele Leute erwarten ~15 oder ~30 – 105 überrascht. Das ist die Auflösung von Frage 2! "
-              "Dann Kombination MIT Wiederholung (Eisbecher). Überleitung zu Person C.")
+              "Dann Kombination MIT Wiederholung (Eisbecher). Überleitung zu Daniel.")
     return slide
 
 
@@ -316,10 +316,10 @@ def slide_07_pascal(prs):
              COL2_LEFT + Inches(2.4), panel_top + Inches(0.65), COL_W - Inches(2.7), Inches(0.95), size=Pt(13))
 
     page_number(slide, 7)
-    set_notes(slide, "Person C zeigt das Pascal'sche Dreieck: jede Zahl = Summe der zwei Zahlen darüber "
+    set_notes(slide, "Daniel zeigt das Pascal'sche Dreieck: jede Zahl = Summe der zwei Zahlen darüber "
               "(Rekursionsformel). Die orange 15 = binom(6,2) – direkte Verbindung zu Kombination. "
               "Das Dreieck ist eine fertige Tabelle für alle Binomialkoeffizienten. "
-              "Überleitung zu Person A.")
+              "Überleitung zu Max.")
     return slide
 
 
@@ -362,10 +362,10 @@ def slide_08_laplace(prs):
                  box_width=COL_W, box_height=Inches(0.9))
 
     page_number(slide, 8)
-    set_notes(slide, "Person A führt die Laplace-Wahrscheinlichkeit ein: P(A)=|A|/|Omega|. "
+    set_notes(slide, "Max führt die Laplace-Wahrscheinlichkeit ein: P(A)=|A|/|Omega|. "
               "Sofort am Beispiel demonstrieren: Würfelpasch. |Omega|=36 (Zählprinzip!), |A|=6 (Diagonale). "
               "P(Pasch)=6/36=1/6. Betonen: Kombinatorik UND Wahrscheinlichkeit hängen direkt zusammen. "
-              "Überleitung zu Person B.")
+              "Überleitung zu Simon.")
     return slide
 
 
@@ -405,9 +405,9 @@ def slide_09_lotto(prs):
              size=Pt(14), bold=True, color=DEEP_BLUE, anchor=MSO_ANCHOR.MIDDLE)
 
     page_number(slide, 9)
-    set_notes(slide, "Person B löst die dritte Gedankenexperiment-Frage auf: P(6 Richtige)=1/8.145.060. "
+    set_notes(slide, "Simon löst die dritte Gedankenexperiment-Frage auf: P(6 Richtige)=1/8.145.060. "
               "Den Österreich-Vergleich nutzen, um die Größenordnung greifbar zu machen. "
-              "Jetzt alle 3 Fragen beantwortet – kurze Pause, dann Überleitung zu Person C für "
+              "Jetzt alle 3 Fragen beantwortet – kurze Pause, dann Überleitung zu Daniel für "
               "den praktischen Teil.")
     return slide
 
@@ -440,9 +440,9 @@ def slide_10_spiel_intro(prs):
              size=Pt(24), bold=True, color=ORANGE, font=FONT_HEAD, align=PP_ALIGN.CENTER)
 
     page_number(slide, 10)
-    set_notes(slide, "Person C erklärt kurz die Spielregeln und erzeugt Spannung. "
+    set_notes(slide, "Daniel erklärt kurz die Spielregeln und erzeugt Spannung. "
               "Wichtig: Schätzungen werden im Kopf behalten oder auf einen Zettel geschrieben – "
-              "KEIN Taschenrechner, KEIN Gespräch! Dann Überleitung zu Person A für Runde 1.")
+              "KEIN Taschenrechner, KEIN Gespräch! Dann Überleitung zu Max für Runde 1.")
     return slide
 
 
@@ -469,9 +469,9 @@ def slide_11_runde1_frage(prs):
              size=Pt(17), italic=True, color=GRAY, align=PP_ALIGN.CENTER)
 
     page_number(slide, 11)
-    set_notes(slide, "Person A liest die Frage vor und gibt 30-45 Sekunden Zeit zum Schätzen. "
+    set_notes(slide, "Max liest die Frage vor und gibt 30-45 Sekunden Zeit zum Schätzen. "
               "Dann kurze Handshow: 'Wer schätzt unter 1.000? Unter 1 Million? Über 1 Milliarde?' "
-              "Spannung erzeugen, dann Überleitung zu Person B für die Auflösung.")
+              "Spannung erzeugen, dann Überleitung zu Simon für die Auflösung.")
     return slide
 
 
@@ -511,11 +511,11 @@ def slide_12_runde1_aufloesung(prs):
              size=Pt(17), color=DEEP_BLUE)
 
     page_number(slide, 12)
-    set_notes(slide, "Person B enthüllt die Auflösung: 15! = 1.307.674.368.000 ≈ 1,3 Billionen! "
+    set_notes(slide, "Simon enthüllt die Auflösung: 15! = 1.307.674.368.000 ≈ 1,3 Billionen! "
               "Den 'Steinzeit-Vergleich' als Anker verwenden: seit ca. 39.000 v. Chr. eine "
               "Reihenfolge pro Sekunde – und man wäre gerade fertig (Homo sapiens war damals "
               "gerade auf dem Weg nach Europa!). Kurzes 'WOW' abwarten. "
-              "Überleitung zu Person C für Runde 2.")
+              "Überleitung zu Daniel für Runde 2.")
     return slide
 
 
@@ -542,10 +542,10 @@ def slide_13_runde2_frage(prs):
              size=Pt(17), italic=True, color=GRAY, align=PP_ALIGN.CENTER)
 
     page_number(slide, 13)
-    set_notes(slide, "Person C liest die Frage vor. Diesmal gibt es einen Tipp ('Permutation von 52') "
+    set_notes(slide, "Daniel liest die Frage vor. Diesmal gibt es einen Tipp ('Permutation von 52') "
               "damit die Klasse annähernd die Größenordnung einschätzen kann. Gleich: Handshow-Schätzung "
               "'Wer sagt mehr als 1.000? 1 Million? 1 Milliarde? 1 Trillion?' "
-              "Überleitung zu Person A für die Auflösung.")
+              "Überleitung zu Max für die Auflösung.")
     return slide
 
 
@@ -578,9 +578,9 @@ def slide_14_runde2_aufloesung(prs):
              size=Pt(18), bold=True, color=DEEP_BLUE, anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
 
     page_number(slide, 14)
-    set_notes(slide, "Person A enthüllt 52! ≈ 8,07×10^67. Die drei Bullet-Points nacheinander vorlesen "
+    set_notes(slide, "Max enthüllt 52! ≈ 8,07×10^67. Die drei Bullet-Points nacheinander vorlesen "
               "und kurze Pause danach lassen – das 'Fazit' ist ein echter Gesprächsstarter. "
-              "Überleitung zu Person B: 'Jetzt fassen wir alles nochmal kompakt zusammen – "
+              "Überleitung zu Simon: 'Jetzt fassen wir alles nochmal kompakt zusammen – "
               "welche Formel, wann?'")
     return slide
 
@@ -647,7 +647,7 @@ def slide_15_uebersicht(prs):
              align=PP_ALIGN.CENTER)
 
     page_number(slide, 15)
-    set_notes(slide, "Person B fasst alle 5 Konzepte in der Entscheidungstabelle zusammen. "
+    set_notes(slide, "Simon fasst alle 5 Konzepte in der Entscheidungstabelle zusammen. "
               "Die zwei Fragen (Reihenfolge? Wiederholung?) direkt nennen – das ist der "
               "Matura-Trick, der immer funktioniert. Überleitung zu allen drei für die Zusammenfassung.")
     return slide
@@ -725,7 +725,7 @@ def slide_18_danke(prs):
     add_text(slide, "Fragen?", Inches(0.9), Inches(3.9), Inches(11.5), Inches(1.0),
              size=Pt(32), color=YELLOW, bold=True, font=FONT_HEAD, align=PP_ALIGN.CENTER)
 
-    add_text(slide, "Person A  ·  Person B  ·  Person C", Inches(0.9), Inches(6.5), Inches(11.5), Inches(0.5),
+    add_text(slide, "Max Manahl  ·  Simon Schick  ·  Daniel Kornfeld", Inches(0.9), Inches(6.5), Inches(11.5), Inches(0.5),
              size=Pt(16), color=LIGHT_BLUE, align=PP_ALIGN.CENTER)
 
     set_notes(slide, "Alle drei bedanken sich gemeinsam und stehen für Fragen bereit. "

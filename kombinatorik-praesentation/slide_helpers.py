@@ -21,6 +21,7 @@ MARGIN = Inches(0.5)
 CONTENT_TOP = Inches(1.35)
 
 PERSON_COLORS = {"A": DEEP_BLUE, "B": ORANGE, "C": MID_BLUE, "Alle": GRAY}
+PERSON_NAMES = {"A": "Max Manahl", "B": "Simon Schick", "C": "Daniel Kornfeld"}
 
 
 def asset_path(name):
@@ -118,8 +119,8 @@ def add_title_bar(slide, title, person=None, kicker=None):
 
 def add_person_chip(slide, person):
     color = PERSON_COLORS.get(person, GRAY)
-    label = "Alle" if person == "Alle" else f"Person {person}"
-    w = Inches(1.55)
+    label = "Alle" if person == "Alle" else PERSON_NAMES.get(person, person)
+    w = Inches(2.1)
     h = Inches(0.42)
     chip = add_rect(slide, SLIDE_W - w - Inches(0.35), Inches(0.36), w, h,
                      fill=WHITE, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
@@ -135,7 +136,7 @@ def add_person_chip(slide, person):
     _no_bullet(p)
     r = p.add_run()
     r.text = label
-    r.font.size = Pt(13)
+    r.font.size = Pt(12)
     r.font.bold = True
     r.font.color.rgb = color
     r.font.name = FONT_BODY
