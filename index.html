@@ -3,269 +3,295 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Stuff4Staff Handels GmbH – Übungsfirma der BHAK Kirchdorf/Krems. Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel. make the office great again." />
-<title>Stuff4Staff Handels GmbH — make the office great again</title>
+<meta name="description" content="Stuff4Staff Handels GmbH – Übungsfirma der HAK Kirchdorf an der Krems. Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel. Weil der Arbeitsplatz mehr sein darf als nur ein Ort zum Arbeiten." />
+<title>Stuff4Staff Handels GmbH — Weil der Arbeitsplatz mehr sein darf</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --bg:        #f3f8ef;
+    /* neutral / professional base */
+    --bg:        #f6f6f3;
     --paper:     #ffffff;
-    --ink:       #12331f;
-    --muted:     #5a7563;
-    --faint:     #8aa093;
+    --paper-2:   #fbfbf9;
+    --ink:       #16191d;
+    --ink-2:     #2b3038;
+    --muted:     #5b626d;
+    --faint:     #8a909b;
 
-    --g-900:     #0d3a20;
-    --g-700:     #15803d;
-    --g-600:     #1f9a50;
-    --g-500:     #2fae66;
-    --g-400:     #6ecb97;
-    --g-200:     #bce6cc;
-    --g-100:     #e2f4e8;
-    --g-50:      #eefaf1;
-    --cream:     #fbfdf7;
+    /* brand accent (heritage red, used sparingly) */
+    --acc:       #c0362f;
+    --acc-dark:  #98271f;
+    --acc-soft:  #f9eceb;
 
-    --line:      rgba(13, 58, 32, 0.12);
-    --line-2:    rgba(13, 58, 32, 0.2);
-    --shadow:    0 18px 50px -22px rgba(15, 60, 35, 0.32);
-    --shadow-sm: 0 8px 24px -14px rgba(15, 60, 35, 0.28);
+    /* sustainability green (register / teaser) */
+    --grn:       #1f8a4c;
+    --grn-dark:  #15633a;
+    --grn-soft:  #e8f5ed;
 
-    --r-sm: 14px; --r: 20px; --r-lg: 30px; --r-xl: 42px;
+    --line:      rgba(22,25,29,0.10);
+    --line-2:    rgba(22,25,29,0.17);
+    --shadow:    0 22px 60px -30px rgba(20,25,32,0.40);
+    --shadow-sm: 0 10px 30px -20px rgba(20,25,32,0.30);
+
+    --r-sm: 12px; --r: 18px; --r-lg: 26px; --r-xl: 36px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --maxw: 1200px;
+    --maxw: 1180px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 92px; }
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink); background: var(--bg);
     line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: var(--g-700); color: #fff; }
+  ::selection { background: var(--ink); color: #fff; }
   ::-webkit-scrollbar { width: 11px; }
-  ::-webkit-scrollbar-track { background: var(--g-50); }
-  ::-webkit-scrollbar-thumb { background: var(--g-400); border-radius: 10px; border: 3px solid var(--g-50); }
-  ::-webkit-scrollbar-thumb:hover { background: var(--g-600); }
+  ::-webkit-scrollbar-track { background: #ecece8; }
+  ::-webkit-scrollbar-thumb { background: #c7c8c1; border-radius: 10px; border: 3px solid #ecece8; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--faint); }
 
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
-  :focus-visible { outline: 3px solid var(--g-600); outline-offset: 3px; border-radius: 6px; }
+  :focus-visible { outline: 3px solid var(--acc); outline-offset: 3px; border-radius: 6px; }
 
-  h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; color: var(--ink); }
+  h1, h2, h3, h4 { font-family: 'Manrope', system-ui, sans-serif; font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); }
 
   .wrap { width: min(var(--maxw), 92vw); margin-inline: auto; }
-  section { position: relative; padding: clamp(72px, 11vh, 128px) 0; }
+  section { position: relative; padding: clamp(64px, 9vh, 110px) 0; }
 
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.82rem; font-weight: 600; color: var(--g-700);
-    padding: 7px 15px 7px 12px; border-radius: 100px; background: var(--g-100); border: 1px solid var(--g-200);
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--acc); padding: 6px 13px; border-radius: 100px; background: var(--acc-soft); border: 1px solid #f1d8d6;
   }
-  .eyebrow svg { width: 16px; height: 16px; }
-  .sec-title { font-size: clamp(2.1rem, 4.7vw, 3.5rem); margin: 18px 0 16px; }
-  .sec-sub { font-size: 1.1rem; color: var(--muted); max-width: 640px; }
-  .gn { color: var(--g-700); }
-
-  /* organic blobs */
-  .blob { position: absolute; border-radius: 50% 50% 48% 52% / 55% 45% 55% 45%; filter: blur(8px); opacity: .55; pointer-events: none; z-index: 0; }
+  .eyebrow svg { width: 15px; height: 15px; }
+  .eyebrow.gr { color: var(--grn-dark); background: var(--grn-soft); border-color: #cfe9d8; }
+  .sec-title { font-size: clamp(1.95rem, 4.2vw, 3.1rem); margin: 16px 0 14px; }
+  .sec-sub { font-size: 1.08rem; color: var(--muted); max-width: 640px; }
+  .ac { color: var(--acc); }
+  .gn { color: var(--grn-dark); }
 
   /* ───── Buttons ───── */
-  .btn { position: relative; display: inline-flex; align-items: center; gap: 9px; cursor: pointer; padding: 14px 26px; border-radius: 100px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1rem; border: 1px solid transparent; transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .25s, border-color .25s, color .25s; }
+  .btn { position: relative; display: inline-flex; align-items: center; gap: 9px; cursor: pointer; padding: 13px 24px; border-radius: 10px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.98rem; border: 1px solid transparent; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s, border-color .2s, color .2s; }
   .btn svg { width: 18px; height: 18px; }
-  .btn-primary { background: var(--g-700); color: #fff; box-shadow: 0 12px 26px -12px rgba(21,128,61,0.6); }
-  .btn-primary:hover { transform: translateY(-3px); background: var(--g-900); box-shadow: 0 18px 34px -14px rgba(21,128,61,0.7); }
-  .btn-soft { background: var(--paper); color: var(--g-900); border-color: var(--line-2); }
-  .btn-soft:hover { transform: translateY(-3px); border-color: var(--g-600); color: var(--g-700); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); background: #000; box-shadow: 0 14px 28px -16px rgba(0,0,0,0.6); }
+  .btn-acc { background: var(--acc); color: #fff; box-shadow: 0 12px 26px -14px rgba(192,54,47,0.7); }
+  .btn-acc:hover { transform: translateY(-2px); background: var(--acc-dark); }
+  .btn-grn { background: var(--grn); color: #fff; box-shadow: 0 12px 26px -14px rgba(31,138,76,0.6); }
+  .btn-grn:hover { transform: translateY(-2px); background: var(--grn-dark); }
+  .btn-soft { background: var(--paper); color: var(--ink); border-color: var(--line-2); }
+  .btn-soft:hover { transform: translateY(-2px); border-color: var(--ink); }
 
   .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow-sm); }
 
   /* ───── Top bar ───── */
-  .topbar { background: var(--g-900); color: #dff2e6; }
-  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 9px 0; font-size: 0.8rem; }
-  .topbar .dot { color: var(--g-400); }
+  .topbar { background: var(--ink); color: #c9cdd4; }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 8px 0; font-size: 0.79rem; }
+  .topbar .dot { color: var(--faint); }
   .topbar b { color: #fff; font-weight: 600; }
-  @media (max-width: 720px) { .topbar .tb-right { display: none; } }
+  @media (max-width: 760px) { .topbar .tb-right { display: none; } }
 
   /* ───── Nav ───── */
-  nav { position: sticky; top: 0; z-index: 50; transition: background .35s var(--ease), box-shadow .35s; border-bottom: 1px solid transparent; }
-  nav.scrolled { background: rgba(243,248,239,0.88); backdrop-filter: blur(14px); border-bottom-color: var(--line); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 0; }
-  .brand { display: flex; align-items: center; gap: 11px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.24rem; letter-spacing: -0.02em; }
-  .brand-mark { width: 40px; height: 40px; border-radius: 13px; display: grid; place-items: center; background: var(--g-700); box-shadow: 0 6px 16px -7px rgba(21,128,61,0.8); }
-  .brand-mark svg { width: 22px; height: 22px; color: #eafff1; }
-  .brand b { color: var(--g-700); }
+  nav { position: sticky; top: 0; z-index: 50; transition: background .3s var(--ease), box-shadow .3s; border-bottom: 1px solid transparent; background: rgba(246,246,243,0.7); }
+  nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom-color: var(--line); box-shadow: 0 4px 24px -18px rgba(0,0,0,0.4); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 13px 0; }
+  .brand { display: flex; align-items: center; gap: 11px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
+  .brand-mark { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--ink); }
+  .brand-mark svg { width: 21px; height: 21px; color: #fff; }
+  .brand b { color: var(--acc); }
   .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
-  .nav-links a { padding: 9px 15px; border-radius: 100px; font-size: 0.94rem; font-weight: 500; color: var(--muted); transition: color .25s, background .25s; }
-  .nav-links a:hover { color: var(--g-900); background: var(--g-100); }
+  .nav-links a { padding: 9px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 600; color: var(--ink-2); transition: color .2s, background .2s; }
+  .nav-links a:hover { color: var(--ink); background: rgba(22,25,29,0.06); }
+  .nav-links a.is-grn { color: var(--grn-dark); }
+  .nav-links a.is-grn:hover { background: var(--grn-soft); }
   .nav-cta { display: flex; align-items: center; gap: 10px; }
-  .burger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--paper); cursor: pointer; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
-  .burger span { width: 21px; height: 2px; background: var(--g-900); border-radius: 2px; transition: .3s var(--ease); }
+  .burger { display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--paper); cursor: pointer; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
+  .burger span { width: 21px; height: 2px; background: var(--ink); border-radius: 2px; transition: .3s var(--ease); }
   .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* ───── Hero ───── */
-  #hero { position: relative; overflow: hidden; padding: clamp(40px,7vh,80px) 0 0; }
-  .hero-inner { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 30px; align-items: center; min-height: 78vh; }
-  .hero-content { position: relative; z-index: 3; }
-  .hero h1 { font-size: clamp(2.7rem, 6vw, 4.7rem); font-weight: 800; }
-  .hero h1 em { font-style: normal; color: var(--g-700); }
-  .hero p.lead { font-size: clamp(1.06rem, 2vw, 1.24rem); color: var(--muted); max-width: 520px; margin: 24px 0 34px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-  .hero-tags span { display: inline-flex; align-items: center; gap: 7px; font-size: 0.88rem; font-weight: 500; color: var(--g-900); background: var(--paper); border: 1px solid var(--line); padding: 7px 14px; border-radius: 100px; }
-  .hero-tags svg { width: 15px; height: 15px; color: var(--g-600); }
-  .hero-visual { position: relative; z-index: 2; align-self: stretch; min-height: 480px; }
-  #hero-canvas { position: absolute; inset: -6% -2% 0 -6%; width: 112%; height: 106%; }
-  .hero-blob { width: 78%; aspect-ratio: 1; right: 2%; top: 8%; background: radial-gradient(circle at 40% 35%, var(--g-200), var(--g-100)); }
-  .hero-floor { position: absolute; left: 0; right: 0; bottom: 6%; height: 1px; background: linear-gradient(90deg, transparent, var(--line-2), transparent); z-index: 2; }
+  #start { padding: clamp(36px,6vh,72px) 0 clamp(56px,8vh,96px); }
+  .hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 46px; align-items: center; min-height: 70vh; }
+  .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.1rem); }
+  .hero h1 em { font-style: normal; color: var(--acc); }
+  .hero p.lead { font-size: clamp(1.05rem, 1.8vw, 1.2rem); color: var(--muted); max-width: 520px; margin: 22px 0 30px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+  .hero-trust { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .hero-trust .n { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--ink); }
+  .hero-trust .l { font-size: 0.82rem; color: var(--muted); }
 
-  /* wave divider */
-  .wave { display: block; width: 100%; height: 70px; color: var(--g-900); }
+  /* hero visual */
+  .hero-visual { position: relative; min-height: 420px; }
+  .hv-panel { position: absolute; inset: 0; border-radius: var(--r-xl); background:
+      radial-gradient(120% 90% at 80% 10%, #fff 0%, #f0efe9 55%, #e9e8e1 100%);
+      border: 1px solid var(--line); overflow: hidden; box-shadow: var(--shadow); }
+  .hv-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(22,25,29,0.06) 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: .7; }
+  .hv-scene { position: absolute; inset: 0; display: grid; place-items: center; }
+  .hv-scene svg { width: 78%; max-width: 380px; height: auto; filter: drop-shadow(0 24px 30px rgba(20,25,32,0.18)); }
+  .hv-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.95); border: 1px solid var(--line); border-radius: 100px; padding: 9px 15px; font-size: 0.82rem; font-weight: 600; box-shadow: var(--shadow-sm); }
+  .hv-chip svg { width: 15px; height: 15px; }
+  .hv-chip.c1 { top: 12%; left: -4%; color: var(--acc); }
+  .hv-chip.c2 { bottom: 16%; right: -3%; color: var(--grn-dark); }
+  .hv-chip.c3 { bottom: 7%; left: 8%; color: var(--ink); }
 
-  /* ───── Partners ───── */
-  .partners { background: var(--g-900); color: #cdeed8; }
-  .partners .wrap { padding: 28px 0; }
-  .partners .lbl { font-size: 0.8rem; color: #8fc7a4; text-align: center; margin-bottom: 18px; letter-spacing: 0.02em; }
-  .partner-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; align-items: center; }
-  .partner-row span { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.2rem; color: #bfe6cd; opacity: .75; transition: opacity .3s, color .3s; cursor: default; }
-  .partner-row span:hover { opacity: 1; color: #fff; }
+  /* ───── Logos strip ───── */
+  .logos { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper-2); }
+  .logos .wrap { padding: 24px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 36px; }
+  .logos .lbl { width: 100%; text-align: center; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+  .logos span.brandname { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--ink-2); opacity: .62; transition: opacity .25s; cursor: default; }
+  .logos span.brandname:hover { opacity: 1; }
+
+  /* ───── Section heads ───── */
+  .head { max-width: 720px; }
+  .head.center { margin-inline: auto; text-align: center; }
 
   /* ───── Products ───── */
-  .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 50px; }
-  .prod-card { padding: 30px 28px; transition: transform .35s var(--ease), box-shadow .35s, border-color .35s; position: relative; }
-  .prod-card:nth-child(3n+1) { border-radius: 28px 20px 28px 20px; }
-  .prod-card:nth-child(3n+2) { border-radius: 20px 28px 20px 28px; }
-  .prod-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); border-color: var(--g-200); }
-  .prod-num { position: absolute; top: 26px; right: 28px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--g-200); }
-  .prod-icon { width: 58px; height: 58px; border-radius: 17px; display: grid; place-items: center; margin-bottom: 20px; background: var(--g-50); border: 1px solid var(--g-200); transition: background .35s; }
-  .prod-card:hover .prod-icon { background: var(--g-100); }
-  .prod-icon svg { width: 28px; height: 28px; color: var(--g-700); }
-  .prod-card h3 { font-size: 1.24rem; margin-bottom: 9px; }
-  .prod-card p { color: var(--muted); font-size: 0.96rem; }
-  .prod-card .meta { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; font-size: 0.82rem; font-weight: 600; color: var(--g-600); }
-  .prod-card .meta::before { content: ""; width: 16px; height: 2px; background: var(--g-400); border-radius: 2px; }
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(252px, 1fr)); gap: 18px; margin-top: 44px; }
+  .prod-card { padding: 26px 24px; transition: transform .28s var(--ease), box-shadow .28s, border-color .28s; }
+  .prod-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--line-2); }
+  .prod-icon { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 17px; background: var(--acc-soft); }
+  .prod-icon svg { width: 25px; height: 25px; color: var(--acc); }
+  .prod-card h3 { font-size: 1.12rem; margin-bottom: 7px; }
+  .prod-card p { color: var(--muted); font-size: 0.93rem; }
+  .prod-foot { margin-top: 38px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 22px 26px; border-radius: var(--r); background: var(--ink); color: #e7e9ec; }
+  .prod-foot p { font-size: 0.96rem; margin-right: auto; }
+  .prod-foot b { color: #fff; }
 
-  /* ───── Mission split ───── */
-  .split { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 60px; align-items: center; }
-  .mission-card { position: relative; aspect-ratio: 1.05/1; border-radius: var(--r-xl); overflow: hidden; background: linear-gradient(160deg, var(--g-600), var(--g-900)); display: grid; place-items: center; box-shadow: var(--shadow); }
-  .mission-card .motto { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; color: #fff; font-size: clamp(1.7rem, 3.4vw, 2.7rem); text-align: center; line-height: 1.08; padding: 30px; }
-  .mission-card .motto em { font-style: normal; color: var(--g-400); display: block; }
-  .mission-card .leaf { position: absolute; color: rgba(255,255,255,0.16); }
-  .mission-card .leaf.l1 { width: 90px; top: 24px; left: 24px; transform: rotate(-20deg); }
-  .mission-card .leaf.l2 { width: 64px; bottom: 26px; right: 30px; transform: rotate(140deg); }
-  .feat-list { list-style: none; display: grid; gap: 18px; margin-top: 26px; }
-  .feat-list li { display: flex; gap: 14px; align-items: flex-start; }
-  .feat-list .ck { width: 30px; height: 30px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center; background: var(--g-100); border: 1px solid var(--g-200); margin-top: 2px; }
-  .feat-list .ck svg { width: 15px; height: 15px; color: var(--g-700); }
+  /* ───── Über uns ───── */
+  .about-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 54px; align-items: start; }
+  .feat-list { list-style: none; display: grid; gap: 16px; margin-top: 26px; }
+  .feat-list li { display: flex; gap: 13px; align-items: flex-start; }
+  .feat-list .ck { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; display: grid; place-items: center; background: var(--acc-soft); margin-top: 2px; }
+  .feat-list .ck svg { width: 14px; height: 14px; color: var(--acc); }
   .feat-list b { color: var(--ink); font-weight: 700; }
   .feat-list span span { color: var(--muted); }
-
-  /* ───── Sustainability ───── */
-  #nachhaltigkeit { background: var(--cream); }
-  .sus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 48px; }
-  .sus-card { padding: 26px 24px; display: flex; gap: 15px; align-items: flex-start; transition: transform .3s var(--ease), box-shadow .3s; }
-  .sus-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); }
-  .sus-card .ic { width: 44px; height: 44px; border-radius: 13px; background: var(--g-700); display: grid; place-items: center; flex-shrink: 0; }
-  .sus-card .ic svg { width: 22px; height: 22px; color: #eafff1; }
-  .sus-card h4 { font-size: 1.02rem; margin-bottom: 4px; }
-  .sus-card p { font-size: 0.9rem; color: var(--muted); }
-
-  /* ───── Vision ───── */
-  .vision { border-radius: var(--r-xl); background: linear-gradient(150deg, var(--g-700), var(--g-900)); color: #eafff1; padding: 56px 44px; position: relative; overflow: hidden; box-shadow: var(--shadow); }
-  .vision .eyebrow { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: #eafff1; }
-  .vision .sec-title { color: #fff; }
-  .vision-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; position: relative; z-index: 1; }
-  .vstat { text-align: center; position: relative; }
-  .vstat:not(:last-child)::after { content: ""; position: absolute; right: -15px; top: 12%; height: 76%; width: 1px; background: rgba(255,255,255,0.18); }
-  .vstat .n { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2.4rem, 4.4vw, 3.4rem); line-height: 1; color: #fff; }
-  .vstat .l { color: #bfe6cd; font-size: 0.92rem; margin-top: 10px; }
-  .vision .blob { width: 320px; height: 320px; background: rgba(110,203,151,0.4); top: -120px; right: -80px; opacity: .4; }
-
-  /* ───── Firmendaten ───── */
-  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .data-row { display: grid; grid-template-columns: 180px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .data-row:last-child { border-bottom: none; }
-  .data-row .k { font-size: 0.82rem; color: var(--faint); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding-top: 2px; }
-  .data-row .v { color: var(--ink); font-weight: 500; }
+  .data-card { padding: 28px 28px; }
+  .data-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .data-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .data-row:last-of-type { border-bottom: none; }
+  .data-row .k { font-size: 0.78rem; color: var(--faint); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding-top: 2px; }
+  .data-row .v { color: var(--ink); font-weight: 500; font-size: 0.95rem; }
   .data-row .v small { color: var(--muted); }
-  .practice-note { display: flex; gap: 13px; align-items: flex-start; margin-top: 24px; padding: 18px 20px; border-radius: var(--r-sm); background: var(--g-50); border: 1px solid var(--g-200); }
-  .practice-note svg { width: 21px; height: 21px; color: var(--g-700); flex-shrink: 0; margin-top: 2px; }
-  .practice-note p { font-size: 0.9rem; color: var(--muted); }
-  .practice-note b { color: var(--ink); }
+  .note { display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; padding: 16px 18px; border-radius: var(--r-sm); background: var(--paper-2); border: 1px solid var(--line); }
+  .note svg { width: 20px; height: 20px; color: var(--acc); flex-shrink: 0; margin-top: 2px; }
+  .note p { font-size: 0.88rem; color: var(--muted); }
+  .note b { color: var(--ink); }
+
+  /* ───── Stats band ───── */
+  .stats { background: var(--ink); color: #fff; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .stat { text-align: center; position: relative; }
+  .stat:not(:last-child)::after { content: ""; position: absolute; right: -14px; top: 14%; height: 72%; width: 1px; background: rgba(255,255,255,0.16); }
+  .stat .n { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1; }
+  .stat .l { color: #aeb4bd; font-size: 0.88rem; margin-top: 9px; }
+
+  /* ───── Nachhaltigkeit teaser ───── */
+  #nachhaltigkeit-teaser { background: linear-gradient(180deg, var(--grn-soft), #fff); }
+  .nh-teaser { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0; align-items: stretch; border-radius: var(--r-xl); background: var(--paper); border: 1px solid #d6ecdf; box-shadow: var(--shadow); overflow: hidden; }
+  .nh-teaser .txt { padding: 46px 44px; }
+  .nh-teaser h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); }
+  .nh-teaser h2 em { font-style: normal; color: var(--grn-dark); }
+  .nh-teaser p { color: var(--muted); margin: 14px 0 24px; max-width: 460px; }
+  .nh-pills { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
+  .nh-pills span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.83rem; font-weight: 600; color: var(--grn-dark); background: var(--grn-soft); border: 1px solid #cfe9d8; padding: 6px 13px; border-radius: 100px; }
+  .nh-pills svg { width: 14px; height: 14px; }
+  .nh-side { position: relative; min-height: 280px; background:
+      radial-gradient(120% 100% at 75% 20%, #2aa45e, #15633a); display: grid; place-items: center; overflow: hidden; }
+  .nh-side .leaf { width: 120px; height: 120px; color: rgba(255,255,255,0.92); position: relative; z-index: 1; }
+  .nh-side .ring { position: absolute; border: 2px solid rgba(255,255,255,0.18); border-radius: 50%; }
+  .nh-side .ring.r1 { width: 230px; height: 230px; }
+  .nh-side .ring.r2 { width: 340px; height: 340px; }
+
+  /* ───── Karriere ───── */
+  .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; margin-top: 42px; }
+  .car-card { padding: 24px 22px; }
+  .car-card .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 15px; }
+  .car-card .ic svg { width: 22px; height: 22px; color: var(--ink-2); }
+  .car-card h3 { font-size: 1.04rem; margin-bottom: 6px; }
+  .car-card p { color: var(--muted); font-size: 0.91rem; }
+  .car-cta { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 26px 30px; border-radius: var(--r); border: 1px dashed var(--line-2); background: var(--paper-2); }
+  .car-cta p { margin-right: auto; font-weight: 600; }
+  .car-cta p span { display: block; font-weight: 400; color: var(--muted); font-size: 0.9rem; }
 
   /* ───── Contact ───── */
-  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; }
-  .ci-list { list-style: none; display: grid; gap: 15px; margin-top: 26px; }
-  .ci-list li { display: flex; align-items: center; gap: 14px; }
-  .ci-ic { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; flex-shrink: 0; background: var(--g-50); border: 1px solid var(--g-200); }
-  .ci-ic svg { width: 20px; height: 20px; color: var(--g-700); }
-  .ci-list .k { font-size: 0.76rem; color: var(--faint); text-transform: uppercase; font-weight: 600; }
-  .ci-list .v { font-weight: 600; }
-  .socials { display: flex; gap: 11px; margin-top: 26px; }
-  .socials a { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--line); transition: .3s var(--ease); }
-  .socials a:hover { transform: translateY(-4px); background: var(--g-700); border-color: var(--g-700); }
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 46px; }
+  .ci-list { list-style: none; display: grid; gap: 14px; margin-top: 24px; }
+  .ci-list li { display: flex; align-items: center; gap: 13px; }
+  .ci-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; background: var(--paper-2); border: 1px solid var(--line); }
+  .ci-ic svg { width: 19px; height: 19px; color: var(--acc); }
+  .ci-list .k { font-size: 0.74rem; color: var(--faint); text-transform: uppercase; font-weight: 700; letter-spacing: 0.03em; }
+  .ci-list .v { font-weight: 600; font-size: 0.95rem; }
+  .socials { display: flex; gap: 10px; margin-top: 24px; }
+  .socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--line); transition: .25s var(--ease); }
+  .socials a:hover { transform: translateY(-3px); background: var(--ink); border-color: var(--ink); }
   .socials a:hover svg { color: #fff; }
-  .socials svg { width: 19px; height: 19px; color: var(--g-700); transition: color .3s; }
+  .socials svg { width: 18px; height: 18px; color: var(--ink-2); transition: color .25s; }
 
-  form.contact { padding: 32px 30px; display: grid; gap: 16px; }
-  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-bottom: 7px; }
-  .field label .req { color: var(--g-700); }
-  .field input, .field textarea, .field select { width: 100%; padding: 14px 15px; font-family: 'Inter', sans-serif; font-size: 0.96rem; color: var(--ink); background: var(--cream); border: 1px solid var(--line-2); border-radius: var(--r-sm); transition: border-color .3s, box-shadow .3s; resize: vertical; }
-  .field textarea { min-height: 118px; }
-  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--g-600); box-shadow: 0 0 0 3px rgba(47,174,102,0.18); background: #fff; }
-  .privacy { display: flex; gap: 11px; align-items: flex-start; font-size: 0.85rem; color: var(--muted); }
-  .privacy input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--g-700); flex-shrink: 0; }
-  .privacy a { color: var(--g-700); font-weight: 600; }
-  .form-done { display: none; align-items: center; gap: 11px; padding: 14px 17px; border-radius: var(--r-sm); background: var(--g-100); border: 1px solid var(--g-400); color: var(--g-900); font-weight: 600; font-size: 0.92rem; }
+  form.contact { padding: 30px 28px; display: grid; gap: 15px; }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .field label { display: block; font-size: 0.81rem; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+  .field label .req { color: var(--acc); }
+  .field input, .field textarea, .field select { width: 100%; padding: 13px 14px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--line-2); border-radius: var(--r-sm); transition: border-color .25s, box-shadow .25s; resize: vertical; }
+  .field textarea { min-height: 116px; }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-soft); background: #fff; }
+  .privacy { display: flex; gap: 10px; align-items: flex-start; font-size: 0.84rem; color: var(--muted); }
+  .privacy input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--acc); flex-shrink: 0; }
+  .privacy a { color: var(--acc); font-weight: 600; }
+  .form-done { display: none; align-items: center; gap: 10px; padding: 13px 16px; border-radius: var(--r-sm); background: var(--grn-soft); border: 1px solid #bfe3cc; color: var(--grn-dark); font-weight: 600; font-size: 0.9rem; }
   .form-done.show { display: flex; }
-  .form-done svg { width: 19px; height: 19px; }
+  .form-done svg { width: 18px; height: 18px; }
 
   /* ───── Footer ───── */
-  footer { background: var(--g-900); color: #cdeed8; padding: 62px 0 30px; }
-  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 42px; }
+  footer { background: var(--ink); color: #aeb4bd; padding: 58px 0 28px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 38px; margin-bottom: 38px; }
   .foot-brand .brand { color: #fff; }
-  .foot-brand .brand .brand-mark { background: rgba(255,255,255,0.14); }
-  .foot-brand .brand b { color: var(--g-400); }
-  .foot-brand p { color: #9fcdb0; margin: 16px 0; max-width: 300px; font-size: 0.94rem; }
-  .foot-brand .data { font-size: 0.8rem; color: #7eb695; line-height: 1.8; }
-  .foot-col h4 { color: #fff; font-size: 0.96rem; margin-bottom: 16px; }
-  .foot-col ul { list-style: none; display: grid; gap: 10px; }
-  .foot-col a { color: #9fcdb0; font-size: 0.92rem; transition: color .25s; }
+  .foot-brand .brand .brand-mark { background: rgba(255,255,255,0.12); }
+  .foot-brand .brand b { color: var(--acc); }
+  .foot-brand p { color: #9298a1; margin: 15px 0; max-width: 300px; font-size: 0.92rem; }
+  .foot-brand .data { font-size: 0.79rem; color: #7e848d; line-height: 1.8; }
+  .foot-col h4 { color: #fff; font-size: 0.93rem; margin-bottom: 14px; font-weight: 700; }
+  .foot-col ul { list-style: none; display: grid; gap: 9px; }
+  .foot-col a { color: #9298a1; font-size: 0.9rem; transition: color .2s; }
   .foot-col a:hover { color: #fff; }
-  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; color: #7eb695; font-size: 0.84rem; }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 22px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; color: #7e848d; font-size: 0.83rem; }
 
-  .reveal { opacity: 0; transform: translateY(38px); }
-  .reveal-l { opacity: 0; transform: translateX(-46px); }
-  .reveal-r { opacity: 0; transform: translateX(46px); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal-l { opacity: 0; transform: translateX(-38px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal-r { opacity: 0; transform: translateX(38px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .in { opacity: 1 !important; transform: none !important; }
 
   @media (max-width: 940px) {
-    .hero-inner, .split, .data-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-visual { min-height: 380px; order: -1; }
-    .vision-grid { grid-template-columns: repeat(2,1fr); gap: 34px 20px; }
-    .vstat:nth-child(2)::after { display: none; }
+    .hero-inner, .about-grid, .contact-grid, .nh-teaser { grid-template-columns: 1fr; gap: 38px; }
+    .nh-teaser { gap: 0; }
+    .hero-visual { min-height: 340px; order: -1; }
+    .nh-teaser .txt { padding: 34px 30px; }
+    .nh-side { min-height: 220px; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); gap: 30px 16px; }
+    .stat:nth-child(2)::after { display: none; }
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 720px) {
     .nav-links, .nav-cta .btn { display: none; }
     .burger { display: flex; }
-    .nav-links.open { display: flex; position: absolute; top: 70px; left: 4vw; right: 4vw; flex-direction: column; align-items: stretch; gap: 4px; padding: 14px; border-radius: 20px; background: rgba(255,255,255,0.98); border: 1px solid var(--line-2); box-shadow: var(--shadow); }
+    .nav-links.open { display: flex; position: absolute; top: 68px; left: 4vw; right: 4vw; flex-direction: column; align-items: stretch; gap: 3px; padding: 12px; border-radius: 16px; background: #fff; border: 1px solid var(--line-2); box-shadow: var(--shadow); }
     .frow { grid-template-columns: 1fr; }
-    .data-row { grid-template-columns: 1fr; gap: 3px; }
+    .data-row { grid-template-columns: 1fr; gap: 2px; }
   }
   @media (max-width: 480px) {
-    .vision-grid { grid-template-columns: 1fr; }
-    .vstat::after { display: none !important; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat::after { display: none !important; }
     .foot-grid { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto; }
   }
 </style>
 </head>
@@ -274,7 +300,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="wrap">
-    <span><b>Übungsfirma der BHAK Kirchdorf/Krems</b> <span class="dot">●</span> Großhandel · Büroausstattung &amp; Genuss</span>
+    <span><b>Übungsfirma der HAK Kirchdorf an der Krems</b> <span class="dot">●</span> Großhandel · Büroausstattung &amp; Genuss</span>
     <span class="tb-right">FN&nbsp;1157 <span class="dot">/</span> UID&nbsp;ATU50115717 <span class="dot">/</span> 4560&nbsp;Kirchdorf,&nbsp;AT</span>
   </div>
 </div>
@@ -282,20 +308,20 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a href="#hero" class="brand" aria-label="Stuff4Staff Startseite">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg></span>
+    <a href="#start" class="brand" aria-label="Stuff4Staff Startseite">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
       Stuff<b>4</b>Staff
     </a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#start">Start</a></li>
+      <li><a href="#ueber-uns">Über uns</a></li>
       <li><a href="#produkte">Produkte</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#nachhaltigkeit">Nachhaltigkeit</a></li>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#unternehmen">Unternehmen</a></li>
+      <li><a href="nachhaltigkeit.html" class="is-grn">Nachhaltigkeit</a></li>
+      <li><a href="#karriere">Karriere</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener" class="btn btn-primary" style="padding:11px 20px;font-size:.9rem;">Zum Shop
+      <a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener" class="btn btn-acc" style="padding:10px 18px;font-size:.88rem;">Zum Shop
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
       <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -303,72 +329,84 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
+<!-- HERO / START -->
+<section id="start" class="hero">
   <div class="wrap hero-inner">
-    <div class="hero-content">
-      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Gesund. Grün. Produktiv.</span>
-      <h1>Büroausstattung,<br />die <em>wirklich guttut.</em></h1>
-      <p class="lead">Stuff4Staff Handels GmbH ist Großhändler für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel — die Übungsfirma der BHAK Kirchdorf an der Krems.</p>
+    <div class="hero-content reveal-l">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg> Großhandel für Büro &amp; Genuss</span>
+      <h1>Weil der Arbeitsplatz <em>mehr sein darf</em> als nur ein Ort zum Arbeiten.</h1>
+      <p class="lead">Stuff4Staff Handels GmbH ist Großhändler für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel — die Übungsfirma der HAK Kirchdorf an der Krems.</p>
       <div class="hero-actions">
-        <a href="#produkte" class="btn btn-primary">Sortiment entdecken
+        <a href="#produkte" class="btn btn-primary">Unsere Produkte
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#unternehmen" class="btn btn-soft">Unternehmensdaten</a>
+        <a href="nachhaltigkeit.html" class="btn btn-soft">Nachhaltigkeit entdecken</a>
       </div>
-      <div class="hero-tags">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ergonomie</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Barista-Kaffee</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Nachhaltig</span>
+      <div class="hero-trust">
+        <div class="ht"><div class="n">8</div><div class="l">Produktkategorien</div></div>
+        <div class="ht"><div class="n">9</div><div class="l">Schüler:innen im Team</div></div>
+        <div class="ht"><div class="n">100&nbsp;%</div><div class="l">österreichische ÜFA</div></div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="blob hero-blob" aria-hidden="true"></div>
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-floor" aria-hidden="true"></div>
+    <div class="hero-visual reveal-r">
+      <div class="hv-panel">
+        <div class="hv-grid" aria-hidden="true"></div>
+        <div class="hv-scene" aria-hidden="true">
+          <!-- modern desk illustration -->
+          <svg viewBox="0 0 360 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- desk top -->
+            <rect x="40" y="196" width="280" height="12" rx="4" fill="#d9d6cc"/>
+            <rect x="58" y="208" width="9" height="58" rx="3" fill="#c7c3b8"/>
+            <rect x="293" y="208" width="9" height="58" rx="3" fill="#c7c3b8"/>
+            <!-- monitor -->
+            <rect x="150" y="96" width="120" height="76" rx="8" fill="#16191d"/>
+            <rect x="158" y="104" width="104" height="60" rx="4" fill="#2b3038"/>
+            <rect x="166" y="112" width="58" height="7" rx="3.5" fill="#c0362f"/>
+            <rect x="166" y="126" width="80" height="5" rx="2.5" fill="#5b626d"/>
+            <rect x="166" y="137" width="66" height="5" rx="2.5" fill="#5b626d"/>
+            <rect x="202" y="172" width="16" height="16" fill="#16191d"/>
+            <rect x="186" y="188" width="48" height="8" rx="4" fill="#16191d"/>
+            <!-- ergonomic chair -->
+            <path d="M86 196v-44c0-12 9-22 21-22h6c12 0 21 10 21 22v8" stroke="#1f8a4c" stroke-width="9" stroke-linecap="round"/>
+            <rect x="80" y="196" width="56" height="12" rx="6" fill="#1f8a4c"/>
+            <rect x="104" y="208" width="8" height="40" rx="4" fill="#c7c3b8"/>
+            <path d="M92 256l16-12 16 12" stroke="#c7c3b8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- coffee cup -->
+            <path d="M286 150h26a8 8 0 0 1 0 16h-4" stroke="#16191d" stroke-width="6" stroke-linecap="round"/>
+            <path d="M276 150h36v18a12 12 0 0 1-12 12h-12a12 12 0 0 1-12-12z" fill="#c0362f"/>
+            <path d="M286 132c-2 4 2 6 0 10M296 130c-2 4 2 6 0 10" stroke="#c7c3b8" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- plant -->
+            <rect x="46" y="168" width="26" height="28" rx="4" fill="#2b3038"/>
+            <path d="M59 168c0-16-8-22-16-24 0 14 6 22 16 24zM59 168c0-16 8-22 16-24 0 14-6 22-16 24z" fill="#1f8a4c"/>
+          </svg>
+        </div>
+        <span class="hv-chip c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ergonomie</span>
+        <span class="hv-chip c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg> Nachhaltig</span>
+        <span class="hv-chip c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/></svg> Barista-Kaffee</span>
+      </div>
     </div>
   </div>
-  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0,40 C240,75 480,75 720,45 C960,15 1200,15 1440,40 L1440,70 L0,70 Z"></path></svg>
 </section>
 
-<!-- PARTNERS -->
-<div class="partners">
+<!-- LOGOS -->
+<div class="logos">
   <div class="wrap">
-    <div class="lbl">Wir setzen auf namhafte Marken &amp; Lieferanten</div>
-    <div class="partner-row"><span>JURA</span><span>IKEA</span><span>TRIAFLEX</span><span>Leuwica</span><span>Pastarro</span><span>Getränke&nbsp;Wagner</span></div>
+    <div class="lbl">Namhafte Marken &amp; Lieferanten</div>
+    <span class="brandname">JURA</span>
+    <span class="brandname">IKEA</span>
+    <span class="brandname">TRIAFLEX</span>
+    <span class="brandname">Leuwica</span>
+    <span class="brandname">Pastarro</span>
+    <span class="brandname">Getränke&nbsp;Wagner</span>
   </div>
 </div>
 
-<!-- PRODUKTE -->
-<section id="produkte">
-  <div class="wrap">
-    <span class="eyebrow reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Sortiment</span>
-    <h2 class="sec-title reveal">Alles für den <span class="gn">perfekten Arbeitsplatz</span></h2>
-    <p class="sec-sub reveal">Vom höhenverstellbaren Schreibtisch bis zur Tasse Barista-Kaffee — kuratiert für Gesundheit, Genuss und Produktivität.</p>
-    <div class="prod-grid">
-      <article class="prod-card card reveal"><span class="prod-num">01</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2M4 9l1 11M20 9l-1 11M8 14h8"/></svg></div><h3>Gesundheitsfördernde Schreibtische</h3><p>Höhenverstellbare Tische, die Bewegung in den Arbeitstag bringen und den Rücken entlasten.</p><span class="meta">Ergonomie · höhenverstellbar</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">02</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19v2M18 19v2M5 13h14l-1 6H6l-1-6z"/><path d="M7 13V8a5 5 0 0 1 10 0v5"/></svg></div><h3>Ergonomische Bürostühle</h3><p>Sessel, die Haltung und Konzentration über den ganzen Tag aktiv unterstützen.</p><span class="meta">Komfort · Haltung</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">03</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><h3>Schreibtischlampen</h3><p>Blendfreies, fokussiertes Licht für ermüdungsfreies Arbeiten zu jeder Tageszeit.</p><span class="meta">Licht · Fokus</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">04</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h3>Kaffeevollautomaten</h3><p>Barista-Qualität auf Knopfdruck — frisch gemahlen, perfekt extrahiert. U.&nbsp;a. von JURA.</p><span class="meta">Premium · Vollautomat</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">05</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 6h6M9 10h6"/><circle cx="12" cy="16" r="2"/></svg></div><h3>Heißgetränke- &amp; Vendingautomaten</h3><p>Zuverlässige Automaten für Kaffee, Tee und mehr — mit Getränke&nbsp;Wagner.</p><span class="meta">Vending · Self-Service</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">06</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 5v2M9 14v3"/></svg></div><h3>Kühlschränke &amp; Mikrowellen</h3><p>Kompakte Küchengeräte für eine vollwertige Pausenversorgung im Büro.</p><span class="meta">Küche · Pause</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">07</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 2-3 4.5-1.5 7C12 12.5 12 15 9.5 17"/><ellipse cx="12" cy="20" rx="8" ry="2.2"/><path d="M16 5c-1.5 1.2-1.8 2.7-.9 4.2"/></svg></div><h3>Kaffee &amp; Tee</h3><p>Erlesene Kaffeebohnen und ein ausgewähltes Teesortiment — von kräftig bis fein-aromatisch.</p><span class="meta">Aroma · Genuss</span></article>
-      <article class="prod-card card reveal"><span class="prod-num">08</span><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M12 11v8M7 19h10M9 3c0 2-2 3-2 5M15 3c0 2 2 3 2 5"/></svg></div><h3>Geschirr &amp; Accessoires</h3><p>Hochwertiges Geschirr und Entspannungsutensilien, die den Arbeitsalltag abrunden.</p><span class="meta">Tischkultur · Wohlfühlen</span></article>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION -->
-<section id="mission">
-  <div class="wrap split">
-    <div class="mission-card reveal-l" aria-hidden="true">
-      <svg class="leaf l1" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.49.39C19 21 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
-      <svg class="leaf l2" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.49.39C19 21 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
-      <div class="motto">„make the<em>office great</em>again."</div>
-    </div>
-    <div class="reveal-r">
-      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 9l7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9z"/></svg> Mission &amp; Werte</span>
-      <h2 class="sec-title">Ein Arbeitsplatz darf <span class="gn">mehr sein</span></h2>
-      <p class="sec-sub">Wir verbessern Büroumgebungen und steigern Gesundheit, Entspannung und Wohlbefinden — als innovative Übungsfirma mit echtem unternehmerischem Anspruch.</p>
+<!-- ÜBER UNS -->
+<section id="ueber-uns">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Über uns</span>
+      <h2 class="sec-title">Eine Übungsfirma mit <span class="ac">echtem Anspruch</span></h2>
+      <p class="sec-sub">Wir sind ein Team aus neun Schülerinnen und Schülern der HAK Kirchdorf an der Krems. Als Übungsfirma bilden wir reale Geschäftsprozesse ab — vom Einkauf über Marketing bis zum Verkauf — und verbessern Büroumgebungen für mehr Gesundheit, Entspannung und Wohlbefinden.</p>
       <ul class="feat-list">
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Qualität &amp; Professionalität.</b> <span>Sorgfältig ausgewählte Produkte und verlässliche Prozesse.</span></span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Vertrauensvolle Lieferanten.</b> <span>Starke Partnerschaften mit namhaften Marken.</span></span></li>
@@ -376,65 +414,105 @@
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Marktbekanntheit.</b> <span>Nachhaltig Marktanteile unter Österreichs Übungsfirmen gewinnen.</span></span></li>
       </ul>
     </div>
-  </div>
-</section>
-
-<!-- NACHHALTIGKEIT -->
-<section id="nachhaltigkeit">
-  <div class="wrap">
-    <span class="eyebrow reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Nachhaltigkeit</span>
-    <h2 class="sec-title reveal">Verantwortung, die wir <span class="gn">leben</span></h2>
-    <p class="sec-sub reveal">Nachhaltiges Handeln ist bei Stuff4Staff fest im Alltag verankert — vom Büro bis zur Lieferung.</p>
-    <div class="sus-grid">
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg></div><div><h4>Papierlos &amp; Öko-Papier</h4><p>Weitgehend digitale Prozesse, bei Bedarf umweltfreundliches Papier.</p></div></div>
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19a4 4 0 0 1-3.1-6.5M12 4a4 4 0 0 1 6.6 1.5M17 19a4 4 0 0 0 3.1-6.5M9 9l3-3 3 3M12 6v9"/></svg></div><div><h4>Mülltrennung &amp; Recycling</h4><p>Konsequente Trennung und Wiederverwertung im gesamten Betrieb.</p></div></div>
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5 9 9h4l3 4.5M15 9h3"/></svg></div><div><h4>Regional &amp; bio</h4><p>Regionale Bio-Produkte fürs Team, geliefert per Rad oder E-Fahrzeug.</p></div></div>
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 7l10-5 10 5M4 10v7M20 10v7M2 17h20"/></svg></div><div><h4>Fahrrad-Anreize</h4><p>Überdachte Stellplätze und Anreize für die umweltfreundliche Anreise.</p></div></div>
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div><h4>Langlebige Produkte</h4><p>Wir setzen auf Qualität und Lebensdauer statt Wegwerfware.</p></div></div>
-      <div class="sus-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><h4>Just-in-Time</h4><p>Bedarfsgerechte Lieferung reduziert Lagerkosten und Ressourcen.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- VISION -->
-<section id="vision">
-  <div class="wrap">
-    <div class="vision reveal">
-      <div class="blob" aria-hidden="true"></div>
-      <span class="eyebrow" style="position:relative;z-index:1;">Vision 2026</span>
-      <h2 class="sec-title" style="position:relative;z-index:1;">Klare Ziele, messbarer Kurs</h2>
-      <div class="vision-grid">
-        <div class="vstat"><div class="n" data-target="100" data-suffix="+">0</div><div class="l">Übungsfirmen als Stammkunden im Inland</div></div>
-        <div class="vstat"><div class="n" data-target="3">0</div><div class="l">Exportmärkte: Tschechien, Südtirol, Deutschland</div></div>
-        <div class="vstat"><div class="n" data-target="6">0</div><div class="l">Geschäftspartner im Ausland (je 2 pro Markt)</div></div>
-        <div class="vstat"><div class="n" data-text="JIT">0</div><div class="l">Just-in-Time-Lieferung für schlanke Lager</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- UNTERNEHMEN -->
-<section id="unternehmen">
-  <div class="wrap data-grid">
-    <div>
-      <span class="eyebrow reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg> Unternehmen</span>
-      <h2 class="sec-title reveal">Transparente <span class="gn">Firmendaten</span></h2>
-      <p class="sec-sub reveal">Stuff4Staff Handels GmbH ist die Übungsfirma der Bundeshandelsakademie Kirchdorf an der Krems — registriert im ACT-Firmenbuch und aktiv im internationalen Übungsfirmen-Handel.</p>
-      <div class="practice-note reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <p><b>Übungsfirma:</b> Der Waren- und Zahlungsverkehr erfolgt ausschließlich zu Ausbildungszwecken im Netzwerk der Übungsfirmen. Es werden keine Produkte real ausgeliefert und keine realen Zahlungen getätigt.</p>
-      </div>
-    </div>
-    <div class="card reveal-r" style="padding:30px 30px;">
+    <div class="data-card card reveal-r">
+      <h3>Firmendaten</h3>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:6px;">Transparent &amp; nachvollziehbar.</p>
       <div class="data-row"><div class="k">Firma</div><div class="v">Stuff4Staff Handels GmbH</div></div>
       <div class="data-row"><div class="k">Rechtsform</div><div class="v">GmbH · Übungsfirma</div></div>
-      <div class="data-row"><div class="k">Träger</div><div class="v">BHAK Kirchdorf an der Krems</div></div>
+      <div class="data-row"><div class="k">Träger</div><div class="v">HAK Kirchdorf an der Krems</div></div>
       <div class="data-row"><div class="k">Geschäftsführung</div><div class="v">Mag. Regina Braunsberger</div></div>
       <div class="data-row"><div class="k">Firmenbuch</div><div class="v">FN 1157 <small>· Registergericht ACT, Wien</small></div></div>
       <div class="data-row"><div class="k">UID-Nummer</div><div class="v">ATU50115717</div></div>
-      <div class="data-row"><div class="k">Kammer</div><div class="v">ACT Wirtschaftskammer <small>(318 – Versand, Internet- und allgemeiner Handel)</small></div></div>
       <div class="data-row"><div class="k">Branche</div><div class="v">Großhandel für Büromöbel, Genussartikel und Waren aller Art</div></div>
       <div class="data-row"><div class="k">Sitz</div><div class="v">Weinzierler Straße 22, 4560 Kirchdorf an der Krems, Österreich</div></div>
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p><b>Übungsfirma:</b> Waren- und Zahlungsverkehr erfolgen ausschließlich zu Ausbildungszwecken im Netzwerk der Übungsfirmen. Es werden keine Produkte real ausgeliefert und keine realen Zahlungen getätigt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="n" data-target="8">0</div><div class="l">Produktkategorien</div></div>
+      <div class="stat"><div class="n" data-target="6">0</div><div class="l">Marken &amp; Lieferanten</div></div>
+      <div class="stat"><div class="n" data-target="9">0</div><div class="l">Schüler:innen im Team</div></div>
+      <div class="stat"><div class="n" data-text="JIT">0</div><div class="l">Just-in-Time-Lieferung</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUKTE -->
+<section id="produkte">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Unsere Produkte</span>
+      <h2 class="sec-title">Alles für den <span class="ac">perfekten Arbeitsplatz</span></h2>
+      <p class="sec-sub">Vom höhenverstellbaren Schreibtisch bis zur Tasse Barista-Kaffee — kuratiert für Gesundheit, Genuss und Produktivität.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19v2M18 19v2M5 13h14l-1 6H6l-1-6z"/><path d="M7 13V8a5 5 0 0 1 10 0v5"/></svg></div><h3>Gesundheitsfördernde Bürostühle</h3><p>Ergonomische Sessel, die Haltung und Konzentration über den ganzen Tag aktiv unterstützen.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2M4 9l1 11M20 9l-1 11M8 14h8"/></svg></div><h3>Höhenverstellbare Schreibtische</h3><p>Tische, die Bewegung in den Arbeitstag bringen und den Rücken spürbar entlasten.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M12 3v18"/></svg></div><h3>Büroschränke &amp; Regale</h3><p>Funktionale, langlebige Stauraumlösungen — robust, reparierbar und zeitlos im Design.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h3>Kaffeevollautomaten</h3><p>Barista-Qualität auf Knopfdruck — frisch gemahlen, perfekt extrahiert. U.&nbsp;a. von JURA.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 6h6M9 10h6"/><circle cx="12" cy="16" r="2"/></svg></div><h3>Heißgetränke- &amp; Vendingautomaten</h3><p>Zuverlässige Automaten für Kaffee, Tee und mehr — mit Getränke&nbsp;Wagner.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 2-3 4.5-1.5 7C12 12.5 12 15 9.5 17"/><ellipse cx="12" cy="20" rx="8" ry="2.2"/><path d="M16 5c-1.5 1.2-1.8 2.7-.9 4.2"/></svg></div><h3>Erlesener Kaffee &amp; Tee</h3><p>Ausgewählte Kaffeebohnen und ein feines Teesortiment — von kräftig bis fein-aromatisch.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 5v2M9 14v3"/></svg></div><h3>Kühlschränke &amp; Mikrowellen</h3><p>Kompakte Küchengeräte für eine vollwertige Pausenversorgung im Büro.</p></article>
+      <article class="prod-card card reveal"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M12 11v8M7 19h10M9 3c0 2-2 3-2 5M15 3c0 2 2 3 2 5"/></svg></div><h3>Entspannungs- &amp; Genussartikel</h3><p>Hochwertiges Geschirr und Wohlfühl-Utensilien, die den Arbeitsalltag abrunden.</p></article>
+    </div>
+    <div class="prod-foot reveal">
+      <p><b>Neu &amp; nachhaltig:</b> Unsere regionalen, geprüften Produkte findest du gebündelt im Nachhaltigkeits-Register.</p>
+      <a href="nachhaltigkeit.html" class="btn btn-grn" style="padding:11px 20px;font-size:.9rem;">Zum Nachhaltigkeits-Register
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- NACHHALTIGKEIT TEASER -->
+<section id="nachhaltigkeit-teaser">
+  <div class="wrap">
+    <div class="nh-teaser reveal">
+      <div class="txt">
+        <span class="eyebrow gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Nachhaltigkeit</span>
+        <h2>Make Office <em>Green</em> Again</h2>
+        <p>Stuff4Staff wird zum nachhaltigen Büroartikelhändler: regionale Produkte, geprüfte Siegel und CO₂-neutraler Versand. Unser Leitprinzip — <b>belegbar statt behauptet</b>.</p>
+        <div class="nh-pills">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Regional &amp; österreichisch</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> CO₂-neutraler Versand</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Geprüfte Siegel</span>
+        </div>
+        <a href="nachhaltigkeit.html" class="btn btn-grn">Mehr zur Nachhaltigkeit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="nh-side" aria-hidden="true">
+        <div class="ring r1"></div><div class="ring r2"></div>
+        <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KARRIERE -->
+<section id="karriere">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Karriere</span>
+      <h2 class="sec-title">Wirtschaft <span class="ac">echt erleben</span></h2>
+      <p class="sec-sub">Als Übungsfirma lernst du betriebliche Abläufe nicht aus dem Lehrbuch, sondern in der Praxis. Jede Abteilung übernimmt echte Verantwortung im internationalen Übungsfirmen-Netzwerk.</p>
+    </div>
+    <div class="car-grid">
+      <article class="car-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></div><h3>Einkauf &amp; Beschaffung</h3><p>Lieferanten auswählen, Konditionen verhandeln, Sortiment nachhaltig gestalten.</p></article>
+      <article class="car-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 0 1-5.8-1.6"/></svg></div><h3>Marketing &amp; Verkauf</h3><p>Kampagnen, Messen, Kundenkontakt — die Marke Stuff4Staff sichtbar machen.</p></article>
+      <article class="car-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div><h3>Buchhaltung &amp; Finanzen</h3><p>Belege, Zahlungsverkehr und Controlling im ÜFA-Netzwerk sauber abbilden.</p></article>
+      <article class="car-card card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4a3.5 3.5 0 0 1 0 7M22 20a6.5 6.5 0 0 0-5-6.3"/></svg></div><h3>Personal &amp; Organisation</h3><p>Teamkoordination, interne Prozesse und ein gutes Betriebsklima gestalten.</p></article>
+    </div>
+    <div class="car-cta reveal">
+      <p>Du besuchst die HAK Kirchdorf und willst mitarbeiten?<span>Schreib uns — wir freuen uns über motivierte Teammitglieder.</span></p>
+      <a href="#kontakt" class="btn btn-primary">Jetzt bewerben
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -442,15 +520,15 @@
 <!-- KONTAKT -->
 <section id="kontakt">
   <div class="wrap contact-grid">
-    <div>
-      <span class="eyebrow reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Kontakt</span>
-      <h2 class="sec-title reveal">Schreiben Sie <span class="gn">uns</span></h2>
-      <p class="sec-sub reveal">Fragen zum Sortiment, zur Zusammenarbeit im Übungsfirmen-Netzwerk oder zur Karriere? Wir freuen uns auf Ihre Nachricht.</p>
+    <div class="reveal-l">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Kontakt</span>
+      <h2 class="sec-title">Schreiben Sie <span class="ac">uns</span></h2>
+      <p class="sec-sub">Fragen zum Sortiment, zur Zusammenarbeit im Übungsfirmen-Netzwerk oder zur Karriere? Wir freuen uns auf Ihre Nachricht.</p>
       <ul class="ci-list">
-        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><div><div class="k">E-Mail</div><div class="v">stuff4staff1157@uebungsfirmen.at</div></div></li>
-        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><div class="k">Telefon</div><div class="v">+43 7582 606 81-34</div></div></li>
-        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="k">Standort</div><div class="v">Weinzierler Straße 22, 4560 Kirchdorf/Krems</div></div></li>
-        <li class="reveal"><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><div class="k">Öffnungszeiten (Übungsbetrieb)</div><div class="v">Montag, 12:00–14:30 Uhr</div></div></li>
+        <li><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><div><div class="k">E-Mail</div><div class="v">stuff4staff1157@uebungsfirmen.at</div></div></li>
+        <li><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><div class="k">Telefon</div><div class="v">+43 7582 606 81-34</div></div></li>
+        <li><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="k">Standort</div><div class="v">Weinzierler Straße 22, 4560 Kirchdorf/Krems</div></div></li>
+        <li><span class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><div class="k">Öffnungszeiten (Übungsbetrieb)</div><div class="v">Montag, 12:00–14:30 Uhr</div></div></li>
       </ul>
       <div class="socials">
         <a href="https://instagram.com/stuff4staff" target="_blank" rel="noopener" aria-label="Instagram @stuff4staff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
@@ -466,11 +544,11 @@
         <div class="field"><label for="firma">Übungsfirma / Unternehmen</label><input id="firma" type="text" /></div>
         <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input id="email" type="email" required /></div>
       </div>
-      <div class="field"><label for="thema">Anliegen</label><select id="thema"><option>Produktanfrage</option><option>Handel im Übungsfirmen-Netzwerk</option><option>Kaffee &amp; Vollautomaten</option><option>Karriere</option><option>Sonstiges</option></select></div>
+      <div class="field"><label for="thema">Anliegen</label><select id="thema"><option>Produktanfrage</option><option>Handel im Übungsfirmen-Netzwerk</option><option>Kaffee &amp; Vollautomaten</option><option>Nachhaltigkeit</option><option>Karriere</option><option>Sonstiges</option></select></div>
       <div class="field"><label for="nachricht">Nachricht <span class="req">*</span></label><textarea id="nachricht" required></textarea></div>
       <label class="privacy"><input type="checkbox" id="dsgvo" required /> <span>Ich stimme der Verarbeitung meiner Daten gemäß <a href="#">Datenschutzerklärung</a> zu (Übungszweck). <span class="req">*</span></span></label>
       <div class="form-done" id="formDone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Danke! Ihre Nachricht wurde übermittelt — wir melden uns in Kürze.</div>
-      <button type="submit" class="btn btn-primary" style="justify-content:center;">Nachricht senden
+      <button type="submit" class="btn btn-acc" style="justify-content:center;">Nachricht senden
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
     </form>
   </div>
@@ -481,212 +559,98 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#hero" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg></span>Stuff<b>4</b>Staff</a>
-        <p>Großhandel für gesundheitsfördernde Büroausstattung &amp; Genuss. Übungsfirma der BHAK Kirchdorf an der Krems.</p>
+        <a href="#start" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>Stuff<b>4</b>Staff</a>
+        <p>Großhandel für gesundheitsfördernde Büroausstattung &amp; Genuss. Übungsfirma der HAK Kirchdorf an der Krems.</p>
         <div class="data">FN 1157 · UID ATU50115717<br />Weinzierler Straße 22, 4560 Kirchdorf/Krems, AT</div>
       </div>
       <div class="foot-col"><h4>Produkte</h4><ul><li><a href="#produkte">Büromöbel</a></li><li><a href="#produkte">Kaffeevollautomaten</a></li><li><a href="#produkte">Kaffee &amp; Tee</a></li><li><a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener">Marketplace-Shop</a></li></ul></div>
-      <div class="foot-col"><h4>Unternehmen</h4><ul><li><a href="#mission">Mission</a></li><li><a href="#nachhaltigkeit">Nachhaltigkeit</a></li><li><a href="#vision">Vision 2026</a></li><li><a href="#unternehmen">Firmendaten</a></li></ul></div>
+      <div class="foot-col"><h4>Unternehmen</h4><ul><li><a href="#ueber-uns">Über uns</a></li><li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li><li><a href="#karriere">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div class="foot-col"><h4>Rechtliches</h4><ul><li><a href="#">AGB</a></li><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> Stuff4Staff Handels GmbH (Übungsfirma). Alle Rechte vorbehalten.</span>
-      <span>make the office great again 🌿</span>
+      <span>Weil der Arbeitsplatz mehr sein darf.</span>
     </div>
   </div>
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
 "use strict";
 var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('year').textContent = new Date().getFullYear();
-function revealStatic(){ document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){el.style.opacity='1';el.style.transform='none';}); }
 
-/* ───── 1. THREE.JS — animated office furniture (desk, chair, lamp, plant) ───── */
-(function () {
-  var canvas = document.getElementById('hero-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
-  var parent = canvas.parentElement;
-  function W(){ return parent.clientWidth; }
-  function H(){ return parent.clientHeight; }
+/* nav scrolled state */
+var navEl = document.getElementById('nav');
+function onScroll(){ if (window.scrollY > 12) navEl.classList.add('scrolled'); else navEl.classList.remove('scrolled'); }
+onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(42, W()/H(), 0.1, 100);
-  camera.position.set(0.5, 3.4, 12);
-  camera.lookAt(0, 1.4, 0);
-
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-  renderer.setSize(W(), H());
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xd7ead9, 1.0));
-  var sun = new THREE.DirectionalLight(0xffffff, 1.1); sun.position.set(6, 12, 8); scene.add(sun);
-  var fill = new THREE.DirectionalLight(0xe9fff0, 0.5); fill.position.set(-8, 4, 6); scene.add(fill);
-
-  /* materials */
-  var matWhite = new THREE.MeshStandardMaterial({ color: 0xf4f7f1, roughness: 0.85, metalness: 0.05 });
-  var matFrame = new THREE.MeshStandardMaterial({ color: 0x9fb1a4, roughness: 0.45, metalness: 0.55 });
-  var matGreen = new THREE.MeshStandardMaterial({ color: 0x2fae66, roughness: 0.6, metalness: 0.05 });
-  var matGreenD = new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.6 });
-  var matDark = new THREE.MeshStandardMaterial({ color: 0x223a2c, roughness: 0.5 });
-  var matWood = new THREE.MeshStandardMaterial({ color: 0xe7dcc4, roughness: 0.8 });
-
-  function box(w,h,d,mat){ return new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat); }
-  function cyl(rt,rb,h,mat,seg){ return new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg||20), mat); }
-
-  /* ── Office chair ── */
-  function makeChair() {
-    var g = new THREE.Group();
-    // 5-star base + wheels
-    for (var i = 0; i < 5; i++) {
-      var a = i / 5 * Math.PI * 2;
-      var leg = box(1.5, 0.12, 0.22, matFrame);
-      leg.position.set(Math.cos(a) * 0.6, 0.14, Math.sin(a) * 0.6);
-      leg.rotation.y = -a;
-      g.add(leg);
-      var wheel = cyl(0.14, 0.14, 0.12, matDark, 14);
-      wheel.rotation.z = Math.PI / 2;
-      wheel.position.set(Math.cos(a) * 1.25, 0.12, Math.sin(a) * 1.25);
-      g.add(wheel);
-    }
-    var col = cyl(0.1, 0.12, 1.0, matFrame); col.position.y = 0.7; g.add(col);
-    var seat = box(1.5, 0.26, 1.4, matGreen); seat.position.y = 1.3; g.add(seat);
-    var seatF = box(1.55, 0.12, 1.45, matFrame); seatF.position.y = 1.14; g.add(seatF);
-    var back = box(1.4, 1.6, 0.22, matGreen); back.position.set(0, 2.25, -0.62); back.rotation.x = -0.14; g.add(back);
-    // armrests
-    [-0.82, 0.82].forEach(function (x) {
-      var arm = box(0.16, 0.5, 1.0, matFrame); arm.position.set(x, 1.75, 0.05); g.add(arm);
-      var armTop = box(0.22, 0.1, 1.0, matDark); armTop.position.set(x, 2.0, 0.05); g.add(armTop);
-    });
-    return g;
-  }
-
-  /* ── Desk with laptop, cup, small plant ── */
-  function makeDesk() {
-    var g = new THREE.Group();
-    var top = box(3.4, 0.16, 1.7, matWhite); top.position.y = 1.55; g.add(top);
-    [[-1.5,-0.7],[1.5,-0.7],[-1.5,0.7],[1.5,0.7]].forEach(function (p) {
-      var leg = box(0.14, 1.55, 0.14, matFrame); leg.position.set(p[0], 0.775, p[1]); g.add(leg);
-    });
-    // laptop
-    var base = box(1.0, 0.06, 0.66, matDark); base.position.set(0.1, 1.66, 0); g.add(base);
-    var screen = box(1.0, 0.66, 0.05, matDark); screen.position.set(0.1, 1.98, -0.32); screen.rotation.x = -0.32; g.add(screen);
-    var glow = box(0.9, 0.56, 0.01, matGreen); glow.position.set(0.1, 1.99, -0.30); glow.rotation.x = -0.32; g.add(glow);
-    // cup
-    var cup = cyl(0.16, 0.13, 0.26, matWhite, 18); cup.position.set(-1.1, 1.76, 0.2); g.add(cup);
-    return g;
-  }
-
-  /* ── Desk lamp ── */
-  function makeLamp() {
-    var g = new THREE.Group();
-    var base = cyl(0.28, 0.32, 0.1, matFrame, 22); base.position.y = 0.05; g.add(base);
-    var a1 = cyl(0.05, 0.05, 1.1, matFrame); a1.position.set(0, 0.6, 0); a1.rotation.z = 0.4; a1.position.x = -0.2; g.add(a1);
-    var a2 = cyl(0.05, 0.05, 1.0, matFrame); a2.position.set(-0.55, 1.15, 0); a2.rotation.z = -0.7; g.add(a2);
-    var head = new THREE.Mesh(new THREE.ConeGeometry(0.32, 0.5, 22, 1, true), matGreenD);
-    head.position.set(-0.3, 1.55, 0); head.rotation.z = 1.0; g.add(head);
-    return g;
-  }
-
-  /* ── Floor plant ── */
-  function makePlant() {
-    var g = new THREE.Group();
-    var pot = cyl(0.5, 0.38, 0.7, matWhite, 22); pot.position.y = 0.35; g.add(pot);
-    var rim = cyl(0.54, 0.5, 0.12, matFrame, 22); rim.position.y = 0.66; g.add(rim);
-    var foliage = [[0,1.5,0,0.85],[ -0.4,1.2,0.2,0.55],[0.4,1.25,-0.1,0.6],[0.1,1.85,0.1,0.5]];
-    foliage.forEach(function (f) {
-      var leaf = new THREE.Mesh(new THREE.IcosahedronGeometry(f[3], 0), Math.random()>0.5?matGreen:matGreenD);
-      leaf.position.set(f[0], f[1], f[2]); g.add(leaf);
-    });
-    var stem = cyl(0.05,0.06,0.9, matGreenD); stem.position.y = 1.0; g.add(stem);
-    return g;
-  }
-
-  function shadow(x, z, r) {
-    var s = new THREE.Mesh(new THREE.CircleGeometry(r, 28), new THREE.MeshBasicMaterial({ color: 0x123a22, transparent: true, opacity: 0.12 }));
-    s.rotation.x = -Math.PI / 2; s.position.set(x, 0.02, z); scene.add(s);
-  }
-
-  var furniture = new THREE.Group();
-  var chair = makeChair(); chair.position.set(-1.6, 0, 1.2); chair.rotation.y = 0.5; furniture.add(chair);
-  var desk = makeDesk(); desk.position.set(2.0, 0, -0.8); desk.rotation.y = -0.25; furniture.add(desk);
-  var lamp = makeLamp(); lamp.position.set(3.1, 1.63, -1.1); lamp.rotation.y = -0.25; furniture.add(lamp);
-  var plant = makePlant(); plant.position.set(-4.2, 0, -0.6); furniture.add(plant);
-  furniture.position.y = -1.6;
-  scene.add(furniture);
-  shadow(-1.6, 1.2, 1.7); shadow(2.0, -0.8, 2.2); shadow(-4.2, -0.6, 0.8);
-
-  var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
-  window.addEventListener('mousemove', function (e) { mouse.tx = (e.clientX/window.innerWidth-0.5); mouse.ty = (e.clientY/window.innerHeight-0.5); });
-
-  var clock = new THREE.Clock();
-  function render() {
-    var t = clock.getElapsedTime();
-    furniture.rotation.y = Math.sin(t * 0.18) * 0.18;
-    chair.rotation.y = 0.5 + Math.sin(t * 0.5) * 0.25;
-    chair.position.y = Math.sin(t * 0.8) * 0.06;
-    plant.children.forEach(function (c, i) { if (i > 1) c.position.x += Math.sin(t * 0.9 + i) * 0.0006; });
-    plant.rotation.z = Math.sin(t * 0.6) * 0.02;
-    mouse.x += (mouse.tx - mouse.x) * 0.05; mouse.y += (mouse.ty - mouse.y) * 0.05;
-    furniture.rotation.y += mouse.x * 0.0009;
-    camera.position.x = 0.5 + mouse.x * 1.2;
-    camera.position.y = 3.4 - mouse.y * 0.8;
-    camera.lookAt(0, 1.4, 0);
-    renderer.render(scene, camera);
-  }
-  function loop(){ requestAnimationFrame(loop); render(); }
-  if (prefersReduced) render(); else loop();
-
-  window.addEventListener('resize', function () { camera.aspect = W()/H(); camera.updateProjectionMatrix(); renderer.setSize(W(), H()); });
-})();
-
-/* ───── 2. NAV ───── */
-(function () {
-  var nav = document.getElementById('nav'), burger = document.getElementById('burger'), links = document.getElementById('navLinks');
-  window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
-  burger.addEventListener('click', function () { var open = links.classList.toggle('open'); burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open?'true':'false'); });
-  links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { links.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }); });
-})();
-
-/* ───── 3. GSAP reveals ───── */
-(function () {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { revealStatic(); return; }
-  if (prefersReduced) { revealStatic(); return; }
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.reveal').forEach(function (el) { gsap.to(el, { opacity:1, y:0, duration:0.9, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 90%' } }); });
-  gsap.utils.toArray('.reveal-l').forEach(function (el) { gsap.to(el, { opacity:1, x:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 86%' } }); });
-  gsap.utils.toArray('.reveal-r').forEach(function (el) { gsap.to(el, { opacity:1, x:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 86%' } }); });
-})();
-
-/* ───── 4. Counters ───── */
-(function () {
-  var nums = document.querySelectorAll('.n[data-target], .n[data-text]');
-  function run(el) {
-    if (el.dataset.text) { el.textContent = el.dataset.text; return; }
-    var target = +el.dataset.target, suffix = el.dataset.suffix || '', dur = 1700, start = performance.now();
-    (function step(now){ var p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3); el.textContent = Math.round(target*e)+suffix; if(p<1) requestAnimationFrame(step); })(start);
-  }
-  if (prefersReduced) { nums.forEach(function(el){ el.textContent = el.dataset.text || (el.dataset.target + (el.dataset.suffix||'')); }); return; }
-  if (typeof ScrollTrigger !== 'undefined') { nums.forEach(function(el){ ScrollTrigger.create({ trigger:el, start:'top 94%', once:true, onEnter:function(){ run(el); } }); }); }
-  else { nums.forEach(run); }
-})();
-
-/* ───── 5. Form ───── */
-(function () {
-  var f = document.getElementById('contactForm'), done = document.getElementById('formDone');
-  if (!f) return;
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!f.checkValidity()) { f.reportValidity(); return; }
-    done.classList.add('show');
-    var btn = f.querySelector('button'); btn.textContent = 'Gesendet'; btn.disabled = true;
-    setTimeout(function(){ f.reset(); }, 300);
+/* mobile burger */
+var burger = document.getElementById('burger');
+var navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){
+  var open = navLinks.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    navLinks.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false');
   });
-})();
+});
+
+/* reveal on scroll */
+var revealEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+if (prefersReduced || !('IntersectionObserver' in window)) {
+  revealEls.forEach(function(el){ el.classList.add('in'); });
+} else {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+}
+
+/* animated counters */
+function runCounters(){
+  document.querySelectorAll('.stat .n').forEach(function(el){
+    if (el.dataset.done) return;
+    var txt = el.getAttribute('data-text');
+    if (txt) { el.dataset.done = '1'; el.textContent = txt; return; }
+    var target = parseFloat(el.getAttribute('data-target'));
+    if (isNaN(target)) return;
+    el.dataset.done = '1';
+    if (prefersReduced) { el.textContent = target; return; }
+    var start = performance.now(), dur = 1200;
+    (function step(now){
+      var p = Math.min((now - start) / dur, 1);
+      var val = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      el.textContent = val;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  });
+}
+var statsBand = document.querySelector('.stats');
+if (statsBand && 'IntersectionObserver' in window && !prefersReduced) {
+  var io2 = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ runCounters(); io2.disconnect(); } });
+  }, { threshold: 0.4 });
+  io2.observe(statsBand);
+} else { runCounters(); }
+
+/* contact form */
+var form = document.getElementById('contactForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var ok = true;
+  form.querySelectorAll('[required]').forEach(function(f){
+    var valid = f.type === 'checkbox' ? f.checked : String(f.value).trim() !== '';
+    if (f.type === 'email') valid = valid && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value);
+    f.style.borderColor = valid ? '' : 'var(--acc)';
+    if (!valid) ok = false;
+  });
+  if (!ok) return;
+  document.getElementById('formDone').classList.add('show');
+  form.querySelectorAll('input,textarea,select,button').forEach(function(el){ el.disabled = true; });
+});
 </script>
 </body>
 </html>

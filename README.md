@@ -1,65 +1,60 @@
 # Stuff4Staff GmbH — Website
 
-Modern, single-page website for **Stuff4Staff GmbH**, a German B2B staffing and HR company specialising in Personalvermittlung, Zeitarbeit, and HR-Beratung.
+Moderne, statische Website für **Stuff4Staff Handels GmbH**, die Übungsfirma der HAK Kirchdorf an der Krems — Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel.
 
-## Overview
+Neutrales, professionelles Design in Anlehnung an die bestehende Wix-Seite, mit einem eigenen, grün gestalteten **Nachhaltigkeits-Register**.
 
-A fully self-contained `index.html` with inline CSS and JavaScript. No build step required — just open the file in a browser or deploy the single file to any static host.
+## Seiten
 
-## Features
+| Datei | Inhalt |
+|-------|--------|
+| `index.html` | Startseite (one-page): Start · Über uns · Produkte · Karriere · Kontakt + Nachhaltigkeits-Teaser |
+| `nachhaltigkeit.html` | Register „Nachhaltigkeit" — Konzept, Maßnahmen, nachhaltige Produkte, Rebrand „Make Office Green Again" |
+| `WIX-NACHHALTIGKEIT.md` | Alle Texte des Registers als Copy-&-Paste-Vorlage für den Wix-Editor |
+| `assets/` | Neues grünes Logo + Produktfotos |
 
-- **3D Hero Section** — Three.js scene with rotating icosahedron, torus, boxes, and a 700-particle field
-- **Typewriter effect** in the hero headline cycling through service phrases
-- **GSAP ScrollTrigger animations** — fade-in-up, slide-in-left/right, staggered cards
-- **Parallax scrolling** — the 3D canvas shifts as you scroll
-- **3D card tilt** — CSS perspective tilt on hover for service cards
-- **Animated counters** — 500+, 10+, 200+, 98% triggered on scroll
-- **Testimonials carousel** — auto-advances, swipeable on mobile, with dot navigation
-- **Contact form** — validation, simulated submission with success state
-- **Sticky glass-morphism navbar** — transparent on load, frosted-glass on scroll
-- **Fully responsive** — mobile menu, responsive grid breakpoints
-- **German language** throughout
+Beide HTML-Dateien sind **selbstständig** (Inline-CSS/-JS, keine Build-Schritte, keine externen JS-Abhängigkeiten außer Google Fonts).
 
-## Tech Stack
+## Struktur der Startseite
 
-| Library | Version | Purpose |
-|---------|---------|---------|
-| [Three.js](https://threejs.org/) | r134 | 3D hero scene |
-| [GSAP](https://greensock.com/gsap/) | 3.12.2 | Scroll animations, tweens |
-| [ScrollTrigger](https://greensock.com/scrolltrigger/) | 3.12.2 | Scroll-based triggers |
-| [Inter](https://fonts.google.com/specimen/Inter) | — | Typography (Google Fonts) |
+1. **Start (Hero)** — Tagline „Weil der Arbeitsplatz mehr sein darf als nur ein Ort zum Arbeiten"
+2. **Über uns** — Team, Werte, transparente Firmendaten
+3. **Kennzahlen** — animierte Stats
+4. **Produkte** — 8 Produktkategorien
+5. **Nachhaltigkeit (Teaser)** — Vorschau mit Link ins Register
+6. **Karriere** — Abteilungen der Übungsfirma
+7. **Kontakt** — Kontaktdaten + Formular (Client-seitige Validierung)
+8. **Footer** — Links, Rechtliches, Übungsfirma-Hinweis
 
-All libraries are loaded from CDN — no local dependencies.
+## Nachhaltigkeits-Register (`nachhaltigkeit.html`)
 
-## Usage
+Mischung aus dem Nachhaltigkeitskonzept (Präsentation) und den neuen Produkten:
+Drei Säulen · Leitprinzip „belegbar statt behauptet" · Maßnahmen (Einkauf/Versand/Büroalltag) ·
+geprüfte Siegel · CO₂-neutraler Versand · 4 nachhaltige Produkte mit Fotos · Umweltleitbild ·
+neues Logo/Rebrand · Vorteile · Quick-Wins-Roadmap.
 
-No build step needed. Simply serve `index.html` from any static host:
+## Design-Tokens
+
+| Rolle | Startseite | Register |
+|-------|-----------|----------|
+| Akzent | Marken-Rot `#C0362F` | Grün `#1F8A4C` / `#15633A` |
+| Text | `#16191D` | `#16191D` |
+| Hintergrund | `#F6F6F3` | `#F4F8F3` |
+| Schriften | Manrope (Headlines) · Inter (Text) | identisch |
+
+## Vorschau / Deployment
+
+Kein Build nötig — Datei direkt im Browser öffnen oder statisch hosten:
 
 ```bash
-# Local preview with Python
 python3 -m http.server 8080
-# then open http://localhost:8080
+# dann http://localhost:8080
 ```
 
-Or deploy directly to Netlify, Vercel, GitHub Pages, or any web server.
+Deploybar auf Netlify, Vercel, GitHub Pages oder jedem Webserver.
+Für die echte Wix-Seite: Inhalte aus `WIX-NACHHALTIGKEIT.md` in ein neues Register einfügen.
 
-## Sections
+## Hinweis
 
-1. **Navbar** — sticky, glass-morphism, mobile burger menu
-2. **Hero** — 3D Three.js background, typewriter headline, trust indicators
-3. **Leistungen** — three service cards (Personalvermittlung, Zeitarbeit, HR Beratung) with 3D tilt
-4. **Kennzahlen** — animated stats bar (500+ Mitarbeiter, 10+ Jahre, 200+ Kunden, 98%)
-5. **Über uns** — two-column layout with SVG team illustration and floating badges
-6. **Referenzen** — auto-playing testimonials carousel (5 cards)
-7. **Kontakt** — contact details + validated form with success state
-8. **Footer** — brand, links, social icons, legal
-
-## Colour Palette
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `--navy` | `#0a0e27` | Page background |
-| `--navy-mid` | `#111535` | Cards, footer |
-| `--blue` | `#4f8ef7` | Primary accent |
-| `--blue-light` | `#7ab4ff` | Gradient end, hovers |
-| `--muted` | `#8a96b8` | Secondary text |
+Stuff4Staff ist eine **Übungsfirma**. Waren- und Zahlungsverkehr erfolgen ausschließlich zu
+Ausbildungszwecken im Netzwerk der Übungsfirmen — keine realen Lieferungen oder Zahlungen.
