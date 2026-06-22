@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Stuff4Staff Handels GmbH – Übungsfirma der HAK Kirchdorf an der Krems. Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel. Weil der Arbeitsplatz mehr sein darf als nur ein Ort zum Arbeiten." />
+<meta name="description" content="Stuff4Staff Handels GmbH – Übungsfirma der HAK Kirchdorf an der Krems. Nachhaltiger Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel. Make Office Green Again." />
 <title>Stuff4Staff Handels GmbH — Weil der Arbeitsplatz mehr sein darf</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,29 +12,29 @@
 
 <style>
   :root {
-    /* neutral / professional base */
-    --bg:        #f6f6f3;
+    --bg:        #f4f8f3;
     --paper:     #ffffff;
-    --paper-2:   #fbfbf9;
+    --paper-2:   #f7faf6;
     --ink:       #16191d;
     --ink-2:     #2b3038;
-    --muted:     #5b626d;
-    --faint:     #8a909b;
+    --muted:     #586a5e;
+    --faint:     #8aa093;
 
-    /* brand accent (heritage red, used sparingly) */
-    --acc:       #c0362f;
-    --acc-dark:  #98271f;
-    --acc-soft:  #f9eceb;
-
-    /* sustainability green (register / teaser) */
+    /* brand accent — Make Office Green Again */
+    --acc:       #1f8a4c;
+    --acc-dark:  #15633a;
+    --acc-deep:  #0e3a20;
+    --acc-soft:  #e7f4ec;
+    --acc-200:   #bce6cc;
+    /* aliases */
     --grn:       #1f8a4c;
     --grn-dark:  #15633a;
-    --grn-soft:  #e8f5ed;
+    --grn-soft:  #e7f4ec;
 
-    --line:      rgba(22,25,29,0.10);
-    --line-2:    rgba(22,25,29,0.17);
-    --shadow:    0 22px 60px -30px rgba(20,25,32,0.40);
-    --shadow-sm: 0 10px 30px -20px rgba(20,25,32,0.30);
+    --line:      rgba(14,58,32,0.10);
+    --line-2:    rgba(14,58,32,0.17);
+    --shadow:    0 22px 60px -30px rgba(15,60,35,0.42);
+    --shadow-sm: 0 10px 30px -20px rgba(15,60,35,0.30);
 
     --r-sm: 12px; --r: 18px; --r-lg: 26px; --r-xl: 36px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -49,10 +49,10 @@
     color: var(--ink); background: var(--bg);
     line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: var(--ink); color: #fff; }
+  ::selection { background: var(--acc-dark); color: #fff; }
   ::-webkit-scrollbar { width: 11px; }
-  ::-webkit-scrollbar-track { background: #ecece8; }
-  ::-webkit-scrollbar-thumb { background: #c7c8c1; border-radius: 10px; border: 3px solid #ecece8; }
+  ::-webkit-scrollbar-track { background: var(--acc-soft); }
+  ::-webkit-scrollbar-thumb { background: #9fd3b3; border-radius: 10px; border: 3px solid var(--acc-soft); }
   ::-webkit-scrollbar-thumb:hover { background: var(--faint); }
 
   a { color: inherit; text-decoration: none; }
@@ -67,52 +67,49 @@
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--acc); padding: 6px 13px; border-radius: 100px; background: var(--acc-soft); border: 1px solid #f1d8d6;
+    color: var(--acc-dark); padding: 6px 13px; border-radius: 100px; background: var(--acc-soft); border: 1px solid var(--acc-200);
   }
   .eyebrow svg { width: 15px; height: 15px; }
-  .eyebrow.gr { color: var(--grn-dark); background: var(--grn-soft); border-color: #cfe9d8; }
   .sec-title { font-size: clamp(1.95rem, 4.2vw, 3.1rem); margin: 16px 0 14px; }
   .sec-sub { font-size: 1.08rem; color: var(--muted); max-width: 640px; }
-  .ac { color: var(--acc); }
-  .gn { color: var(--grn-dark); }
+  .ac { color: var(--acc-dark); }
+  .gn { color: var(--acc-dark); }
 
   /* ───── Buttons ───── */
   .btn { position: relative; display: inline-flex; align-items: center; gap: 9px; cursor: pointer; padding: 13px 24px; border-radius: 10px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.98rem; border: 1px solid transparent; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .2s, border-color .2s, color .2s; }
   .btn svg { width: 18px; height: 18px; }
   .btn-primary { background: var(--ink); color: #fff; }
   .btn-primary:hover { transform: translateY(-2px); background: #000; box-shadow: 0 14px 28px -16px rgba(0,0,0,0.6); }
-  .btn-acc { background: var(--acc); color: #fff; box-shadow: 0 12px 26px -14px rgba(192,54,47,0.7); }
-  .btn-acc:hover { transform: translateY(-2px); background: var(--acc-dark); }
-  .btn-grn { background: var(--grn); color: #fff; box-shadow: 0 12px 26px -14px rgba(31,138,76,0.6); }
-  .btn-grn:hover { transform: translateY(-2px); background: var(--grn-dark); }
-  .btn-soft { background: var(--paper); color: var(--ink); border-color: var(--line-2); }
-  .btn-soft:hover { transform: translateY(-2px); border-color: var(--ink); }
+  .btn-acc, .btn-grn { background: var(--acc); color: #fff; box-shadow: 0 12px 26px -14px rgba(31,138,76,0.6); }
+  .btn-acc:hover, .btn-grn:hover { transform: translateY(-2px); background: var(--acc-dark); }
+  .btn-soft { background: var(--paper); color: var(--acc-dark); border-color: var(--line-2); }
+  .btn-soft:hover { transform: translateY(-2px); border-color: var(--acc); }
 
   .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow-sm); }
 
   /* ───── Top bar ───── */
-  .topbar { background: var(--ink); color: #c9cdd4; }
+  .topbar { background: var(--acc-deep); color: #cfeeda; }
   .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 8px 0; font-size: 0.79rem; }
-  .topbar .dot { color: var(--faint); }
+  .topbar .dot { color: #6fae87; }
   .topbar b { color: #fff; font-weight: 600; }
   @media (max-width: 760px) { .topbar .tb-right { display: none; } }
 
   /* ───── Nav ───── */
-  nav { position: sticky; top: 0; z-index: 50; transition: background .3s var(--ease), box-shadow .3s; border-bottom: 1px solid transparent; background: rgba(246,246,243,0.7); }
-  nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom-color: var(--line); box-shadow: 0 4px 24px -18px rgba(0,0,0,0.4); }
+  nav { position: sticky; top: 0; z-index: 50; transition: background .3s var(--ease), box-shadow .3s; border-bottom: 1px solid transparent; background: rgba(244,248,243,0.7); }
+  nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom-color: var(--line); box-shadow: 0 4px 24px -18px rgba(0,0,0,0.35); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 13px 0; }
   .brand { display: flex; align-items: center; gap: 11px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
-  .brand-mark { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--ink); }
-  .brand-mark svg { width: 21px; height: 21px; color: #fff; }
+  .brand-mark { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--acc); }
+  .brand-mark svg { width: 21px; height: 21px; color: #eafff1; }
   .brand b { color: var(--acc); }
   .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
   .nav-links a { padding: 9px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 600; color: var(--ink-2); transition: color .2s, background .2s; }
-  .nav-links a:hover { color: var(--ink); background: rgba(22,25,29,0.06); }
-  .nav-links a.is-grn { color: var(--grn-dark); }
-  .nav-links a.is-grn:hover { background: var(--grn-soft); }
+  .nav-links a:hover { color: var(--acc-dark); background: var(--acc-soft); }
+  .nav-links a.is-grn { color: var(--acc-dark); }
+  .nav-links a.is-grn:hover { background: var(--acc-soft); }
   .nav-cta { display: flex; align-items: center; gap: 10px; }
   .burger { display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--paper); cursor: pointer; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
-  .burger span { width: 21px; height: 2px; background: var(--ink); border-radius: 2px; transition: .3s var(--ease); }
+  .burger span { width: 21px; height: 2px; background: var(--acc-deep); border-radius: 2px; transition: .3s var(--ease); }
   .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -131,37 +128,36 @@
   /* hero visual */
   .hero-visual { position: relative; min-height: 420px; }
   .hv-panel { position: absolute; inset: 0; border-radius: var(--r-xl); background:
-      radial-gradient(120% 90% at 80% 10%, #fff 0%, #f0efe9 55%, #e9e8e1 100%);
+      radial-gradient(120% 90% at 80% 10%, #fff 0%, #eaf3e9 55%, #dfeede 100%);
       border: 1px solid var(--line); overflow: hidden; box-shadow: var(--shadow); }
-  .hv-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(22,25,29,0.06) 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: .7; }
+  .hv-grid { position: absolute; inset: 0; background-image: radial-gradient(rgba(14,58,32,0.06) 1.2px, transparent 1.2px); background-size: 22px 22px; opacity: .7; }
   .hv-scene { position: absolute; inset: 0; display: grid; place-items: center; }
-  .hv-scene svg { width: 78%; max-width: 380px; height: auto; filter: drop-shadow(0 24px 30px rgba(20,25,32,0.18)); }
-  .hv-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.95); border: 1px solid var(--line); border-radius: 100px; padding: 9px 15px; font-size: 0.82rem; font-weight: 600; box-shadow: var(--shadow-sm); }
+  .hv-scene svg { width: 78%; max-width: 380px; height: auto; filter: drop-shadow(0 24px 30px rgba(15,60,35,0.18)); }
+  .hv-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.96); border: 1px solid var(--line); border-radius: 100px; padding: 9px 15px; font-size: 0.82rem; font-weight: 600; box-shadow: var(--shadow-sm); }
   .hv-chip svg { width: 15px; height: 15px; }
-  .hv-chip.c1 { top: 12%; left: -4%; color: var(--acc); }
-  .hv-chip.c2 { bottom: 16%; right: -3%; color: var(--grn-dark); }
+  .hv-chip.c1 { top: 12%; left: -4%; color: var(--acc-dark); }
+  .hv-chip.c2 { bottom: 16%; right: -3%; color: var(--acc-dark); }
   .hv-chip.c3 { bottom: 7%; left: 8%; color: var(--ink); }
 
   /* ───── Logos strip ───── */
   .logos { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper-2); }
   .logos .wrap { padding: 24px 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 36px; }
   .logos .lbl { width: 100%; text-align: center; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
-  .logos span.brandname { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--ink-2); opacity: .62; transition: opacity .25s; cursor: default; }
+  .logos span.brandname { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--ink-2); opacity: .58; transition: opacity .25s; cursor: default; }
   .logos span.brandname:hover { opacity: 1; }
 
   /* ───── Section heads ───── */
   .head { max-width: 720px; }
-  .head.center { margin-inline: auto; text-align: center; }
 
   /* ───── Products ───── */
   .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(252px, 1fr)); gap: 18px; margin-top: 44px; }
   .prod-card { padding: 26px 24px; transition: transform .28s var(--ease), box-shadow .28s, border-color .28s; }
-  .prod-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--line-2); }
+  .prod-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--acc-200); }
   .prod-icon { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 17px; background: var(--acc-soft); }
   .prod-icon svg { width: 25px; height: 25px; color: var(--acc); }
   .prod-card h3 { font-size: 1.12rem; margin-bottom: 7px; }
   .prod-card p { color: var(--muted); font-size: 0.93rem; }
-  .prod-foot { margin-top: 38px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 22px 26px; border-radius: var(--r); background: var(--ink); color: #e7e9ec; }
+  .prod-foot { margin-top: 38px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 22px 26px; border-radius: var(--r); background: var(--acc-deep); color: #cfeeda; }
   .prod-foot p { font-size: 0.96rem; margin-right: auto; }
   .prod-foot b { color: #fff; }
 
@@ -186,22 +182,22 @@
   .note b { color: var(--ink); }
 
   /* ───── Stats band ───── */
-  .stats { background: var(--ink); color: #fff; }
+  .stats { background: var(--acc-deep); color: #fff; }
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
   .stat { text-align: center; position: relative; }
   .stat:not(:last-child)::after { content: ""; position: absolute; right: -14px; top: 14%; height: 72%; width: 1px; background: rgba(255,255,255,0.16); }
   .stat .n { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1; }
-  .stat .l { color: #aeb4bd; font-size: 0.88rem; margin-top: 9px; }
+  .stat .l { color: #a8cdb6; font-size: 0.88rem; margin-top: 9px; }
 
   /* ───── Nachhaltigkeit teaser ───── */
-  #nachhaltigkeit-teaser { background: linear-gradient(180deg, var(--grn-soft), #fff); }
+  #nachhaltigkeit-teaser { background: linear-gradient(180deg, var(--acc-soft), var(--bg)); }
   .nh-teaser { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0; align-items: stretch; border-radius: var(--r-xl); background: var(--paper); border: 1px solid #d6ecdf; box-shadow: var(--shadow); overflow: hidden; }
   .nh-teaser .txt { padding: 46px 44px; }
   .nh-teaser h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); }
-  .nh-teaser h2 em { font-style: normal; color: var(--grn-dark); }
+  .nh-teaser h2 em { font-style: normal; color: var(--acc-dark); }
   .nh-teaser p { color: var(--muted); margin: 14px 0 24px; max-width: 460px; }
   .nh-pills { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
-  .nh-pills span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.83rem; font-weight: 600; color: var(--grn-dark); background: var(--grn-soft); border: 1px solid #cfe9d8; padding: 6px 13px; border-radius: 100px; }
+  .nh-pills span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.83rem; font-weight: 600; color: var(--acc-dark); background: var(--acc-soft); border: 1px solid var(--acc-200); padding: 6px 13px; border-radius: 100px; }
   .nh-pills svg { width: 14px; height: 14px; }
   .nh-side { position: relative; min-height: 280px; background:
       radial-gradient(120% 100% at 75% 20%, #2aa45e, #15633a); display: grid; place-items: center; overflow: hidden; }
@@ -214,7 +210,7 @@
   .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; margin-top: 42px; }
   .car-card { padding: 24px 22px; }
   .car-card .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 15px; }
-  .car-card .ic svg { width: 22px; height: 22px; color: var(--ink-2); }
+  .car-card .ic svg { width: 22px; height: 22px; color: var(--acc); }
   .car-card h3 { font-size: 1.04rem; margin-bottom: 6px; }
   .car-card p { color: var(--muted); font-size: 0.91rem; }
   .car-cta { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 26px 30px; border-radius: var(--r); border: 1px dashed var(--line-2); background: var(--paper-2); }
@@ -231,9 +227,9 @@
   .ci-list .v { font-weight: 600; font-size: 0.95rem; }
   .socials { display: flex; gap: 10px; margin-top: 24px; }
   .socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--line); transition: .25s var(--ease); }
-  .socials a:hover { transform: translateY(-3px); background: var(--ink); border-color: var(--ink); }
+  .socials a:hover { transform: translateY(-3px); background: var(--acc); border-color: var(--acc); }
   .socials a:hover svg { color: #fff; }
-  .socials svg { width: 18px; height: 18px; color: var(--ink-2); transition: color .25s; }
+  .socials svg { width: 18px; height: 18px; color: var(--acc-dark); transition: color .25s; }
 
   form.contact { padding: 30px 28px; display: grid; gap: 15px; }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -244,24 +240,24 @@
   .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-soft); background: #fff; }
   .privacy { display: flex; gap: 10px; align-items: flex-start; font-size: 0.84rem; color: var(--muted); }
   .privacy input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--acc); flex-shrink: 0; }
-  .privacy a { color: var(--acc); font-weight: 600; }
-  .form-done { display: none; align-items: center; gap: 10px; padding: 13px 16px; border-radius: var(--r-sm); background: var(--grn-soft); border: 1px solid #bfe3cc; color: var(--grn-dark); font-weight: 600; font-size: 0.9rem; }
+  .privacy a { color: var(--acc-dark); font-weight: 600; }
+  .form-done { display: none; align-items: center; gap: 10px; padding: 13px 16px; border-radius: var(--r-sm); background: var(--acc-soft); border: 1px solid #bfe3cc; color: var(--acc-dark); font-weight: 600; font-size: 0.9rem; }
   .form-done.show { display: flex; }
   .form-done svg { width: 18px; height: 18px; }
 
   /* ───── Footer ───── */
-  footer { background: var(--ink); color: #aeb4bd; padding: 58px 0 28px; }
+  footer { background: var(--acc-deep); color: #a8cdb6; padding: 58px 0 28px; }
   .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 38px; margin-bottom: 38px; }
   .foot-brand .brand { color: #fff; }
-  .foot-brand .brand .brand-mark { background: rgba(255,255,255,0.12); }
-  .foot-brand .brand b { color: var(--acc); }
-  .foot-brand p { color: #9298a1; margin: 15px 0; max-width: 300px; font-size: 0.92rem; }
-  .foot-brand .data { font-size: 0.79rem; color: #7e848d; line-height: 1.8; }
+  .foot-brand .brand .brand-mark { background: rgba(255,255,255,0.14); }
+  .foot-brand .brand b { color: var(--acc-200); }
+  .foot-brand p { color: #8fbfa1; margin: 15px 0; max-width: 300px; font-size: 0.92rem; }
+  .foot-brand .data { font-size: 0.79rem; color: #6fa886; line-height: 1.8; }
   .foot-col h4 { color: #fff; font-size: 0.93rem; margin-bottom: 14px; font-weight: 700; }
   .foot-col ul { list-style: none; display: grid; gap: 9px; }
-  .foot-col a { color: #9298a1; font-size: 0.9rem; transition: color .2s; }
+  .foot-col a { color: #8fbfa1; font-size: 0.9rem; transition: color .2s; }
   .foot-col a:hover { color: #fff; }
-  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 22px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; color: #7e848d; font-size: 0.83rem; }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 22px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; color: #6fa886; font-size: 0.83rem; }
 
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
   .reveal-l { opacity: 0; transform: translateX(-38px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -300,7 +296,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="wrap">
-    <span><b>Übungsfirma der HAK Kirchdorf an der Krems</b> <span class="dot">●</span> Großhandel · Büroausstattung &amp; Genuss</span>
+    <span><b>Übungsfirma der HAK Kirchdorf an der Krems</b> <span class="dot">●</span> Nachhaltiger Großhandel · Make Office Green Again</span>
     <span class="tb-right">FN&nbsp;1157 <span class="dot">/</span> UID&nbsp;ATU50115717 <span class="dot">/</span> 4560&nbsp;Kirchdorf,&nbsp;AT</span>
   </div>
 </div>
@@ -309,7 +305,7 @@
 <nav id="nav">
   <div class="wrap nav-inner">
     <a href="#start" class="brand" aria-label="Stuff4Staff Startseite">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
       Stuff<b>4</b>Staff
     </a>
     <ul class="nav-links" id="navLinks">
@@ -321,7 +317,7 @@
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener" class="btn btn-acc" style="padding:10px 18px;font-size:.88rem;">Zum Shop
+      <a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener" class="btn btn-grn" style="padding:10px 18px;font-size:.88rem;">Zum Shop
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
       <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -333,11 +329,11 @@
 <section id="start" class="hero">
   <div class="wrap hero-inner">
     <div class="hero-content reveal-l">
-      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg> Großhandel für Büro &amp; Genuss</span>
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Nachhaltiger Großhandel · Make Office Green Again</span>
       <h1>Weil der Arbeitsplatz <em>mehr sein darf</em> als nur ein Ort zum Arbeiten.</h1>
-      <p class="lead">Stuff4Staff Handels GmbH ist Großhändler für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel — die Übungsfirma der HAK Kirchdorf an der Krems.</p>
+      <p class="lead">Stuff4Staff Handels GmbH ist nachhaltiger Großhändler für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel — die Übungsfirma der HAK Kirchdorf an der Krems.</p>
       <div class="hero-actions">
-        <a href="#produkte" class="btn btn-primary">Unsere Produkte
+        <a href="#produkte" class="btn btn-grn">Unsere Produkte
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="nachhaltigkeit.html" class="btn btn-soft">Nachhaltigkeit entdecken</a>
       </div>
@@ -353,28 +349,23 @@
         <div class="hv-scene" aria-hidden="true">
           <!-- modern desk illustration -->
           <svg viewBox="0 0 360 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- desk top -->
-            <rect x="40" y="196" width="280" height="12" rx="4" fill="#d9d6cc"/>
-            <rect x="58" y="208" width="9" height="58" rx="3" fill="#c7c3b8"/>
-            <rect x="293" y="208" width="9" height="58" rx="3" fill="#c7c3b8"/>
-            <!-- monitor -->
+            <rect x="40" y="196" width="280" height="12" rx="4" fill="#cdd6c9"/>
+            <rect x="58" y="208" width="9" height="58" rx="3" fill="#bcc6b8"/>
+            <rect x="293" y="208" width="9" height="58" rx="3" fill="#bcc6b8"/>
             <rect x="150" y="96" width="120" height="76" rx="8" fill="#16191d"/>
             <rect x="158" y="104" width="104" height="60" rx="4" fill="#2b3038"/>
-            <rect x="166" y="112" width="58" height="7" rx="3.5" fill="#c0362f"/>
-            <rect x="166" y="126" width="80" height="5" rx="2.5" fill="#5b626d"/>
-            <rect x="166" y="137" width="66" height="5" rx="2.5" fill="#5b626d"/>
+            <rect x="166" y="112" width="58" height="7" rx="3.5" fill="#1f8a4c"/>
+            <rect x="166" y="126" width="80" height="5" rx="2.5" fill="#6f7a72"/>
+            <rect x="166" y="137" width="66" height="5" rx="2.5" fill="#6f7a72"/>
             <rect x="202" y="172" width="16" height="16" fill="#16191d"/>
             <rect x="186" y="188" width="48" height="8" rx="4" fill="#16191d"/>
-            <!-- ergonomic chair -->
             <path d="M86 196v-44c0-12 9-22 21-22h6c12 0 21 10 21 22v8" stroke="#1f8a4c" stroke-width="9" stroke-linecap="round"/>
             <rect x="80" y="196" width="56" height="12" rx="6" fill="#1f8a4c"/>
-            <rect x="104" y="208" width="8" height="40" rx="4" fill="#c7c3b8"/>
-            <path d="M92 256l16-12 16 12" stroke="#c7c3b8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- coffee cup -->
+            <rect x="104" y="208" width="8" height="40" rx="4" fill="#bcc6b8"/>
+            <path d="M92 256l16-12 16 12" stroke="#bcc6b8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M286 150h26a8 8 0 0 1 0 16h-4" stroke="#16191d" stroke-width="6" stroke-linecap="round"/>
-            <path d="M276 150h36v18a12 12 0 0 1-12 12h-12a12 12 0 0 1-12-12z" fill="#c0362f"/>
-            <path d="M286 132c-2 4 2 6 0 10M296 130c-2 4 2 6 0 10" stroke="#c7c3b8" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- plant -->
+            <path d="M276 150h36v18a12 12 0 0 1-12 12h-12a12 12 0 0 1-12-12z" fill="#15633a"/>
+            <path d="M286 132c-2 4 2 6 0 10M296 130c-2 4 2 6 0 10" stroke="#bcc6b8" stroke-width="3.5" stroke-linecap="round"/>
             <rect x="46" y="168" width="26" height="28" rx="4" fill="#2b3038"/>
             <path d="M59 168c0-16-8-22-16-24 0 14 6 22 16 24zM59 168c0-16 8-22 16-24 0 14-6 22-16 24z" fill="#1f8a4c"/>
           </svg>
@@ -411,7 +402,7 @@
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Qualität &amp; Professionalität.</b> <span>Sorgfältig ausgewählte Produkte und verlässliche Prozesse.</span></span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Vertrauensvolle Lieferanten.</b> <span>Starke Partnerschaften mit namhaften Marken.</span></span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Faires Miteinander.</b> <span>Teamwork und respektvoller Umgang stehen im Mittelpunkt.</span></span></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Marktbekanntheit.</b> <span>Nachhaltig Marktanteile unter Österreichs Übungsfirmen gewinnen.</span></span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Nachhaltigkeit.</b> <span>Regional, geprüft und CO₂-neutral — belegbar statt behauptet.</span></span></li>
       </ul>
     </div>
     <div class="data-card card reveal-r">
@@ -440,7 +431,7 @@
       <div class="stat"><div class="n" data-target="8">0</div><div class="l">Produktkategorien</div></div>
       <div class="stat"><div class="n" data-target="6">0</div><div class="l">Marken &amp; Lieferanten</div></div>
       <div class="stat"><div class="n" data-target="9">0</div><div class="l">Schüler:innen im Team</div></div>
-      <div class="stat"><div class="n" data-text="JIT">0</div><div class="l">Just-in-Time-Lieferung</div></div>
+      <div class="stat"><div class="n" data-text="CO₂">0</div><div class="l">neutraler Versand</div></div>
     </div>
   </div>
 </div>
@@ -465,7 +456,7 @@
     </div>
     <div class="prod-foot reveal">
       <p><b>Neu &amp; nachhaltig:</b> Unsere regionalen, geprüften Produkte findest du gebündelt im Nachhaltigkeits-Register.</p>
-      <a href="nachhaltigkeit.html" class="btn btn-grn" style="padding:11px 20px;font-size:.9rem;">Zum Nachhaltigkeits-Register
+      <a href="nachhaltigkeit.html" class="btn btn-grn" style="padding:11px 20px;font-size:.9rem;background:#fff;color:var(--acc-dark);box-shadow:none;">Zum Nachhaltigkeits-Register
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -476,7 +467,7 @@
   <div class="wrap">
     <div class="nh-teaser reveal">
       <div class="txt">
-        <span class="eyebrow gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Nachhaltigkeit</span>
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Nachhaltigkeit</span>
         <h2>Make Office <em>Green</em> Again</h2>
         <p>Stuff4Staff wird zum nachhaltigen Büroartikelhändler: regionale Produkte, geprüfte Siegel und CO₂-neutraler Versand. Unser Leitprinzip — <b>belegbar statt behauptet</b>.</p>
         <div class="nh-pills">
@@ -546,9 +537,9 @@
       </div>
       <div class="field"><label for="thema">Anliegen</label><select id="thema"><option>Produktanfrage</option><option>Handel im Übungsfirmen-Netzwerk</option><option>Kaffee &amp; Vollautomaten</option><option>Nachhaltigkeit</option><option>Karriere</option><option>Sonstiges</option></select></div>
       <div class="field"><label for="nachricht">Nachricht <span class="req">*</span></label><textarea id="nachricht" required></textarea></div>
-      <label class="privacy"><input type="checkbox" id="dsgvo" required /> <span>Ich stimme der Verarbeitung meiner Daten gemäß <a href="#">Datenschutzerklärung</a> zu (Übungszweck). <span class="req">*</span></span></label>
+      <label class="privacy"><input type="checkbox" id="dsgvo" required /> <span>Ich stimme der Verarbeitung meiner Daten gemäß <a href="datenschutz.html">Datenschutzerklärung</a> zu (Übungszweck). <span class="req">*</span></span></label>
       <div class="form-done" id="formDone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Danke! Ihre Nachricht wurde übermittelt — wir melden uns in Kürze.</div>
-      <button type="submit" class="btn btn-acc" style="justify-content:center;">Nachricht senden
+      <button type="submit" class="btn btn-grn" style="justify-content:center;">Nachricht senden
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
     </form>
   </div>
@@ -559,17 +550,17 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#start" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>Stuff<b>4</b>Staff</a>
-        <p>Großhandel für gesundheitsfördernde Büroausstattung &amp; Genuss. Übungsfirma der HAK Kirchdorf an der Krems.</p>
+        <a href="#start" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>Stuff<b>4</b>Staff</a>
+        <p>Nachhaltiger Großhandel für gesundheitsfördernde Büroausstattung &amp; Genuss. Übungsfirma der HAK Kirchdorf an der Krems.</p>
         <div class="data">FN 1157 · UID ATU50115717<br />Weinzierler Straße 22, 4560 Kirchdorf/Krems, AT</div>
       </div>
       <div class="foot-col"><h4>Produkte</h4><ul><li><a href="#produkte">Büromöbel</a></li><li><a href="#produkte">Kaffeevollautomaten</a></li><li><a href="#produkte">Kaffee &amp; Tee</a></li><li><a href="https://marketplace.penworldwide.org" target="_blank" rel="noopener">Marketplace-Shop</a></li></ul></div>
       <div class="foot-col"><h4>Unternehmen</h4><ul><li><a href="#ueber-uns">Über uns</a></li><li><a href="nachhaltigkeit.html">Nachhaltigkeit</a></li><li><a href="#karriere">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
-      <div class="foot-col"><h4>Rechtliches</h4><ul><li><a href="#">AGB</a></li><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+      <div class="foot-col"><h4>Rechtliches</h4><ul><li><a href="agb.html">AGB</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> Stuff4Staff Handels GmbH (Übungsfirma). Alle Rechte vorbehalten.</span>
-      <span>Weil der Arbeitsplatz mehr sein darf.</span>
+      <span>Make Office Green Again 🌱</span>
     </div>
   </div>
 </footer>
@@ -579,12 +570,10 @@
 var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* nav scrolled state */
 var navEl = document.getElementById('nav');
 function onScroll(){ if (window.scrollY > 12) navEl.classList.add('scrolled'); else navEl.classList.remove('scrolled'); }
 onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-/* mobile burger */
 var burger = document.getElementById('burger');
 var navLinks = document.getElementById('navLinks');
 burger.addEventListener('click', function(){
@@ -598,7 +587,6 @@ navLinks.querySelectorAll('a').forEach(function(a){
   });
 });
 
-/* reveal on scroll */
 var revealEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
 if (prefersReduced || !('IntersectionObserver' in window)) {
   revealEls.forEach(function(el){ el.classList.add('in'); });
@@ -609,7 +597,6 @@ if (prefersReduced || !('IntersectionObserver' in window)) {
   revealEls.forEach(function(el){ io.observe(el); });
 }
 
-/* animated counters */
 function runCounters(){
   document.querySelectorAll('.stat .n').forEach(function(el){
     if (el.dataset.done) return;
@@ -622,8 +609,7 @@ function runCounters(){
     var start = performance.now(), dur = 1200;
     (function step(now){
       var p = Math.min((now - start) / dur, 1);
-      var val = Math.round(target * (1 - Math.pow(1 - p, 3)));
-      el.textContent = val;
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
       if (p < 1) requestAnimationFrame(step);
     })(start);
   });
@@ -636,7 +622,6 @@ if (statsBand && 'IntersectionObserver' in window && !prefersReduced) {
   io2.observe(statsBand);
 } else { runCounters(); }
 
-/* contact form */
 var form = document.getElementById('contactForm');
 form.addEventListener('submit', function(e){
   e.preventDefault();

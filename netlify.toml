@@ -1,0 +1,9 @@
+# Netlify-Konfiguration — statische Seite, kein Build-Schritt nötig.
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/nachhaltigkeit"
+  to = "/nachhaltigkeit.html"
+  status = 200

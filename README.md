@@ -1,19 +1,21 @@
 # Stuff4Staff GmbH — Website
 
-Moderne, statische Website für **Stuff4Staff Handels GmbH**, die Übungsfirma der HAK Kirchdorf an der Krems — Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel.
+Moderne, statische Website für **Stuff4Staff Handels GmbH**, die Übungsfirma der HAK Kirchdorf an der Krems — nachhaltiger Großhandel für gesundheitsfördernde Büromöbel, Kaffeevollautomaten, erlesenen Kaffee und Genussartikel.
 
-Neutrales, professionelles Design in Anlehnung an die bestehende Wix-Seite, mit einem eigenen, grün gestalteten **Nachhaltigkeits-Register**.
+Durchgängiger **„Make Office Green Again"-Look** (grüner Rebrand aus dem Nachhaltigkeitskonzept) mit einem eigenen **Nachhaltigkeits-Register**.
 
-## Seiten
+## Dateien
 
 | Datei | Inhalt |
 |-------|--------|
 | `index.html` | Startseite (one-page): Start · Über uns · Produkte · Karriere · Kontakt + Nachhaltigkeits-Teaser |
-| `nachhaltigkeit.html` | Register „Nachhaltigkeit" — Konzept, Maßnahmen, nachhaltige Produkte, Rebrand „Make Office Green Again" |
-| `WIX-NACHHALTIGKEIT.md` | Alle Texte des Registers als Copy-&-Paste-Vorlage für den Wix-Editor |
-| `assets/` | Neues grünes Logo + Produktfotos |
+| `nachhaltigkeit.html` | Register „Nachhaltigkeit" — Konzept, Maßnahmen, nachhaltige Produkte, Rebrand |
+| `impressum.html` · `agb.html` · `datenschutz.html` | Rechtsseiten (Übungsfirma-Mustertexte) |
+| `WIX-NACHHALTIGKEIT.md` | Alle Register-Texte als Copy-&-Paste-Vorlage für den Wix-Editor |
+| `DEPLOY.md` | Anleitung: Seite öffnen & online stellen |
+| `assets/` | Grünes Logo + Produktfotos |
 
-Beide HTML-Dateien sind **selbstständig** (Inline-CSS/-JS, keine Build-Schritte, keine externen JS-Abhängigkeiten außer Google Fonts).
+Alle HTML-Dateien sind **selbstständig** (Inline-CSS/-JS, kein Build-Schritt, keine externen JS-Abhängigkeiten außer Google Fonts).
 
 ## Struktur der Startseite
 
@@ -35,26 +37,26 @@ neues Logo/Rebrand · Vorteile · Quick-Wins-Roadmap.
 
 ## Design-Tokens
 
-| Rolle | Startseite | Register |
-|-------|-----------|----------|
-| Akzent | Marken-Rot `#C0362F` | Grün `#1F8A4C` / `#15633A` |
-| Text | `#16191D` | `#16191D` |
-| Hintergrund | `#F6F6F3` | `#F4F8F3` |
-| Schriften | Manrope (Headlines) · Inter (Text) | identisch |
+| Rolle | Wert |
+|-------|------|
+| Akzent | Blattgrün `#1F8A4C` · Tannengrün `#15633A` · Dunkelgrün `#0E3A20` |
+| Text | `#16191D` |
+| Hintergrund | `#F4F8F3` |
+| Schriften | Manrope (Headlines) · Inter (Text) |
 
-## Vorschau / Deployment
+## Vorschau & Deployment
 
-Kein Build nötig — Datei direkt im Browser öffnen oder statisch hosten:
+Kein Build nötig. Schnellster Weg: `index.html` im Browser öffnen oder
 
 ```bash
-python3 -m http.server 8080
-# dann http://localhost:8080
+python3 -m http.server 8080   # dann http://localhost:8080
 ```
 
-Deploybar auf Netlify, Vercel, GitHub Pages oder jedem Webserver.
+Zum Online-Stellen (GitHub Pages / Netlify / Vercel) siehe **`DEPLOY.md`**.
 Für die echte Wix-Seite: Inhalte aus `WIX-NACHHALTIGKEIT.md` in ein neues Register einfügen.
 
 ## Hinweis
 
 Stuff4Staff ist eine **Übungsfirma**. Waren- und Zahlungsverkehr erfolgen ausschließlich zu
 Ausbildungszwecken im Netzwerk der Übungsfirmen — keine realen Lieferungen oder Zahlungen.
+Die Rechtsseiten sind Mustertexte und ersetzen keine Rechtsberatung.
